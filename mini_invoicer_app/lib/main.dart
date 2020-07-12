@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_app/screens/home.dart';
+import 'package:mini_invoicer_app/screens/home_screen.dart';
 
 void main() => runApp(MiniInvoicer());
 
