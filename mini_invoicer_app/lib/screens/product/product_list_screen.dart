@@ -11,7 +11,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   void _updateProductList() {
     setState(() {
-      _productList = DatabaseHelper.instance.getProductList();
+//      _productList = DatabaseHelper.instance.getProductList();
     });
   }
 
