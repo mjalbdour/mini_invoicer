@@ -1,8 +1,7 @@
 class Product {
-  int id;
-
-  String name; // in english
-//  String originalName; spanish/italian etc...
+  String _id;
+  String name;
+  String originalName;
   String brand;
   String category;
   String ingredients;
@@ -10,6 +9,7 @@ class Product {
   String notes;
 
   // Photos -> coming soon... data type = List<String> ?...
+  List<String> photos;
 
   int packageUnits; // could be null
   int boxUnits;
@@ -21,13 +21,16 @@ class Product {
 
   int boxQuantity; // inventory purposes
 
-//  IN Jordan Dinar
+  // Jordan Dinar
+  // price class ? make app more generic
   double boxPriceCashVan;
   double boxPriceCredit;
   double boxPriceWholesale;
+  //double suggestedUnitPrice;
+  //double suggestedPackagePrice;
+  //double suggestedBoxPrice;
 
-  double suggestedUnitShelfPrice;
-
+  // tax class ?
   double tax;
 
 }
