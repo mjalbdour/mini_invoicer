@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/screens/customer/customer_edit_screen.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 
 class CustomerDetailScreen extends StatefulWidget {
@@ -19,6 +20,12 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, CustomerEditScreen.route);
+        },
+        child: Icon(Icons.edit),
       ),
     );
   }
