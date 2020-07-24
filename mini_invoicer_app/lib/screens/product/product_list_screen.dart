@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/product_model.dart';
 
 class ProductListScreen extends StatefulWidget {
+  static const String title = "products";
+  static const String route = "/$title";
   @override
   _ProductListScreenState createState() => _ProductListScreenState();
 }
@@ -35,7 +37,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Products"),
+        title: Text(ProductListScreen.title),
       ),
       body: FutureBuilder(
           future: _productList,
