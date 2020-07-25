@@ -7,12 +7,18 @@ import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 import 'package:mini_invoicer_app/screens/home_screen.dart';
 import 'package:mini_invoicer_app/screens/invoice/invoice_list_screen.dart';
 import 'package:mini_invoicer_app/screens/order/order_list_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_detail_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_edit_screen.dart';
 import 'package:mini_invoicer_app/screens/product/product_list_screen.dart';
 import 'package:mini_invoicer_app/screens/receipt/receipt_list_screen.dart';
 
 Map<String, WidgetBuilder> routeMap = <String, WidgetBuilder>{
   HomeScreen.route: (context) => HomeScreen(),
   ProductListScreen.route: (context) => ProductListScreen(),
+  ProductCreateScreen.route: (context) => ProductCreateScreen(),
+  ProductDetailScreen.route: (context) => ProductDetailScreen(),
+  ProductEditScreen.route: (context) => ProductEditScreen(),
   CustomerListScreen.route: (context) => CustomerListScreen(),
   CustomerCreateScreen.route: (context) => CustomerCreateScreen(),
   CustomerDetailScreen.route: (context) => CustomerDetailScreen(),
