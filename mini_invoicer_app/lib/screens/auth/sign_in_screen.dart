@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/home_screen.dart';
 
@@ -14,6 +15,26 @@ class _SignInScreenState extends State<SignInScreen> {
   String _password;
 
   var _signInFormKey = GlobalKey<FormState>();
+
+  Future<void> signIn() async {
+    if (_signInFormKey.currentState.validate()) {
+      _signInFormKey.currentState.save();
+      print('"$_email"');
+      print('"$_password"');
+      try {
+        AuthResult result = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(user: result.user),
+          ),
+        );
+      } catch (e) {
+        throw e;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   }
                   return null;
                 },
-                onSaved: (input) => _email = input,
+                onSaved: (input) => _email = input.trim(),
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -62,12 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text("reset"),
                   ),
                   RaisedButton(
-                    onPressed: () {
-                      if (_signInFormKey.currentState.validate()) {
-                        Navigator.pushReplacementNamed(
-                            context, HomeScreen.route);
-                      }
-                    },
+                    onPressed: signIn,
                     child: Text("sign in"),
                   ),
                 ],

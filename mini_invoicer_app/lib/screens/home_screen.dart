@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/screens/auth/sign_in_screen.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 import 'package:mini_invoicer_app/screens/invoice/invoice_list_screen.dart';
 import 'package:mini_invoicer_app/screens/order/order_list_screen.dart';
@@ -6,13 +8,34 @@ import 'package:mini_invoicer_app/screens/product/product_list_screen.dart';
 import 'package:mini_invoicer_app/screens/receipt/receipt_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  final FirebaseUser user;
   static const String route = "/home";
+
+  HomeScreen({
+    this.user,
+  });
+
+  void _signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
+    print(user);
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
+        actions: <Widget>[
+          FlatButton(
+              onPressed: () {
+                _signOut();
+                Navigator.popAndPushNamed(context, SignInScreen.route);
+              },
+              child: Text(
+                "sign out",
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.all(16.0),
