@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_create_screen.dart';
@@ -23,28 +24,41 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // TODO: Implement add Customer
-          Navigator.pushNamed(context, CustomerCreateScreen.route);
-        },
-        child: Icon(Icons.add),
-      ),
-      appBar: AppBar(
-        title: Text(CustomerListScreen.title),
-        actions: <Widget>[
-          FlatButton(
-              onPressed: _signOut,
-              child: Text(
-                "sign out",
-                style: TextStyle(color: Colors.white),
-              )),
-        ],
-      ),
-      body: Center(
-        child: Text("when customer list is empty, this text is shown"),
-      ),
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection("/customers").snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        return snapshot.hasData
+            ? Scaffold(
+                floatingActionButton: FloatingActionButton(
+                  onPressed: () {
+                    // TODO: Implement add Customer
+                    Navigator.pushNamed(context, CustomerCreateScreen.route);
+                  },
+                  child: Icon(Icons.add),
+                ),
+                appBar: AppBar(
+                  title: Text(CustomerListScreen.title),
+                  actions: <Widget>[
+                    FlatButton(
+                        onPressed: _signOut,
+                        child: Text(
+                          "sign out",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ],
+                ),
+                body: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                        child: ListTile(
+                      title: Text(snapshot.data.documents[index]["title"]),
+                    ));
+                  },
+                  itemCount: snapshot.data.documents.length,
+                ),
+              )
+            : CircularProgressIndicator();
+      },
     );
   }
 }
