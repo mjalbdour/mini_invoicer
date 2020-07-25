@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
-  static const String title = "auth";
+  static const String title = "authentication";
   static const String route = "/$title";
 
   @override
@@ -22,14 +22,8 @@ class _SignInScreenState extends State<SignInScreen> {
       print('"$_email"');
       print('"$_password"');
       try {
-        AuthResult result = await FirebaseAuth.instance
+        FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(user: result.user),
-          ),
-        );
       } catch (e) {
         throw e;
       }
