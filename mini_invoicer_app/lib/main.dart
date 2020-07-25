@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/screens/auth/sign_in_screen.dart';
 import 'package:mini_invoicer_app/screens/home_screen.dart';
 import 'package:mini_invoicer_app/screens/route_map.dart';
 
@@ -9,7 +10,7 @@ class MiniInvoicer extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Mini Invoicer",
-      initialRoute: HomeScreen.route,
+      initialRoute: SignInScreen.route,
       routes: routeMap,
     );
   }
