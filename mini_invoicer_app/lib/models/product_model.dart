@@ -1,5 +1,5 @@
 class Product {
-  String _id;
+  String id;
   String name;
   String originalName;
   String brand;
@@ -8,7 +8,6 @@ class Product {
   String packagingMaterial;
   String notes;
 
-  // Photos -> coming soon... data type = List<String> ?...
   List<String> photos;
 
   int packageUnits; // could be null
@@ -26,6 +25,7 @@ class Product {
   double boxPriceCashVan;
   double boxPriceCredit;
   double boxPriceWholesale;
+
   //double suggestedUnitPrice;
   //double suggestedPackagePrice;
   //double suggestedBoxPrice;
@@ -33,4 +33,28 @@ class Product {
   // tax class ?
   double tax;
 
+  double discount;
+
+  Product({
+    this.id,
+    this.name,
+    this.originalName,
+    this.brand,
+    this.category,
+    this.ingredients,
+    this.packagingMaterial,
+    this.photos,
+    this.notes,
+    this.packageUnits,
+    this.boxUnits,
+    this.boxQuantity,
+    this.unitWeight,
+    this.packageWeight,
+    this.boxWeight,
+    this.boxPriceCashVan,
+    this.boxPriceCredit,
+    this.boxPriceWholesale,
+    this.tax,
+    this.discount,
+  });
 }
