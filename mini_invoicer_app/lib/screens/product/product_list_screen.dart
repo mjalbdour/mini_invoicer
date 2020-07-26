@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/models/product_model.dart';
 import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -11,6 +12,12 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
+//  List<Product> _productListFromSnapshot(QuerySnapshot snapshot) {
+//    return snapshot.documents.map((document) => Product(
+//      name: document.data["name"]
+//    )).toList();
+//  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +31,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
         child: Icon(Icons.add),
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance.collection("/products").snapshots(),
+          stream: Firestore.instance
+              .collection("/products")
+              .orderBy("name", descending: false)
+              .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            print(snapshot.data.documents);
             return snapshot.hasData && snapshot.data.documents.isNotEmpty
                 ? ListView.builder(
                     itemBuilder: (BuildContext context, int index) {
