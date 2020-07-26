@@ -13,15 +13,6 @@ class CustomerListScreen extends StatefulWidget {
 }
 
 class _CustomerListScreenState extends State<CustomerListScreen> {
-  void _signOut() async {
-    try {
-      FirebaseAuth.instance.signOut();
-      Navigator.popUntil(context, ModalRoute.withName(LandingScreen.route));
-    } catch (e) {
-      throw e;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -38,14 +29,6 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                 ),
                 appBar: AppBar(
                   title: Text(CustomerListScreen.title),
-                  actions: <Widget>[
-                    FlatButton(
-                        onPressed: _signOut,
-                        child: Text(
-                          "sign out",
-                          style: TextStyle(color: Colors.white),
-                        )),
-                  ],
                 ),
                 body: ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
