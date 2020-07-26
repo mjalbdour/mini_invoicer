@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
 
@@ -16,15 +17,32 @@ class _ProductListScreenState extends State<ProductListScreen> {
       appBar: AppBar(
         title: Text(ProductListScreen.title),
       ),
-      body: Center(
-        child: Text("product list"),
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context,  ProductCreateScreen.route);
+          Navigator.pushNamed(context, ProductCreateScreen.route);
         },
         child: Icon(Icons.add),
       ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: Firestore.instance.collection("/products").snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            print(snapshot.data.documents);
+            return snapshot.hasData && snapshot.data.documents.isNotEmpty
+                ? ListView.builder(
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        title: Text(snapshot.data.documents[index]["name"]),
+                      );
+                    },
+                    itemCount: snapshot.data.documents.length,
+                  )
+                : snapshot.data.documents.isEmpty
+                    ? Center(
+                        child: Text("add new products"),
+                      )
+                    : Center(child: CircularProgressIndicator());
+          }),
     );
   }
 }
