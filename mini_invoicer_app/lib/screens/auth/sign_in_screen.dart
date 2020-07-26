@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_app/screens/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   static const String title = "authentication";

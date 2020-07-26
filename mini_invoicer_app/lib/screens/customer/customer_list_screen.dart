@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_create_screen.dart';
-import 'package:mini_invoicer_app/screens/landing_screen.dart';
 
 class CustomerListScreen extends StatefulWidget {
   static const String title = "customers";
@@ -33,9 +31,10 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                 body: ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
-                        child: ListTile(
-                      title: Text(snapshot.data.documents[index]["title"]),
-                    ));
+                      child: ListTile(
+                        title: Text(snapshot.data.documents[index]["title"]),
+                      ),
+                    );
                   },
                   itemCount: snapshot.data.documents.length,
                 ),
