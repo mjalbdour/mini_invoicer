@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_app/models/product_model.dart';
+//import 'package:mini_invoicer_app/models/product_model.dart';
 import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
 
 class ProductListScreen extends StatefulWidget {
