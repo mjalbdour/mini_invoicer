@@ -18,8 +18,6 @@ class _SignInScreenState extends State<SignInScreen> {
   Future<void> signIn() async {
     if (_signInFormKey.currentState.validate()) {
       _signInFormKey.currentState.save();
-      print('"$_email"');
-      print('"$_password"');
       try {
         FirebaseAuth.instance
             .signInWithEmailAndPassword(email: _email, password: _password);

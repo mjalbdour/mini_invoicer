@@ -35,6 +35,16 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
   TextEditingController _discountController = TextEditingController();
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _nameController.dispose();
+    _originalNameController.dispose();
+    _brandController.dispose();
+    _categoryController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -157,14 +167,17 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                 RaisedButton(
                   onPressed: () {
                     // save form values
-                    _product.name = _nameController.text.trim();
-                    _product.originalName = _originalNameController.text.trim();
-                    _product.brand = _brandController.text.trim();
-                    _product.category = _categoryController.text.trim();
-                    _product.ingredients = _ingredientsController.text.trim();
+                    _product.name = _nameController.text.trim().toString();
+                    _product.originalName =
+                        _originalNameController.text.trim().toString();
+                    _product.brand = _brandController.text.trim().toString();
+                    _product.category =
+                        _categoryController.text.trim().toString();
+                    _product.ingredients =
+                        _ingredientsController.text.trim().toString();
                     _product.packagingMaterial =
-                        _packagingMaterialController.text.trim();
-                    _product.notes = _ingredientsController.text.trim();
+                        _packagingMaterialController.text.trim().toString();
+                    _product.notes = _notesController.text.trim().toString();
 
                     _product.unitQuantity =
                         int.parse(_packageUnitsController.text.trim());
@@ -196,8 +209,8 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                         double.parse(_discountController.text.trim());
 
                     var map = Product.toMap(_product);
-                    print(_product);
-                    print(map);
+                    (_product);
+                    (map);
                     // validate
                     if (_productCreateFormKey.currentState.validate()) {
                       try {
@@ -206,7 +219,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                             .add(map); // try setdata in collection
                         Navigator.pop(context);
                       } catch (e) {
-                        print(e);
+                        (e);
                       }
                     }
                   },

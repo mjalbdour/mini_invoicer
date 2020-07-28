@@ -20,7 +20,6 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
             ? Scaffold(
                 floatingActionButton: FloatingActionButton(
                   onPressed: () {
-                    // TODO: Implement add Customer
                     Navigator.pushNamed(context, CustomerCreateScreen.route);
                   },
                   child: Icon(Icons.add),

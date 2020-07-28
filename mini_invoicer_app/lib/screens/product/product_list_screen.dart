@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-//import 'package:mini_invoicer_app/models/product_model.dart';
+import 'package:mini_invoicer_app/models/product_model.dart';
 import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_detail_screen.dart';
 
 class ProductListScreen extends StatefulWidget {
   static const String title = "products";
@@ -12,15 +13,8 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
-//  List<Product> _productListFromSnapshot(QuerySnapshot snapshot) {
-//    return snapshot.documents.map((document) => Product(
-//      name: document.data["name"]
-//    )).toList();
-//  }
-
   final CollectionReference _products =
       Firestore.instance.collection("products");
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,30 +23,56 @@ class _ProductListScreenState extends State<ProductListScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, ProductCreateScreen.route);
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ProductCreateScreen(
+                    product: Product(),
+                  )));
         },
         child: Icon(Icons.add),
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: _products.orderBy("name").snapshots(),
-          builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasData) {
+        stream: _products.snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(snapshot.error),
+            );
+          }
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            default:
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(snapshot.data.documents[index].data["name"] ??
-                        "name not available"),
+                  return ProductTile(
+                    product: Product.fromMap(
+                        snapshot.data.documents[index].data,
+                        snapshot.data.documents[index].documentID),
                   );
                 },
                 itemCount: snapshot.data.documents.length,
               );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          }),
+          }
+        },
+      ),
+    );
+  }
+}
+
+class ProductTile extends StatelessWidget {
+  final Product product;
+  ProductTile({@required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(product.name),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ProductDetailScreen(product: product)));
+      },
     );
   }
 }

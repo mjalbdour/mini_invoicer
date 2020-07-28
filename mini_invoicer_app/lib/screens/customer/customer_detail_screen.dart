@@ -4,11 +4,6 @@ import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 
 class CustomerDetailScreen extends StatefulWidget {
   static const String route = "${CustomerListScreen.route}/customer";
-  String title;
-
-  CustomerDetailScreen({
-    this.title = "some customer",
-  });
 
   @override
   _CustomerDetailScreenState createState() => _CustomerDetailScreenState();
@@ -19,7 +14,7 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("customer"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class Product {
   String id;
   String name;
@@ -38,6 +36,7 @@ class Product {
   double discount;
 
   Product({
+    this.id,
     this.name,
     this.originalName,
     this.brand,
@@ -58,28 +57,17 @@ class Product {
     this.tax,
     this.discount,
   });
-  Product.withId({
-    @required this.id,
-    this.name,
-    this.originalName,
-    this.brand,
-    this.category,
-    this.ingredients,
-    this.packagingMaterial,
-    // this.photos,
-    this.notes,
-    this.packageQuantity,
-    this.unitQuantity,
-    this.boxQuantity,
-    this.unitWeight,
-    this.packageWeight,
-    this.boxWeight,
-    this.boxPriceCashvan,
-    this.boxPriceCredit,
-    this.boxPriceWholesale,
-    this.tax,
-    this.discount,
-  });
+
+  factory Product.fromMap(Map<String, dynamic> map, String id) {
+    return Product(
+        id: id,
+        name: map["name"].toString(),
+        originalName: map["originalName"].toString(),
+        brand: map["brand"].toString(),
+        category: map["category"].toString(),
+        ingredients: map["ingredients"].toString(),
+        notes: map["notes"].toString());
+  }
 
   static Map<String, dynamic> toMap(Product product) {
     Map<String, dynamic> map = <String, dynamic>{};
