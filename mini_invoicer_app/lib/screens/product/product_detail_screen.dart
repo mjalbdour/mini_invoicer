@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/product_model.dart';
-import 'package:mini_invoicer_app/screens/product/product_edit_screen.dart';
-import 'package:mini_invoicer_app/screens/product/product_list_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  static const String route = "${ProductListScreen.route}/product";
   final Product product;
   ProductDetailScreen({
     this.product,
@@ -20,7 +18,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.product.name,
+          widget.product.packagingMaterial,
         ),
       ),
       body: ListView(
@@ -31,14 +29,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           Text(widget.product.brand),
           Text(widget.product.category),
           Text(widget.product.ingredients),
+          Text(widget.product.packagingMaterial),
           Text(widget.product.notes),
+          Text(widget.product.unitQuantity.toString()),
+          Text(widget.product.packageQuantity.toString()),
+          Text(widget.product.boxQuantity.toString()),
+          Text(widget.product.unitWeight.toString()),
+          Text(widget.product.packageWeight.toString()),
+          Text(widget.product.boxWeight.toString()),
+          Text(widget.product.boxPriceCashvan.toString()),
+          Text(widget.product.boxPriceCredit.toString()),
+          Text(widget.product.boxPriceWholesale.toString()),
+          Text(widget.product.tax.toString()),
+          Text(widget.product.discount.toString()),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) =>
-                  ProductEditScreen(product: widget.product)));
+                  ProductCreateEditScreen(product: widget.product)));
         },
         child: Icon(Icons.edit),
       ),

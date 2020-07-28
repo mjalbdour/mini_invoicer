@@ -61,12 +61,24 @@ class Product {
   factory Product.fromMap(Map<String, dynamic> map, String id) {
     return Product(
         id: id,
-        name: map["name"].toString(),
-        originalName: map["originalName"].toString(),
-        brand: map["brand"].toString(),
-        category: map["category"].toString(),
-        ingredients: map["ingredients"].toString(),
-        notes: map["notes"].toString());
+        name: map["name"],
+        originalName: map["originalName"],
+        brand: map["brand"],
+        category: map["category"],
+        ingredients: map["ingredients"],
+        packagingMaterial: map["packagingMaterial"],
+        notes: map["notes"],
+        unitQuantity: map["unitQuantity"],
+        packageQuantity: map["packageQuantity"],
+        boxQuantity: map["boxQuantity"],
+        unitWeight: map["unitWeight"],
+        packageWeight: map["packageWeight"],
+        boxWeight: map["boxWeight"],
+        boxPriceCashvan: map["boxPriceCashvan"],
+        boxPriceCredit: map["boxPriceCredit"],
+        boxPriceWholesale: map["boxPriceWholesale"],
+        tax: map["tax"],
+        discount: map["discount"]);
   }
 
   static Map<String, dynamic> toMap(Product product) {
@@ -78,17 +90,23 @@ class Product {
     map["ingredients"] = product.ingredients;
     map["packagingMaterial"] = product.packagingMaterial;
     map["notes"] = product.notes;
+
     map["unitQuantity"] = product.unitQuantity;
     map["packageQuantity"] = product.packageQuantity;
     map["boxQuantity"] = product.boxQuantity;
+
     map["unitWeight"] = product.unitWeight;
     map["packageWeight"] = product.packageWeight;
     map["boxWeight"] = product.boxWeight;
+
     map["boxPriceCashvan"] = product.boxPriceCashvan;
     map["boxPriceCredit"] = product.boxPriceCredit;
     map["boxPriceWholesale"] = product.boxPriceWholesale;
+
     map["tax"] = product.tax;
+
     map["discount"] = product.discount;
+
     return map;
   }
 }
