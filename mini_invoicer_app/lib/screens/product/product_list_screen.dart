@@ -18,6 +18,9 @@ class _ProductListScreenState extends State<ProductListScreen> {
 //    )).toList();
 //  }
 
+  final CollectionReference _products =
+      Firestore.instance.collection("products");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,26 +34,24 @@ class _ProductListScreenState extends State<ProductListScreen> {
         child: Icon(Icons.add),
       ),
       body: StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance
-              .collection("/products")
-              .orderBy("name", descending: false)
-              .snapshots(),
+          stream: _products.orderBy("name").snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            return snapshot.hasData && snapshot.data.documents.isNotEmpty
-                ? ListView.builder(
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text(snapshot.data.documents[index]["name"]),
-                      );
-                    },
-                    itemCount: snapshot.data.documents.length,
-                  )
-                : snapshot.data.documents.isEmpty
-                    ? Center(
-                        child: Text("add new products"),
-                      )
-                    : Center(child: CircularProgressIndicator());
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text(snapshot.data.documents[index].data["name"] ??
+                        "name not available"),
+                  );
+                },
+                itemCount: snapshot.data.documents.length,
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
           }),
     );
   }
