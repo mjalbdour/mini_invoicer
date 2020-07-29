@@ -266,32 +266,32 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
                     widget.product.discount =
                         double.parse(_discountController.text.trim());
 
-                    var map = Product.toMap(widget.product);
+                    final map = Product.toMap(widget.product);
                     // validate
                     if (_productFormKey.currentState.validate()) {
-                      if (widget.product.id == null) {
+                      if (widget.product.id != null) {
                         try {
                           Firestore.instance
                               .collection("/products")
-                              .add(map); // try setdata in collection
-                          Navigator.pop(context);
+                              .document(widget.product.id)
+                              .setData(map);
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
                         } catch (e) {
-                          throw e;
+                          print(e);
                         }
-                      }
-                      try {
-                        Firestore.instance
-                            .collection("/products")
-                            .document(widget.product.id)
-                            .setData(map); // try setdata in collection
-                        Navigator.pop(context);
-                      } catch (e) {
-                        throw e;
+                      } else if (widget.product.id == null) {
+                        try {
+                          Firestore.instance.collection("/products").add(map);
+                          Navigator.of(context).pop();
+                        } catch (e) {
+                          print(e);
+                        }
                       }
                     }
                   },
                   child: Text("create"),
-                )
+                ),
               ],
             )
           ],
