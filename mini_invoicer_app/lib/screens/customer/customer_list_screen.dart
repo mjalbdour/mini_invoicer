@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/customer_model.dart';
+import 'package:mini_invoicer_app/screens/customer/customer_create_edit_screen.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_detail_screen.dart';
 
 class CustomerListScreen extends StatefulWidget {
@@ -19,6 +20,14 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(CustomerListScreen.title),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    CustomerCreateEditScreen(customer: Customer())));
+          },
+          child: Icon(Icons.add),
         ),
         body: StreamBuilder<QuerySnapshot>(
           stream: _customers.snapshots(),
