@@ -12,7 +12,7 @@ class ProductCreateEditScreen extends StatefulWidget {
 }
 
 class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
-  var _productFormKey = GlobalKey<FormState>();
+  final _productFormKey = GlobalKey<FormState>();
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _originalNameController = TextEditingController();
@@ -269,10 +269,21 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
                     var map = Product.toMap(widget.product);
                     // validate
                     if (_productFormKey.currentState.validate()) {
+                      if (widget.product.id == null) {
+                        try {
+                          Firestore.instance
+                              .collection("/products")
+                              .add(map); // try setdata in collection
+                          Navigator.pop(context);
+                        } catch (e) {
+                          throw e;
+                        }
+                      }
                       try {
                         Firestore.instance
                             .collection("/products")
-                            .add(map); // try setdata in collection
+                            .document(widget.product.id)
+                            .setData(map); // try setdata in collection
                         Navigator.pop(context);
                       } catch (e) {
                         throw e;
