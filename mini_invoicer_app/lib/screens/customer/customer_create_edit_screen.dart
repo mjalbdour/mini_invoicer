@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/customer_model.dart';
 
@@ -20,6 +21,8 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
   TextEditingController _cityController = TextEditingController();
   TextEditingController _countryController = TextEditingController();
   TextEditingController _typeController = TextEditingController();
+
+  final _customerFormKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -59,47 +62,104 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
             : Text("edit ${widget.customer.name}"),
       ),
       body: Form(
+          key: _customerFormKey,
           child: ListView(
-        padding: EdgeInsets.all(16.0),
-        children: <Widget>[
-          TextFormField(
-            decoration: InputDecoration(labelText: "name"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "street"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "building number"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "area"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "postal code"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "city"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "country"),
-          ),
-
-          // TODO: implement radio later, use enum
-          TextFormField(
-            decoration: InputDecoration(labelText: "type"),
-          ),
-
-          ButtonBar(
+            padding: EdgeInsets.all(16.0),
             children: <Widget>[
-              RaisedButton(
-                onPressed: () {},
-                child:
-                    widget.customer.id == null ? Text("create") : Text("edit"),
-              )
+              TextFormField(
+                controller: _nameController,
+                decoration: InputDecoration(labelText: "name"),
+              ),
+              TextFormField(
+                controller: _streetController,
+                decoration: InputDecoration(labelText: "street"),
+              ),
+              TextFormField(
+                controller: _buildingNumberController,
+                decoration: InputDecoration(labelText: "building number"),
+              ),
+              TextFormField(
+                controller: _areaController,
+                decoration: InputDecoration(labelText: "area"),
+              ),
+              TextFormField(
+                controller: _postalCodeController,
+                decoration: InputDecoration(labelText: "postal code"),
+              ),
+              TextFormField(
+                controller: _cityController,
+                decoration: InputDecoration(labelText: "city"),
+              ),
+              TextFormField(
+                controller: _countryController,
+                decoration: InputDecoration(labelText: "country"),
+              ),
+
+              // TODO: implement radio later, use enum
+              TextFormField(
+                controller: _typeController,
+                decoration: InputDecoration(labelText: "type"),
+              ),
+
+              ButtonBar(
+                children: <Widget>[
+                  FlatButton(
+                      onPressed: () {
+                        _customerFormKey.currentState.reset();
+                      },
+                      child: Text("reset")),
+                  RaisedButton(
+                    onPressed: () {
+                      widget.customer.name =
+                          _nameController.text.trim().toString();
+                      widget.customer.address = <String, dynamic>{
+                        "street": _streetController.text.trim().toString(),
+                        "buildingNumber":
+                            _buildingNumberController.text.trim().toString(),
+                        "area": _areaController.text.trim().toString(),
+                        "city": _cityController.text.trim().toString(),
+                        "postalCode":
+                            _postalCodeController.text.trim().toString(),
+                        "country": _countryController.text.trim().toString()
+                      };
+                      widget.customer.type =
+                          _typeController.text.trim().toString();
+
+                      final map = Customer.toMap(widget.customer);
+
+                      if (_customerFormKey.currentState.validate()) {
+                        if (widget.customer.id != null) {
+                          try {
+                            Firestore.instance
+                                .collection("/customers")
+                                .document("${widget.customer.id}")
+                                .updateData(map);
+
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                          } catch (e) {
+                            print(e);
+                          }
+                        } else if (widget.customer.id == null) {
+                          try {
+                            Firestore.instance
+                                .collection("/customers")
+                                .add(map);
+                            Navigator.of(context).pop();
+                          } catch (e) {
+                            print(e);
+                          }
+                        }
+                      }
+                    },
+                    child: widget.customer.id == null
+                        ? Text("create")
+                        : Text("edit"),
+                  )
+                ],
+              ),
             ],
-          ),
-        ],
-      )),
+          )),
     );
   }
 }
