@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/product_model.dart';
-import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_create_edit_screen.dart';
 import 'package:mini_invoicer_app/screens/product/product_detail_screen.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class ProductListScreen extends StatefulWidget {
 
 class _ProductListScreenState extends State<ProductListScreen> {
   final CollectionReference _products =
-      Firestore.instance.collection("products");
+      Firestore.instance.collection("/products");
   @override
   Widget build(BuildContext context) {
     return Scaffold(

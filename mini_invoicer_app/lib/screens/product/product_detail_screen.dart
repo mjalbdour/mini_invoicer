@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/product_model.dart';
-import 'package:mini_invoicer_app/screens/product/product_create_screen.dart';
+import 'package:mini_invoicer_app/screens/product/product_create_edit_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final Product product;
