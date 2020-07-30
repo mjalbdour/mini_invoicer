@@ -1,0 +1,48 @@
+# Miscellaneous
+mini_invoicer_app/*.class
+mini_invoicer_app/*.log
+mini_invoicer_app/*.pyc
+mini_invoicer_app/*.swp
+mini_invoicer_app/.DS_Store
+mini_invoicer_app/.atom/
+mini_invoicer_app/.buildlog/
+mini_invoicer_app/.history
+mini_invoicer_app/.svn/
+
+# IntelliJ related
+mini_invoicer_app/*.iml
+mini_invoicer_app/*.ipr
+mini_invoicer_app/*.iws
+mini_invoicer_app/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+.vscode/
+
+
+# Flutter/Dart/Pub related
+mini_invoicer_app/**/doc/api/
+mini_invoicer_app/.dart_tool/
+mini_invoicer_app/.flutter-plugins
+mini_invoicer_app/.flutter-plugins-dependencies
+mini_invoicer_app/.packages
+mini_invoicer_app/.pub-cache/
+mini_invoicer_app/.pub/
+mini_invoicer_app/build/
+mini_invoicer_app/./pubspec.lock
+
+# Web related
+mini_invoicer_app/lib/generated_plugin_registrant.dart
+
+# Symbolication related
+mini_invoicer_app/app.*.symbols
+
+# Obfuscation related
+mini_invoicer_app/app.*.map.json
+
+# Exceptions to above rules.
+mini_invoicer_app/!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# google services
+mini_invoicer_app/android/app/google-services.json
