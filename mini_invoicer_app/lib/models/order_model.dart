@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Order {
   String id;
   String customerId;
@@ -21,7 +23,8 @@ class Order {
     return Order.withId(
         id: id,
         customerId: map["customerId"],
-        date: map["date"], // format then convert to date object?...
+        date: DateTime.fromMillisecondsSinceEpoch(map["date"].seconds *
+            1000), // format then convert to date object?...
         totalValue: map["totalValue"]);
   }
 

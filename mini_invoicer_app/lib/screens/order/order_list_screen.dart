@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/models/order_model.dart';
 
 class OrderListScreen extends StatefulWidget {
   static const String title = "orders";
@@ -37,12 +38,9 @@ class _OrderListScreenState extends State<OrderListScreen> {
             default:
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(snapshot
-                          .data.documents[index].data["totalValue"]
-                          .toString()),
-                    ),
+                  return OrderTile(
+                    order: Order.fromMap(snapshot.data.documents[index].data,
+                        snapshot.data.documents[index].documentID),
                   );
                 },
                 itemCount: snapshot.data.documents.length,
@@ -50,6 +48,18 @@ class _OrderListScreenState extends State<OrderListScreen> {
           }
         },
       ),
+    );
+  }
+}
+
+class OrderTile extends StatelessWidget {
+  final Order order;
+  OrderTile({@required this.order});
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(order.totalValue.toString()),
+      subtitle: Text(order.date.toString()),
     );
   }
 }
