@@ -18,7 +18,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.product.packagingMaterial,
+          widget.product.name,
         ),
       ),
       body: ListView(
@@ -37,9 +37,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           Text(widget.product.unitWeight.toString()),
           Text(widget.product.packageWeight.toString()),
           Text(widget.product.boxWeight.toString()),
-          Text(widget.product.boxPriceCashvan.toString()),
-          Text(widget.product.boxPriceCredit.toString()),
-          Text(widget.product.boxPriceWholesale.toString()),
+          Text(widget.product.price.toString()),
           Text(widget.product.tax.toString()),
           Text(widget.product.discount.toString()),
         ],

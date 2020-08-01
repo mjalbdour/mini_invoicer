@@ -1,8 +1,10 @@
+import 'package:mini_invoicer_app/models/product_model.dart';
+
 class Invoice {
   String id;
   int number;
   DateTime date;
-  List<Map<String, dynamic>> selectedProducts;
+  List<Product> selectedProducts;
   bool edited;
   int printCount;
   double discount;

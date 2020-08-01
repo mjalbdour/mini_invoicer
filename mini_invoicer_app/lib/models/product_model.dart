@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Product {
   String id;
   String name;
@@ -22,13 +24,7 @@ class Product {
 
   // Jordan Dinar
   // price class ? make app more generic
-  double boxPriceCashvan;
-  double boxPriceCredit;
-  double boxPriceWholesale;
-
-  //double suggestedUnitPrice;
-  //double suggestedPackagePrice;
-  //double suggestedBoxPrice;
+  double price;
 
   // tax class ?
   double tax;
@@ -37,15 +33,15 @@ class Product {
 
   int orderAmount;
 
+  bool selected;
+
   Product({
-    this.id,
     this.name,
     this.originalName,
     this.brand,
     this.category,
     this.ingredients,
     this.packagingMaterial,
-    // this.photos,
     this.notes,
     this.packageQuantity,
     this.unitQuantity,
@@ -53,16 +49,54 @@ class Product {
     this.unitWeight,
     this.packageWeight,
     this.boxWeight,
-    this.boxPriceCashvan,
-    this.boxPriceCredit,
-    this.boxPriceWholesale,
+    this.price,
     this.tax,
+    this.discount,
+  });
+
+  Product.withId({
+    @required this.id,
+    this.name,
+    this.originalName,
+    this.brand,
+    this.category,
+    this.ingredients,
+    this.packagingMaterial,
+    this.notes,
+    this.packageQuantity,
+    this.unitQuantity,
+    this.boxQuantity,
+    this.unitWeight,
+    this.packageWeight,
+    this.boxWeight,
+    this.price,
+    this.tax,
+    this.discount,
+  });
+
+  Product.withSelection({
+    this.id,
+    this.name,
+    this.originalName,
+    this.brand,
+    this.category,
+    this.ingredients,
+    this.packagingMaterial,
+    this.notes,
+    this.packageQuantity,
+    this.unitQuantity,
+    this.boxQuantity,
+    this.unitWeight,
+    this.packageWeight,
+    this.boxWeight,
+    this.tax,
+    this.price,
     this.discount,
     this.orderAmount,
   });
 
   factory Product.fromMap(Map<String, dynamic> map, String id) {
-    return Product(
+    return Product.withId(
       id: id,
       name: map["name"],
       originalName: map["originalName"],
@@ -77,9 +111,7 @@ class Product {
       unitWeight: map["unitWeight"],
       packageWeight: map["packageWeight"],
       boxWeight: map["boxWeight"],
-      boxPriceCashvan: map["boxPriceCashvan"],
-      boxPriceCredit: map["boxPriceCredit"],
-      boxPriceWholesale: map["boxPriceWholesale"],
+      price: map["price"],
       tax: map["tax"],
       discount: map["discount"],
     );
@@ -103,14 +135,21 @@ class Product {
     map["packageWeight"] = product.packageWeight;
     map["boxWeight"] = product.boxWeight;
 
-    map["boxPriceCashvan"] = product.boxPriceCashvan;
-    map["boxPriceCredit"] = product.boxPriceCredit;
-    map["boxPriceWholesale"] = product.boxPriceWholesale;
+    map["price"] = product.price;
 
     map["tax"] = product.tax;
 
     map["discount"] = product.discount;
 
+    return map;
+  }
+
+  static Map<String, dynamic> toMapWithSelection(Product product) {
+    Map<String, dynamic> map = <String, dynamic>{};
+    map["reference"] = product.id;
+    map["name"] = product.name;
+    map["price"] = product.price;
+    map["orderAmount"] = product.orderAmount;
     return map;
   }
 }

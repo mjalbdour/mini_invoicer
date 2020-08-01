@@ -27,9 +27,8 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
   TextEditingController _packageWeightController = TextEditingController();
   TextEditingController _boxWeightController = TextEditingController();
   TextEditingController _unitQuantityController = TextEditingController();
-  TextEditingController _boxPriceCashvanController = TextEditingController();
-  TextEditingController _boxPriceCreditController = TextEditingController();
-  TextEditingController _boxPriceWholesaleController = TextEditingController();
+  TextEditingController _priceController = TextEditingController();
+
   TextEditingController _taxController = TextEditingController();
   TextEditingController _discountController = TextEditingController();
 
@@ -57,13 +56,8 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
       _boxWeightController.text = widget.product.boxWeight.toString();
 
       // double
-      _boxPriceCashvanController.text =
-          widget.product.boxPriceCashvan.toString();
-      _boxPriceCreditController.text = widget.product.boxPriceCredit.toString();
 
-      _boxPriceWholesaleController.text =
-          widget.product.boxPriceWholesale.toString();
-
+      _priceController.text = widget.product.price.toString();
       _taxController.text = widget.product.tax.toString();
       _discountController.text = widget.product.discount.toString();
     }
@@ -84,9 +78,7 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
     _unitWeightController.dispose();
     _packageWeightController.dispose();
     _boxWeightController.dispose();
-    _boxPriceCashvanController.dispose();
-    _boxPriceCreditController.dispose();
-    _boxPriceWholesaleController.dispose();
+    _priceController.dispose();
     _taxController.dispose();
     _discountController.dispose();
   }
@@ -180,20 +172,8 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
 
             // double
             TextFormField(
-              controller: _boxPriceCashvanController,
-              decoration: InputDecoration(labelText: "price - cashvan"),
-              keyboardType:
-                  TextInputType.numberWithOptions(signed: false, decimal: true),
-            ),
-            TextFormField(
-              controller: _boxPriceCreditController,
-              decoration: InputDecoration(labelText: "price - credit"),
-              keyboardType:
-                  TextInputType.numberWithOptions(signed: false, decimal: true),
-            ),
-            TextFormField(
-              controller: _boxPriceWholesaleController,
-              decoration: InputDecoration(labelText: "price - wholesale"),
+              controller: _priceController,
+              decoration: InputDecoration(labelText: "price - required"),
               keyboardType:
                   TextInputType.numberWithOptions(signed: false, decimal: true),
             ),
@@ -254,13 +234,8 @@ class _ProductCreateEditScreenState extends State<ProductCreateEditScreen> {
                     widget.product.boxWeight =
                         int.parse(_boxWeightController.text.trim());
 
-                    widget.product.boxPriceCashvan =
-                        double.parse(_boxPriceCashvanController.text.trim());
-                    widget.product.boxPriceCredit =
-                        double.parse(_boxPriceCreditController.text.trim());
-
-                    widget.product.boxPriceWholesale =
-                        double.parse(_boxPriceWholesaleController.text.trim());
+                    widget.product.price =
+                        double.parse(_priceController.text.trim());
                     widget.product.tax =
                         double.parse(_taxController.text.trim());
                     widget.product.discount =

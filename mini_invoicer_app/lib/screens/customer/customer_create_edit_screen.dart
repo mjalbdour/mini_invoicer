@@ -20,8 +20,6 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
   TextEditingController _postalCodeController = TextEditingController();
   TextEditingController _cityController = TextEditingController();
   TextEditingController _countryController = TextEditingController();
-  TextEditingController _typeController = TextEditingController();
-
   final _customerFormKey = GlobalKey<FormState>();
 
   @override
@@ -36,7 +34,6 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
       _postalCodeController.text = widget.customer.address["postalCode"];
       _cityController.text = widget.customer.address["city"];
       _countryController.text = widget.customer.address["country"];
-      _typeController.text = widget.customer.type;
     }
   }
 
@@ -50,7 +47,6 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
     _postalCodeController.dispose();
     _cityController.dispose();
     _countryController.dispose();
-    _typeController.dispose();
   }
 
   @override
@@ -94,13 +90,6 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
                 controller: _countryController,
                 decoration: InputDecoration(labelText: "country"),
               ),
-
-              // TODO: implement radio later, use enum
-              TextFormField(
-                controller: _typeController,
-                decoration: InputDecoration(labelText: "type"),
-              ),
-
               ButtonBar(
                 children: <Widget>[
                   FlatButton(
@@ -122,8 +111,6 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
                             _postalCodeController.text.trim().toString(),
                         "country": _countryController.text.trim().toString()
                       };
-                      widget.customer.type =
-                          _typeController.text.trim().toString();
 
                       final map = Customer.toMap(widget.customer);
 

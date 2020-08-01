@@ -58,7 +58,6 @@ class _CustomerDetailScreenState extends State<CustomerDetailScreen> {
           Text(widget.customer.address["city"]),
           Text(widget.customer.address["postalCode"]),
           Text(widget.customer.address["country"]),
-          Text(widget.customer.type),
           StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance
                 .collection("customers/${widget.customer.id}/orders")
