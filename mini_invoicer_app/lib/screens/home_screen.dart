@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 import 'package:mini_invoicer_app/screens/product/product_list_screen.dart';
+import 'package:mini_invoicer_app/widgets/home_tile_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String route = "/home";
@@ -29,40 +30,16 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.all(16.0),
         children: <Widget>[
-          HomeListTile(
+          HomeTileWidget(
             name: ProductListScreen.title,
             route: ProductListScreen.route,
           ),
-          HomeListTile(
+          HomeTileWidget(
             name: CustomerListScreen.title,
             route: CustomerListScreen.route,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class HomeListTile extends StatelessWidget {
-  final String name;
-  final String route;
-
-  const HomeListTile({
-    Key key,
-    @required this.name,
-    @required this.route,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        title: Text(this.name),
-        onTap: () {
-          Navigator.pushNamed(context, route);
-        },
       ),
     );
   }
