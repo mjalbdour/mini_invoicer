@@ -15,7 +15,7 @@ class InvoiceDetailScreen extends StatelessWidget {
         children: <Widget>[
           Text(invoice.number.toString()),
           Text(invoice.date.toString()),
-          ...invoice.selectedProducts.entries.map((e) => Text("$e")).toList(),
+          // ...invoice.selectedProducts.entries.map((e) => Text("$e")).toList(),
           Text(invoice.edited.toString()),
           Text(invoice.printCount.toString()),
           Text(invoice.totalValue.toString()),

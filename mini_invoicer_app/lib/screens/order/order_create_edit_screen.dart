@@ -26,7 +26,7 @@ class _OrderCreateEditScreenState extends State<OrderCreateEditScreen> {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => InvoiceCreateEditScreen(
-                  invoice: Invoice(),
+                  invoice: Invoice(selectedProducts: List()),
                   order: widget.order,
                   customer: widget.customer),
             ),
@@ -50,7 +50,6 @@ class _OrderCreateEditScreenState extends State<OrderCreateEditScreen> {
               return Center(child: CircularProgressIndicator());
 
             default:
-              print(snapshot.data.documents);
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   return InvoiceTile(

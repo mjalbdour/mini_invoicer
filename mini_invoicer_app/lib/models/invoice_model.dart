@@ -2,7 +2,7 @@ class Invoice {
   String id;
   int number;
   DateTime date;
-  Map<String, dynamic> selectedProducts;
+  List<Map<String, dynamic>> selectedProducts;
   bool edited;
   int printCount;
   double discount;
