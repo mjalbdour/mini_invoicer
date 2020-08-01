@@ -1,5 +1,6 @@
 class Invoice {
   String id;
+  int number;
   DateTime date;
   Map<String, dynamic> selectedProducts;
   bool edited;
@@ -9,6 +10,7 @@ class Invoice {
 
   Invoice({
     this.date,
+    this.number,
     this.selectedProducts,
     this.edited,
     this.printCount,
@@ -18,6 +20,7 @@ class Invoice {
 
   Invoice.withId({
     this.id,
+    this.number,
     this.date,
     this.selectedProducts,
     this.edited,
@@ -29,6 +32,7 @@ class Invoice {
   factory Invoice.fromMap(Map<String, dynamic> map, String id) {
     return Invoice.withId(
         id: id,
+        number: map["number"],
         date: DateTime.fromMillisecondsSinceEpoch(map["date"].seconds * 1000),
         selectedProducts: map["selectedProducts"],
         edited: map["edited"],
@@ -39,6 +43,7 @@ class Invoice {
 
   static Map<String, dynamic> toMap(Invoice invoice) {
     Map<String, dynamic> map = <String, dynamic>{};
+    map["number"] = invoice.number;
     map["date"] = invoice.date;
     map["selectedProducts"] = invoice.selectedProducts;
     map["edited"] = invoice.edited;

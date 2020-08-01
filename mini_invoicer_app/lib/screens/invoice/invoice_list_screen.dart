@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/invoice_model.dart';
+import 'package:mini_invoicer_app/screens/invoice/invoice_detail_screen.dart';
 
 class InvoiceListScreen extends StatefulWidget {
   static const String title = "invoices";
@@ -53,9 +54,18 @@ class InvoiceTile extends StatelessWidget {
   InvoiceTile({this.invoice});
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(invoice.totalValue.toString()),
-      subtitle: Text(invoice.edited.toString()),
+    return Card(
+      child: ListTile(
+        title: Text(invoice.totalValue.toString()),
+        subtitle: Text(invoice.edited.toString()),
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => InvoiceDetailScreen(invoice: invoice),
+            ),
+          );
+        },
+      ),
     );
   }
 }

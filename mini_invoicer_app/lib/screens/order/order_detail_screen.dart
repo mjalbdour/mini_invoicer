@@ -1,18 +1,60 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/models/invoice_model.dart';
 import 'package:mini_invoicer_app/models/order_model.dart';
+import 'package:mini_invoicer_app/screens/invoice/invoice_list_screen.dart';
 
-class OrderDetailScreen extends StatelessWidget {
+class OrderDetailScreen extends StatefulWidget {
   final Order order;
   OrderDetailScreen({@required this.order});
+
+  @override
+  _OrderDetailScreenState createState() => _OrderDetailScreenState();
+}
+
+class _OrderDetailScreenState extends State<OrderDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(order.id),
+        title: Text(widget.order.id),
       ),
       body: ListView(
         padding: EdgeInsets.all(16.0),
-        children: <Widget>[],
+        children: <Widget>[
+          Text(widget.order.id),
+          Text(widget.order.totalValue.toString()),
+          // StreamBuilder<QuerySnapshot>(
+          //     stream:,
+          //     builder: (BuildContext context,
+          //         AsyncSnapshot<QuerySnapshot> snapshot) {
+          //       if (snapshot.hasError) {
+          //         return Center(
+          //           child: CircularProgressIndicator(),
+          //         );
+          //       }
+          //       switch (snapshot.connectionState) {
+          //         case ConnectionState.waiting:
+          //           return Center(
+          //             child: CircularProgressIndicator(),
+          //           );
+
+          //         default:
+          //           return ListView.builder(
+          //             shrinkWrap: true,
+          //             itemBuilder: (BuildContext context, int index) {
+          //               print(snapshot.data.documents[index].data);
+          //               return InvoiceTile(
+          //                 invoice: Invoice.fromMap(
+          //                     snapshot.data.documents[index].data,
+          //                     snapshot.data.documents[index].documentID),
+          //               );
+          //             },
+          //             itemCount: snapshot.data.documents.length,
+          //           );
+          //       }
+          //     }),
+        ],
       ),
     );
   }
