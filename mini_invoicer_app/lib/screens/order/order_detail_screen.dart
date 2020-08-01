@@ -1,8 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_app/models/invoice_model.dart';
 import 'package:mini_invoicer_app/models/order_model.dart';
-import 'package:mini_invoicer_app/screens/invoice/invoice_list_screen.dart';
 
 class OrderDetailScreen extends StatefulWidget {
   final Order order;

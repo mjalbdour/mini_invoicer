@@ -134,7 +134,6 @@ class _CustomerCreateEditScreenState extends State<CustomerCreateEditScreen> {
                                 .collection("/customers")
                                 .document("${widget.customer.id}")
                                 .updateData(map);
-
                             Navigator.of(context).pop();
                             Navigator.of(context).pop();
                           } catch (e) {
