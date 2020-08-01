@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/order_model.dart';
+import 'package:mini_invoicer_app/screens/order/order_detail_screen.dart';
 
 class OrderListScreen extends StatefulWidget {
   static const String title = "orders";
@@ -57,9 +58,15 @@ class OrderTile extends StatelessWidget {
   OrderTile({@required this.order});
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(order.totalValue.toString()),
-      subtitle: Text(order.date.toString()),
+    return Card(
+      child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => OrderDetailScreen(order: order)));
+        },
+        title: Text(order.totalValue.toString()),
+        subtitle: Text(order.date.toString()),
+      ),
     );
   }
 }

@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Order {
   String id;
   String customerId;
@@ -24,7 +22,7 @@ class Order {
         id: id,
         customerId: map["customerId"],
         date: DateTime.fromMillisecondsSinceEpoch(map["date"].seconds *
-            1000), // format then convert to date object?...
+            1000), // TimeStamp map --> access seconds then to DateTime
         totalValue: map["totalValue"]);
   }
 
