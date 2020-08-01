@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/models/customer_model.dart';
 import 'package:mini_invoicer_app/models/invoice_model.dart';
+import 'package:mini_invoicer_app/models/order_model.dart';
 
 class InvoiceDetailScreen extends StatelessWidget {
   final Invoice invoice;
-  InvoiceDetailScreen({@required this.invoice});
+  final Order order;
+  final Customer customer;
+  InvoiceDetailScreen(
+      {@required this.invoice, @required this.customer, @required this.order});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

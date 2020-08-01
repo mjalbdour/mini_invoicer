@@ -1,20 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_app/models/customer_model.dart';
+import 'package:mini_invoicer_app/models/customer_model.dart' as CustomerModel;
 import 'package:mini_invoicer_app/models/invoice_model.dart';
 import 'package:mini_invoicer_app/models/order_model.dart';
 import 'package:mini_invoicer_app/screens/invoice/invoice_create_edit_screen.dart';
-import 'package:mini_invoicer_app/screens/invoice/invoice_list_screen.dart';
+import 'package:mini_invoicer_app/widgets/invoice_list_widget.dart';
 
-class OrderCreateEditScreen extends StatefulWidget {
-  final Customer customer;
+class OrderCreateEditScreen extends StatelessWidget {
+  final CustomerModel.Customer customer;
   final Order order;
   OrderCreateEditScreen({@required this.order, @required this.customer});
-  @override
-  _OrderCreateEditScreenState createState() => _OrderCreateEditScreenState();
-}
-
-class _OrderCreateEditScreenState extends State<OrderCreateEditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,42 +21,14 @@ class _OrderCreateEditScreenState extends State<OrderCreateEditScreen> {
             MaterialPageRoute(
               builder: (context) => InvoiceCreateEditScreen(
                   invoice: Invoice(selectedProducts: List()),
-                  order: widget.order,
-                  customer: widget.customer),
+                  order: order,
+                  customer: customer),
             ),
           );
         },
         child: Icon(Icons.note_add),
       ),
-      body: StreamBuilder(
-        stream: Firestore.instance
-            .collection(
-                "customers/${widget.customer.id}/orders/${widget.order.id}/invoices")
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error),
-            );
-          }
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
-
-            default:
-              return ListView.builder(
-                itemBuilder: (BuildContext context, int index) {
-                  return InvoiceTile(
-                    invoice: Invoice.fromMap(
-                        snapshot.data.documents[index].data,
-                        snapshot.data.documents[index].documentID),
-                  );
-                },
-                itemCount: snapshot.data.documents.length,
-              );
-          }
-        },
-      ),
+      body: InvoiceListWidget(customer: customer, order: order),
     );
   }
 }

@@ -6,8 +6,8 @@ import 'package:mini_invoicer_app/models/order_model.dart';
 
 class InvoiceCreateEditScreen extends StatefulWidget {
   final Invoice invoice;
-  final Order order;
   final Customer customer;
+  final Order order;
   InvoiceCreateEditScreen(
       {@required this.invoice, @required this.order, @required this.customer});
   @override
