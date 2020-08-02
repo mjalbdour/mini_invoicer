@@ -10,8 +10,8 @@ class MiniInvoicer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<FirebaseAuthService>(
-      create: (context) => FirebaseAuthService(),
-      builder: (context, _) => MaterialApp(
+      create: (_) => FirebaseAuthService(),
+      child: MaterialApp(
         title: "Mini Invoicer",
         routes: routeMap,
         initialRoute: AuthWidget.route,

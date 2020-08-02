@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/services/firebase_auth_service.dart';
 import 'package:mini_invoicer_app/widgets/auth_widget.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   static const String title = "sign in";
@@ -11,17 +12,19 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  String _email;
-  String _password;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   var _signInFormKey = GlobalKey<FormState>();
 
-  Future<void> signIn() async {
+  Future<void> _signInWithEmailAndPassword(BuildContext context) async {
+    final email = _emailController.text.trim();
+    final password = _passwordController.text;
+    print(_emailController.text);
     if (_signInFormKey.currentState.validate()) {
-      _signInFormKey.currentState.save();
       try {
-        FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
+        final auth = Provider.of<FirebaseAuthService>(context, listen: false);
+        await auth.signInWithEmailAndPassword(email, password);
       } catch (e) {
         throw e;
       }
@@ -40,6 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
             padding: EdgeInsets.all(16.0),
             children: <Widget>[
               TextFormField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   labelText: "email",
                 ),
@@ -49,9 +53,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   }
                   return null;
                 },
-                onSaved: (input) => _email = input.trim(),
               ),
               TextFormField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: "password",
                 ),
@@ -62,7 +66,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   }
                   return null;
                 },
-                onSaved: (input) => _password = input,
               ),
               ButtonBar(
                 children: <Widget>[
@@ -75,7 +78,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text("reset"),
                   ),
                   RaisedButton(
-                    onPressed: signIn,
+                    onPressed: () {
+                      _signInFormKey.currentState.save();
+                      _signInWithEmailAndPassword(context);
+                    },
                     child: Text("sign in"),
                   ),
                 ],

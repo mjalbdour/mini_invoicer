@@ -14,6 +14,7 @@ class FirebaseAuthService {
   }
 
   Stream<User> get onAuthStateChanged {
+    print("auth state changed, new stream of user coming...");
     return _firebaseAuth.onAuthStateChanged.map(_userFromFirebase);
   }
 

@@ -1,15 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 import 'package:mini_invoicer_app/screens/product/product_list_screen.dart';
+import 'package:mini_invoicer_app/services/firebase_auth_service.dart';
 import 'package:mini_invoicer_app/widgets/home_tile_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String route = "/home";
 
-  void _signOut() async {
+  Future<void> _signOut(BuildContext context) async {
     try {
-      await FirebaseAuth.instance.signOut();
+      final auth = Provider.of<FirebaseAuthService>(context, listen: false);
+      await auth.signOut();
     } catch (e) {
       throw e;
     }
@@ -22,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         title: Text("Home"),
         actions: <Widget>[
           FlatButton(
-              onPressed: _signOut,
+              onPressed: () => _signOut(context),
               child: Text(
                 "sign out",
                 style: TextStyle(color: Colors.white),
