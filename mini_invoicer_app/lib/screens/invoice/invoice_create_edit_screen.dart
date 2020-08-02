@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/customer_model.dart';
 import 'package:mini_invoicer_app/models/invoice_model.dart';
 import 'package:mini_invoicer_app/models/order_model.dart';
+import 'package:mini_invoicer_app/models/product_model.dart';
 
 class InvoiceCreateEditScreen extends StatefulWidget {
   final Invoice invoice;
@@ -18,17 +19,19 @@ class InvoiceCreateEditScreen extends StatefulWidget {
 class _InvoiceCreateEditScreenState extends State<InvoiceCreateEditScreen> {
   final _invoiceKey = GlobalKey<FormState>();
 
-  final CollectionReference productsCollection =
-      Firestore.instance.collection("products");
+  List<Product> _products = [];
 
   @override
   void initState() {
     super.initState();
     widget.invoice.totalValue = 0.0;
+    widget.invoice.number = 0;
+    widget.invoice.selectedProducts = <Product>[];
   }
 
   @override
   Widget build(BuildContext context) {
+    DateTime currentDate = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         title: Text("new invoice"),
@@ -39,23 +42,27 @@ class _InvoiceCreateEditScreenState extends State<InvoiceCreateEditScreen> {
             padding: EdgeInsets.all(16.0),
             children: <Widget>[
               TextFormField(
-                enabled: false,
                 decoration: InputDecoration(labelText: "customer name"),
+                readOnly: true,
                 initialValue: widget.customer.name,
               ),
               TextFormField(
-                enabled: false,
-                decoration: InputDecoration(labelText: "Date"),
-                initialValue: DateTime.now().toString(),
+                decoration: InputDecoration(labelText: "Date DD/MM/YYY"),
+                readOnly: true,
+                initialValue:
+                    "${currentDate.day}/${currentDate.month}/${currentDate.year}",
               ),
-              StreamBuilder(
-                stream: productsCollection.snapshots(),
+              TextFormField(
+                decoration: InputDecoration(labelText: "invoice number"),
+                readOnly: true,
+                initialValue: "${widget.invoice.number}",
+              ),
+              StreamBuilder<QuerySnapshot>(
+                stream: Firestore.instance.collection("products").snapshots(),
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error),
-                    );
+                    return Text(snapshot.error);
                   }
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
@@ -64,19 +71,45 @@ class _InvoiceCreateEditScreenState extends State<InvoiceCreateEditScreen> {
                       );
 
                     default:
+                      _products = snapshot.data.documents
+                          .map((doc) =>
+                              Product.fromMap(doc.data, doc.documentID))
+                          .toList();
                       return ListView.builder(
                         shrinkWrap: true,
-                        itemCount: snapshot.data.documents.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return TextFormField(
-                            onSaved: (value) {},
-                            decoration: InputDecoration(
-                                labelText: snapshot.data.documents[index]
-                                    ["name"]),
-                            keyboardType: TextInputType.numberWithOptions(
-                                signed: false, decimal: false),
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(_products[index].name),
+                              Row(
+                                children: <Widget>[
+                                  FlatButton(
+                                      onPressed: () {
+                                        print(_products[index].orderAmount);
+                                        setState(() {
+                                          _products[index]
+                                              .decreaseOrderAmount();
+                                          print(_products[index].orderAmount);
+                                        });
+                                      },
+                                      child: Icon(Icons.remove)),
+                                  Text((_products[index].orderAmount)
+                                      .toString()),
+                                  FlatButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _products[index]
+                                              .increaseOrderAmount();
+                                        });
+                                      },
+                                      child: Icon(Icons.add)),
+                                ],
+                              )
+                            ],
                           );
                         },
+                        itemCount: snapshot.data.documents.length,
                       );
                   }
                 },
@@ -89,6 +122,16 @@ class _InvoiceCreateEditScreenState extends State<InvoiceCreateEditScreen> {
                     },
                     child: Text("save"),
                   )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text("Total"),
+                  Text(
+                    widget.invoice.totalValue.toString(),
+                    style: TextStyle(fontSize: 32.0),
+                  ),
                 ],
               ),
             ],

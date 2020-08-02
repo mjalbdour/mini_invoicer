@@ -70,6 +70,7 @@ class Product {
     this.packageWeight,
     this.boxWeight,
     this.price,
+    this.orderAmount,
     this.tax,
     this.discount,
   });
@@ -112,6 +113,7 @@ class Product {
       packageWeight: map["packageWeight"],
       boxWeight: map["boxWeight"],
       price: map["price"],
+      orderAmount: map["orderAmount"] ?? 0,
       tax: map["tax"],
       discount: map["discount"],
     );
@@ -151,5 +153,15 @@ class Product {
     map["price"] = product.price;
     map["orderAmount"] = product.orderAmount;
     return map;
+  }
+
+  void decreaseOrderAmount() {
+    if (orderAmount > 0) {
+      this.orderAmount -= 1;
+    }
+  }
+
+  void increaseOrderAmount() {
+    this.orderAmount += 1;
   }
 }
