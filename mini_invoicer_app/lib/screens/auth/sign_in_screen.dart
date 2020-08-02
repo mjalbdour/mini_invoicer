@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/widgets/auth_widget.dart';
 
 class SignInScreen extends StatefulWidget {
-  static const String title = "authentication";
-  static const String route = "/$title";
+  static const String title = "sign in";
+  static const String route = "/${AuthWidget.route}/sign-in";
 
   @override
   _SignInScreenState createState() => _SignInScreenState();
