@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/product_model.dart';
+import 'package:mini_invoicer_app/services/cloud_firestore_service.dart';
 import 'package:mini_invoicer_app/widgets/product_tile_widget.dart';
+import 'package:provider/provider.dart';
 
 class ProductListWidget extends StatefulWidget {
   @override
@@ -11,36 +12,27 @@ class ProductListWidget extends StatefulWidget {
 class _ProductListWidgetState extends State<ProductListWidget> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection("/products").snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Center(
-            child: Text(snapshot.error),
-          );
-        }
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
+    final firestore = Provider.of<FirestoreService>(context);
+    return StreamBuilder<List<Product>>(
+        stream: firestore.products,
+        builder: (BuildContext _, AsyncSnapshot<List<Product>> snapshot) {
+          if (snapshot.hasError) {
             return Center(
-              child: CircularProgressIndicator(),
+              child: Text(snapshot.error),
             );
-          default:
-            return snapshot.data.documents.isEmpty
-                ? Center(
-                    child: Text("no products yet"),
-                  )
-                : ListView.builder(
-                    itemBuilder: (BuildContext context, int index) {
-                      return ProductTile(
-                        product: Product.fromMap(
-                            snapshot.data.documents[index].data,
-                            snapshot.data.documents[index].documentID),
-                      );
-                    },
-                    itemCount: snapshot.data.documents.length,
-                  );
-        }
-      },
-    );
+          }
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            default:
+              return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext _, int index) {
+                    return ProductTile(product: snapshot.data[index]);
+                  });
+          }
+        });
   }
 }
