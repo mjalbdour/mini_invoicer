@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomeTileWidget extends StatelessWidget {
   final String name;
-  final String onTap;
+  final Function(BuildContext) onTap;
 
   const HomeTileWidget({
     Key key,
