@@ -21,7 +21,7 @@ class CustomerListScreen extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       body: CustomerListWidget(
-        collectionPath: route,
+        collectionPath: "/$title",
       ),
     );
   }
