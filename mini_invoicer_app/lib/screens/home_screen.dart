@@ -14,12 +14,12 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home"),
         actions: <Widget>[
-          FlatButton(
+          IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => CompanyDetailScreen()));
             },
-            child: Icon(
+            icon: Icon(
               Icons.info,
               color: Colors.white,
             ),
