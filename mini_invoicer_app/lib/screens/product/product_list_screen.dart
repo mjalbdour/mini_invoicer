@@ -3,14 +3,8 @@ import 'package:mini_invoicer_app/models/product_model.dart';
 import 'package:mini_invoicer_app/screens/product/product_create_edit_screen.dart';
 import 'package:mini_invoicer_app/widgets/product_list_widget.dart';
 
-class ProductListScreen extends StatefulWidget {
+class ProductListScreen extends StatelessWidget {
   static const String title = "products";
-
-  @override
-  _ProductListScreenState createState() => _ProductListScreenState();
-}
-
-class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +19,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
         },
         child: Icon(Icons.add),
       ),
-      body: ProductListWidget(),
+      body: ProductListWidget(collectionPath: "/$title"),
     );
   }
 }
