@@ -86,11 +86,9 @@ class _InvoiceCreateEditScreenState extends State<InvoiceCreateEditScreen> {
                                 children: <Widget>[
                                   FlatButton(
                                       onPressed: () {
-                                        print(_products[index].orderAmount);
                                         setState(() {
                                           _products[index]
                                               .decreaseOrderAmount();
-                                          print(_products[index].orderAmount);
                                         });
                                       },
                                       child: Icon(Icons.remove)),
