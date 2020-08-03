@@ -30,7 +30,7 @@ mini_invoicer_app/.packages
 mini_invoicer_app/.pub-cache/
 mini_invoicer_app/.pub/
 mini_invoicer_app/build/
-mini_invoicer_app/./pubspec.lock
+mini_invoicer_app/pubspec.lock
 
 # Web related
 mini_invoicer_app/lib/generated_plugin_registrant.dart
