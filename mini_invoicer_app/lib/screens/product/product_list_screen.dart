@@ -5,7 +5,6 @@ import 'package:mini_invoicer_app/widgets/product_list_widget.dart';
 
 class ProductListScreen extends StatefulWidget {
   static const String title = "products";
-  static const String route = "/$title";
 
   @override
   _ProductListScreenState createState() => _ProductListScreenState();

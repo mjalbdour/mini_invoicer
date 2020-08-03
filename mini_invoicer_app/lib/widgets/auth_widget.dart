@@ -12,7 +12,6 @@ class AuthWidget extends StatelessWidget {
       value: auth.onAuthStateChanged,
       builder: (context, _) {
         return Consumer<FirebaseUser>(builder: (_, value, __) {
-          if (value != null) print(value.getIdToken());
           return value == null ? SignInScreen() : HomeScreen();
         });
       },

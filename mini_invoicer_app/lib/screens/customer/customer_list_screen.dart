@@ -5,7 +5,6 @@ import 'package:mini_invoicer_app/widgets/customer_list_widget.dart';
 
 class CustomerListScreen extends StatelessWidget {
   static const String title = "customers";
-  static const String route = "/$title";
 
   @override
   Widget build(BuildContext context) {
