@@ -28,11 +28,21 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           HomeTileWidget(
             name: ProductListScreen.title,
-            route: ProductListScreen.route,
+            onTap: (BuildContext _context) {
+              Navigator.push(
+                  _context,
+                  MaterialPageRoute(
+                      builder: (_context) => ProductListScreen()));
+            },
           ),
           HomeTileWidget(
             name: CustomerListScreen.title,
-            route: CustomerListScreen.route,
+            onTap: (BuildContext _context) {
+              Navigator.push(
+                  _context,
+                  MaterialPageRoute(
+                      builder: (_context) => CustomerListScreen()));
+            },
           ),
         ],
       ),
