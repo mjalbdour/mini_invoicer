@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_app/models/product_model.dart';
-import 'package:mini_invoicer_app/services/cloud_firestore_service.dart';
+import 'package:mini_invoicer_app/services/firestore_service.dart';
 import 'package:mini_invoicer_app/widgets/product_tile_widget.dart';
 import 'package:provider/provider.dart';
 

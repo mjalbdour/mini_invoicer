@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/services/firebase_auth_service.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class _SignInScreenState extends State<SignInScreen> {
   var _signInFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<FirebaseAuth>(context);
+    final auth = Provider.of<FirebaseAuthService>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(SignInScreen.title),

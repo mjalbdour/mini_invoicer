@@ -19,7 +19,8 @@ class FirebaseAuthService {
     return _firebaseAuth.onAuthStateChanged.map(_userFromFirebase);
   }
 
-  Future<User> signInWithEmailAndPassword(String email, String password) async {
+  Future<User> signInWithEmailAndPassword(
+      {String email, String password}) async {
     final authResult = await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
     return authResult == null ? null : _userFromFirebase(authResult.user);
