@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_app/screens/company/company_detail_screen.dart';
 import 'package:mini_invoicer_app/screens/customer/customer_list_screen.dart';
 import 'package:mini_invoicer_app/screens/product/product_list_screen.dart';
 import 'package:mini_invoicer_app/widgets/home_tile_widget.dart';
@@ -13,6 +14,16 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home"),
         actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CompanyDetailScreen()));
+            },
+            child: Icon(
+              Icons.info,
+              color: Colors.white,
+            ),
+          ),
           FlatButton(
             onPressed: () async {
               await auth.signOut();
