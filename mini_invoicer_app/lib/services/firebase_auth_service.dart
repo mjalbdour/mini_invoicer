@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
+@immutable
 class User {
-  String uid;
+  final String uid;
   User({@required this.uid});
 }
 
