@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class HomeTileWidget extends StatelessWidget {
   final String name;
-  final String route;
+  final String onTap;
 
   const HomeTileWidget({
     Key key,
     @required this.name,
-    @required this.route,
+    @required this.onTap,
   }) : super(key: key);
 
   @override
@@ -15,9 +15,7 @@ class HomeTileWidget extends StatelessWidget {
     return Card(
       child: ListTile(
         title: Text(this.name),
-        onTap: () {
-          Navigator.pushNamed(context, route);
-        },
+        onTap: () => onTap(context),
       ),
     );
   }
