@@ -26,7 +26,5 @@ namespace MiniInvoicer.Models
         [Required]
         [Range(1, 99)]
         public decimal FuelConsumptionRate { get; set; }
-
-
     }
 }
