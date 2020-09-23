@@ -484,3 +484,8 @@ C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoic
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedCompanyTypes\Details.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedCompanyTypes\Edit.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedCompanyTypes\Index.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedEmployeeStatuses\Create.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedEmployeeStatuses\Delete.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedEmployeeStatuses\Details.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedEmployeeStatuses\Edit.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AssignedEmployeeStatuses\Index.cshtml.g.cs
