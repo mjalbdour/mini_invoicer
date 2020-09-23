@@ -1,0 +1,60 @@
+﻿@page
+@model MiniInvoicer.Pages.Warehouses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Warehouse[0].CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warehouse[0].AddressID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warehouse[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warehouse[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warehouse[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Warehouse) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.WarehouseID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.WarehouseID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.WarehouseID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
