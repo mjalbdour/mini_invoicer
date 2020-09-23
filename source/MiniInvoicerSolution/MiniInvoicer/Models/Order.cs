@@ -21,6 +21,8 @@ namespace MiniInvoicer.Models
         [ForeignKey("CompanyID")]
         public int CustomerID { get; set; }
 
+        [Required]
+        [Column(TypeName = "money")]
         public decimal Value { get; set; }
         public DateTime DateCreated { get; set; }
     }

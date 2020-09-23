@@ -20,6 +20,7 @@ namespace MiniInvoicer.Models
 
         [Required]
         [Range(1, 99999)]
+        [Column(TypeName = "money")]
         public decimal Value { get; set; }
 
         [Required]

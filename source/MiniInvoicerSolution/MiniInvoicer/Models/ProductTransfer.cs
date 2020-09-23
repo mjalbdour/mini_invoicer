@@ -20,6 +20,7 @@ namespace MiniInvoicer.Models
 
         public string Note { get; set; }
 
+        [Column(TypeName = "money")]
         public decimal Value { get; set; }
 
         public DateTime DateCreated { get; set; }
