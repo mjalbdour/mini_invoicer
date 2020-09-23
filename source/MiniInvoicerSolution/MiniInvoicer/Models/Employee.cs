@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace MiniInvoicer.Models
 {
-    public class Employee
+    public class Employee : IdentityUser
     {
         [Key]
         public int EmployeeID { get; set; }
-
-        [ForeignKey("UserId")]
-        public string UserId { get; set; }
 
         [ForeignKey("CompanyID")]
         public int CompanyID { get; set; }
