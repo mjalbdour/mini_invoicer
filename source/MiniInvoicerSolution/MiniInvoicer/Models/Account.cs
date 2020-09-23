@@ -18,6 +18,7 @@ namespace MiniInvoicer.Models
         public int AccountHolderTypeID { get; set; }
 
         [Required]
+        [Column(TypeName = ("money"))]
         public decimal Balance { get; set; }
 
         [DataType(DataType.DateTime)]

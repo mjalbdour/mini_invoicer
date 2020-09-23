@@ -28,6 +28,7 @@ namespace MiniInvoicer.Models
 
         [Required]
         [Range(1, 99)]
+        [Column(TypeName= "money")]
         public decimal FuelConsumptionRate { get; set; }
     }
 }

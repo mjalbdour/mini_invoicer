@@ -17,13 +17,14 @@ namespace MiniInvoicer.Models
 
         [Required]
         [Range(1, 999999)]
-        [Column(TypeName= "money")]
+        [Column(TypeName = "money")]
         public decimal Value { get; set; }
 
         [Required]
         public int TimesPrinted { get; set; }
 
         [Required]
+        [Column(TypeName = "money")]
         public decimal Discount { get; set; }
 
         [Required]
