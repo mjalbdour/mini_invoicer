@@ -21,7 +21,6 @@
     <Folder Include="Pages\Employees\" />
     <Folder Include="Pages\Neighborhoods\" />
     <Folder Include="Pages\Countries\" />
-    <Folder Include="Pages\CompanyTypes\" />
     <Folder Include="Pages\EmployeeStatuses\" />
     <Folder Include="Pages\EmployeeTypes\" />
     <Folder Include="Pages\Currencies\" />
