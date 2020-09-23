@@ -1,0 +1,54 @@
+﻿@page
+@model MiniInvoicer.Pages.ProductTransfers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ProductTransfer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductTransfer.FromWarehouseID" class="control-label"></label>
+                <input asp-for="ProductTransfer.FromWarehouseID" class="form-control" />
+                <span asp-validation-for="ProductTransfer.FromWarehouseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTransfer.ToWarehouseID" class="control-label"></label>
+                <input asp-for="ProductTransfer.ToWarehouseID" class="form-control" />
+                <span asp-validation-for="ProductTransfer.ToWarehouseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTransfer.Note" class="control-label"></label>
+                <input asp-for="ProductTransfer.Note" class="form-control" />
+                <span asp-validation-for="ProductTransfer.Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTransfer.Value" class="control-label"></label>
+                <input asp-for="ProductTransfer.Value" class="form-control" />
+                <span asp-validation-for="ProductTransfer.Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductTransfer.DateCreated" class="control-label"></label>
+                <input asp-for="ProductTransfer.DateCreated" class="form-control" />
+                <span asp-validation-for="ProductTransfer.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,60 @@
+﻿@page
+@model MiniInvoicer.Pages.ProductTransfers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTransfer[0].FromWarehouseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTransfer[0].ToWarehouseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTransfer[0].Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTransfer[0].Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTransfer[0].DateCreated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ProductTransfer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromWarehouseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToWarehouseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProductTransferID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProductTransferID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProductTransferID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
