@@ -1,0 +1,48 @@
+﻿@page
+@model MiniInvoicer.Pages.AssignedEmployeeStatuses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedEmployeeStatus[0].EmployeeStatusID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedEmployeeStatus[0].EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignedEmployeeStatus[0].LastChanged)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AssignedEmployeeStatus) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeStatusID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastChanged)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AssignedEmployeeStatusID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AssignedEmployeeStatusID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AssignedEmployeeStatusID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
