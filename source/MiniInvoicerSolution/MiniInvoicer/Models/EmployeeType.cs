@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MiniInvoicer.Models
 {
-    public class Status
+    public class EmployeeType
     {
         [Key]
-        public int StatusID { get; set; }
+        public int EmployeeTypeID { get; set; }
 
         [Required]
-        [MinLength(2)]
+        [MinLength(3)]
         public string Name { get; set; }
 
         [Required]

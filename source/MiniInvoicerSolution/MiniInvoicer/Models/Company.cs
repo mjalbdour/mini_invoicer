@@ -18,11 +18,11 @@ namespace MiniInvoicer.Models
         [ForeignKey("AddressID")]
         public int AddressID { get; set; }
 
-        [ForeignKey("CompanyTypeID")]
-        public int TypeID { get; set; }
+        [ForeignKey("AssignedCompanyTypeID")]
+        public int AssignedCompanyTypeID { get; set; }
 
-        [ForeignKey("CompanyStatusID")]
-        public int StatusID { get; set; }
+        [ForeignKey("AssignedCompanyStatusID")]
+        public int AssignedCompanyStatusID { get; set; }
 
         [Required]
         [MinLength(2)]
