@@ -29,5 +29,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.CompanyStatus> CompanyStatus { get; set; }
         public DbSet<MiniInvoicer.Models.CompanyType> CompanyType { get; set; }
         public DbSet<MiniInvoicer.Models.Country> Country { get; set; }
+        public DbSet<MiniInvoicer.Models.Currency> Currency { get; set; }
     }
 }
