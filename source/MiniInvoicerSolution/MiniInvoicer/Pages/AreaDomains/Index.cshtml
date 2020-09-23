@@ -1,0 +1,42 @@
+﻿@page
+@model MiniInvoicer.Pages.AreaDomains.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaDomain[0].CityID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaDomain[0].Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AreaDomain) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AreaDomainID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AreaDomainID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AreaDomainID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

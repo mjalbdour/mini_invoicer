@@ -1,0 +1,102 @@
+﻿@page
+@model MiniInvoicer.Pages.Addresses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].StreetID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].AreaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].NeighborhoodID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].CityID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].CountryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].ZipcodeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].HolderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].GovernorateID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].BuildingNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].BuildingName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].NearbyPlace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address[0].Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Address) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeighborhoodID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipcodeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HolderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GovernorateID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NearbyPlace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AddressID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AddressID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AddressID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

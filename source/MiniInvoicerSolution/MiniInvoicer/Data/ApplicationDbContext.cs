@@ -14,5 +14,9 @@ namespace MiniInvoicer.Data
         {
 
         }
+        public DbSet<MiniInvoicer.Models.AccountHolderType> AccountHolderType { get; set; }
+        public DbSet<MiniInvoicer.Models.Account> Account { get; set; }
+        public DbSet<MiniInvoicer.Models.Address> Address { get; set; }
+        public DbSet<MiniInvoicer.Models.AreaDomain> AreaDomain { get; set; }
     }
 }

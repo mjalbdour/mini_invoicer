@@ -1,0 +1,36 @@
+﻿@page
+@model MiniInvoicer.Pages.AccountHolderTypes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountHolderType[0].HolderType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AccountHolderType) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HolderType)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AccountHolderTypeID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AccountHolderTypeID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AccountHolderTypeID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
