@@ -21,7 +21,6 @@
     <Folder Include="Pages\Employees\" />
     <Folder Include="Pages\EmployeeStatuses\" />
     <Folder Include="Pages\EmployeeTypes\" />
-    <Folder Include="Pages\Zipcodes\" />
   </ItemGroup>
 
 </Project>

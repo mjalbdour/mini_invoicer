@@ -629,3 +629,8 @@ C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoic
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\VehicleStatuses\Details.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\VehicleStatuses\Edit.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\VehicleStatuses\Index.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Warehouses\Create.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Warehouses\Delete.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Warehouses\Details.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Warehouses\Edit.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Warehouses\Index.cshtml.g.cs
