@@ -464,3 +464,8 @@ C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoic
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Addresses\Details.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Addresses\Edit.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\Addresses\Index.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AreaDomains\Create.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AreaDomains\Delete.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AreaDomains\Details.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AreaDomains\Edit.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\AreaDomains\Index.cshtml.g.cs

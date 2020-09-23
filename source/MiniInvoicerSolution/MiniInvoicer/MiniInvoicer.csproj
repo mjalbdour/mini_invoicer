@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Pages\Companies\" />
     <Folder Include="Pages\Employees\" />
-    <Folder Include="Pages\Areas\" />
     <Folder Include="Pages\Cities\" />
     <Folder Include="Pages\AssignedCompanyStatuses\" />
     <Folder Include="Pages\AssignedCompanyTypes\" />
