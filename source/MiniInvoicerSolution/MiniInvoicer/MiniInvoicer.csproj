@@ -24,7 +24,6 @@
     <Folder Include="Pages\EmployeeTypes\" />
     <Folder Include="Pages\Invoices\" />
     <Folder Include="Pages\InvoiceProducts\" />
-    <Folder Include="Pages\Inventory\" />
     <Folder Include="Pages\Transactions\" />
     <Folder Include="Pages\Zipcodes\" />
     <Folder Include="Pages\Receipts\" />

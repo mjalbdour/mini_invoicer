@@ -32,5 +32,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.Currency> Currency { get; set; }
         public DbSet<MiniInvoicer.Models.Department> Department { get; set; }
         public DbSet<MiniInvoicer.Models.Governorate> Governorate { get; set; }
+        public DbSet<MiniInvoicer.Models.Inventory> Inventory { get; set; }
     }
 }
