@@ -24,7 +24,6 @@
     <Folder Include="Pages\Transactions\" />
     <Folder Include="Pages\Zipcodes\" />
     <Folder Include="Pages\Receipts\" />
-    <Folder Include="Pages\ProductPricingType\" />
     <Folder Include="Pages\VehicleStatuses\" />
     <Folder Include="Pages\VehicleManufacturers\" />
     <Folder Include="Pages\TransferedProducts\" />
