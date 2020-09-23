@@ -43,5 +43,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.Product> Product { get; set; }
         public DbSet<MiniInvoicer.Models.ProductTransfer> ProductTransfer { get; set; }
         public DbSet<MiniInvoicer.Models.Receipt> Receipt { get; set; }
+        public DbSet<MiniInvoicer.Models.Street> Street { get; set; }
     }
 }
