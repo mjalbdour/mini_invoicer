@@ -1,0 +1,54 @@
+﻿@page
+@model MiniInvoicer.Pages.Receipts.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Receipt</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Receipt.InvoiceID" class="control-label"></label>
+                <input asp-for="Receipt.InvoiceID" class="form-control" />
+                <span asp-validation-for="Receipt.InvoiceID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receipt.CurrencyID" class="control-label"></label>
+                <input asp-for="Receipt.CurrencyID" class="form-control" />
+                <span asp-validation-for="Receipt.CurrencyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receipt.Value" class="control-label"></label>
+                <input asp-for="Receipt.Value" class="form-control" />
+                <span asp-validation-for="Receipt.Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receipt.DateCreated" class="control-label"></label>
+                <input asp-for="Receipt.DateCreated" class="form-control" />
+                <span asp-validation-for="Receipt.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Receipt.TimesPrinted" class="control-label"></label>
+                <input asp-for="Receipt.TimesPrinted" class="form-control" />
+                <span asp-validation-for="Receipt.TimesPrinted" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

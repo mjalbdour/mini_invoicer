@@ -1,0 +1,60 @@
+﻿@page
+@model MiniInvoicer.Pages.Receipts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Receipt[0].InvoiceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receipt[0].CurrencyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receipt[0].Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receipt[0].DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Receipt[0].TimesPrinted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Receipt) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimesPrinted)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ReceiptID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ReceiptID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ReceiptID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

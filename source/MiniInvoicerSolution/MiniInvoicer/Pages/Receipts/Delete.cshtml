@@ -1,0 +1,52 @@
+﻿@page
+@model MiniInvoicer.Pages.Receipts.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Receipt</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receipt.InvoiceID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receipt.InvoiceID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receipt.CurrencyID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receipt.CurrencyID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receipt.Value)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receipt.Value)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receipt.DateCreated)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receipt.DateCreated)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Receipt.TimesPrinted)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Receipt.TimesPrinted)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Receipt.ReceiptID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
