@@ -21,7 +21,6 @@
     <Folder Include="Pages\Companies\" />
     <Folder Include="Pages\Employees\" />
     <Folder Include="Pages\Cities\" />
-    <Folder Include="Pages\AssignedCompanyStatuses\" />
     <Folder Include="Pages\AssignedCompanyTypes\" />
     <Folder Include="Pages\AssignedEmployeeTypes\" />
     <Folder Include="Pages\AssignedEmployeeStatuses\" />

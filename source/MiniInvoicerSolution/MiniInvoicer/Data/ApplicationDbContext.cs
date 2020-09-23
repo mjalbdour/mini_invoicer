@@ -19,5 +19,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.Address> Address { get; set; }
         public DbSet<MiniInvoicer.Models.AreaDomain> AreaDomain { get; set; }
         public DbSet<MiniInvoicer.Models.Area> Area { get; set; }
+        public DbSet<MiniInvoicer.Models.AssignedCompanyStatus> AssignedCompanyStatus { get; set; }
     }
 }
