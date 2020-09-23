@@ -1,0 +1,48 @@
+﻿@page
+@model MiniInvoicer.Pages.ProductPricings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPricing[0].ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPricing[0].ProductPricingTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPricing[0].Value)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ProductPricing) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPricingTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProductPricingID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProductPricingID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProductPricingID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

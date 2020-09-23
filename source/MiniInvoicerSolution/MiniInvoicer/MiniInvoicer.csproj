@@ -28,7 +28,6 @@
     <Folder Include="Pages\VehicleStatuses\" />
     <Folder Include="Pages\VehicleManufacturers\" />
     <Folder Include="Pages\TransferedProducts\" />
-    <Folder Include="Pages\ProductPricings\" />
     <Folder Include="Pages\Teams\" />
     <Folder Include="Pages\ProductTransfer\" />
     <Folder Include="Pages\Streets\" />
