@@ -37,5 +37,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.Invoice> Invoice { get; set; }
         public DbSet<MiniInvoicer.Models.Neighborhood> Neighborhood { get; set; }
         public DbSet<MiniInvoicer.Models.Order> Order { get; set; }
+        public DbSet<MiniInvoicer.Models.ProductBrand> ProductBrand { get; set; }
     }
 }
