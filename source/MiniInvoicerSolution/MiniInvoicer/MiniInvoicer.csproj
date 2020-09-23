@@ -22,7 +22,6 @@
     <Folder Include="Pages\EmployeeStatuses\" />
     <Folder Include="Pages\EmployeeTypes\" />
     <Folder Include="Pages\Zipcodes\" />
-    <Folder Include="Pages\VehicleStatuses\" />
     <Folder Include="Pages\Warehouses\" />
   </ItemGroup>
 

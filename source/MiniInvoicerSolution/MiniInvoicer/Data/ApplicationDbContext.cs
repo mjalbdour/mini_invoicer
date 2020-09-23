@@ -49,5 +49,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.TransferedProduct> TransferedProduct { get; set; }
         public DbSet<MiniInvoicer.Models.VehicleManufacturer> VehicleManufacturer { get; set; }
         public DbSet<MiniInvoicer.Models.Vehicle> Vehicle { get; set; }
+        public DbSet<MiniInvoicer.Models.VehicleStatus> VehicleStatus { get; set; }
     }
 }
