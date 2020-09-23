@@ -24,7 +24,6 @@
     <Folder Include="Pages\Zipcodes\" />
     <Folder Include="Pages\VehicleStatuses\" />
     <Folder Include="Pages\VehicleManufacturers\" />
-    <Folder Include="Pages\TransferedProducts\" />
     <Folder Include="Pages\Vehicles\" />
     <Folder Include="Pages\Warehouses\" />
   </ItemGroup>

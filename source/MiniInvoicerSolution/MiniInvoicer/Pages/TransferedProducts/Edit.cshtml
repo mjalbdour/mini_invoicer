@@ -1,0 +1,45 @@
+﻿@page
+@model MiniInvoicer.Pages.TransferedProducts.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TransferedProduct</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TransferedProduct.TransferedProductID" />
+            <div class="form-group">
+                <label asp-for="TransferedProduct.ProductTransferID" class="control-label"></label>
+                <input asp-for="TransferedProduct.ProductTransferID" class="form-control" />
+                <span asp-validation-for="TransferedProduct.ProductTransferID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransferedProduct.ProductID" class="control-label"></label>
+                <input asp-for="TransferedProduct.ProductID" class="form-control" />
+                <span asp-validation-for="TransferedProduct.ProductID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransferedProduct.Quantity" class="control-label"></label>
+                <input asp-for="TransferedProduct.Quantity" class="form-control" />
+                <span asp-validation-for="TransferedProduct.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
