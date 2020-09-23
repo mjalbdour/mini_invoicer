@@ -40,5 +40,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.ProductBrand> ProductBrand { get; set; }
         public DbSet<MiniInvoicer.Models.ProductPricing> ProductPricing { get; set; }
         public DbSet<MiniInvoicer.Models.ProductPricingType> ProductPricingType { get; set; }
+        public DbSet<MiniInvoicer.Models.Product> Product { get; set; }
     }
 }

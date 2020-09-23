@@ -574,3 +574,8 @@ C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoic
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricings\Details.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricings\Edit.cshtml.g.cs
 C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricings\Index.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricingTypes\Create.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricingTypes\Delete.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricingTypes\Details.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricingTypes\Edit.cshtml.g.cs
+C:\Users\mjalb\source\repos\mini_invoicer\source\MiniInvoicerSolution\MiniInvoicer\obj\Debug\netcoreapp3.1\Razor\Pages\ProductPricingTypes\Index.cshtml.g.cs

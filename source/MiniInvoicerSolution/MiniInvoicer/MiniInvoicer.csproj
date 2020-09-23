@@ -32,7 +32,6 @@
     <Folder Include="Pages\Streets\" />
     <Folder Include="Pages\Vehicles\" />
     <Folder Include="Pages\Warehouses\" />
-    <Folder Include="Pages\Products\" />
   </ItemGroup>
 
 </Project>
