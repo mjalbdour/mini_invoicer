@@ -25,5 +25,6 @@ namespace MiniInvoicer.Data
         public DbSet<MiniInvoicer.Models.AssignedEmployeeType> AssignedEmployeeType { get; set; }
         public DbSet<MiniInvoicer.Models.AssignedVehicleStatus> AssignedVehicleStatus { get; set; }
         public DbSet<MiniInvoicer.Models.City> City { get; set; }
+        public DbSet<MiniInvoicer.Models.Company> Company { get; set; }
     }
 }
