@@ -1,0 +1,60 @@
+﻿@page
+@model MiniInvoicer.Pages.Vehicles.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].ManufacturerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].AssignedVehicleStatusID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle[0].FuelConsumptionRate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Vehicle) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufacturerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssignedVehicleStatusID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelConsumptionRate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.VehicleID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.VehicleID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.VehicleID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
