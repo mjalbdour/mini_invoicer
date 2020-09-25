@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("EmployeeTypeID")]
         public int EmployeeTypeID { get; set; }
+        public EmployeeType EmployeeType { get; set; }
 
         [ForeignKey("EmployeeID")]
         public int EmployeeID { get; set; }
+        public Employee Employee { get; set; }
 
         // TODO: Create SalesRep Table and Manager Table where each extend Employee and has their own columns
     }
