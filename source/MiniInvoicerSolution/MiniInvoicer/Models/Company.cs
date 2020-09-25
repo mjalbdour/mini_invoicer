@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniInvoicer.Models
 {
-    public class Company : IAccountHolder 
+    public class Company : IAccountHolder, IAddressHolder
     {
         [Key]
         public int CompanyID { get; set; }

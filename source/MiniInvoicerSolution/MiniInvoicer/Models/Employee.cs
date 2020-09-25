@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MiniInvoicer.Models
 {
-    public class Employee : IdentityUser, IAccountHolder
+    public class Employee : IdentityUser, IAccountHolder, IAddressHolder
     {
         [ForeignKey("CompanyID")]
         public int CompanyID { get; set; }
