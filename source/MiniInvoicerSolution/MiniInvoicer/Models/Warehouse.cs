@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace MiniInvoicer.Models
 {
-    public class Warehouse
+    public class Warehouse : IAddressHolder
     {
         [Key]
         public int WarehouseID { get; set; }
 
         [ForeignKey("CompanyID")]
         public int CompanyID { get; set; }
+        public Company Company { get; set; }
 
-        [ForeignKey("AddressID")]
-        public int AddressID { get; set; }
+        public Address Address { get; set; }
 
         [Required]
         [MinLength(3)]
