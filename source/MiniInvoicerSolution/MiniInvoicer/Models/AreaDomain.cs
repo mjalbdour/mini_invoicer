@@ -14,6 +14,7 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("CityID")]
         public int CityID { get; set; }
+        public City City { get; set; }
 
         [Required]
         [MinLength(3)]
