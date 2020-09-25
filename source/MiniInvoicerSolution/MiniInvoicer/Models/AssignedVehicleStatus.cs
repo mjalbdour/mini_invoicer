@@ -14,7 +14,9 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("VehicleID")]
         public int VehicleID { get; set; }
+        public Vehicle Vehicle { get; set; }
         [ForeignKey("VehicleStatusID")]
         public int VehicleStatusID { get; set; }
+        public VehicleStatus VehicleStatus { get; set; }
     }
 }
