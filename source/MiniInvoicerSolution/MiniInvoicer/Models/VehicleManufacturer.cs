@@ -14,6 +14,7 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("CountryID")]
         public int CountryID { get; set; }
+        public Country Country { get; set; }
 
         [Required]
         [MinLength(2)]

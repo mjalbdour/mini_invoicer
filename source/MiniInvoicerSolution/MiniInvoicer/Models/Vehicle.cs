@@ -16,8 +16,6 @@ namespace MiniInvoicer.Models
         public int ManufacturerID { get; set; }
         public VehicleManufacturer VehicleManufacturer { get; set; }
 
-        [ForeignKey("AssignedVehcileStatusID")]
-        public int AssignedVehicleStatusID { get; set; }
         public AssignedVehicleStatus AssignedVehicleStatus { get; set; }
 
         [Required]
