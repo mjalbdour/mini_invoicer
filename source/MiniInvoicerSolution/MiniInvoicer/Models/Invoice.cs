@@ -14,6 +14,7 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("OrderID")]
         public int OrderID { get; set; }
+        public Order Order { get; set; }
 
         [Required]
         [Range(1, 999999)]
