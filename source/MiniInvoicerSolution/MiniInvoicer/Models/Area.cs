@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
         
         [ForeignKey("AreaDomainID")]
         public int AreaDomainID { get; set; }
+        public AreaDomain AreaDomain { get; set; }
 
         [ForeignKey("ZipcodeID")]
         public int ZipcodeID { get; set; }
+        public Zipcode Zipcode { get; set; }
 
         [Required]
         [MinLength(3)]
