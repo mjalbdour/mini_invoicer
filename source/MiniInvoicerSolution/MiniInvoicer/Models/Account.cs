@@ -13,9 +13,9 @@ namespace MiniInvoicer.Models
         public int AccountID { get; set; }
 
         public int AccountHolderID { get; set; }
+        public IAccountHolder AccountHolder { get; set; }
 
-        [ForeignKey("AccountHolderTypeID")]
-        public int AccountHolderTypeID { get; set; }
+        public AccountHolderType AccountHolderType { get; set; }
 
         [Required]
         [Column(TypeName = ("money"))]

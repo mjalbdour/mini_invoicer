@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace MiniInvoicer.Models
 {
-    public class Employee : IdentityUser
+    public class Employee : IdentityUser, IAccountHolder
     {
-        [Key]
-        public int EmployeeID { get; set; }
-
         [ForeignKey("CompanyID")]
         public int CompanyID { get; set; }
         public Company Company { get; set; }
@@ -40,6 +37,8 @@ namespace MiniInvoicer.Models
         [ForeignKey("AddressID")]
         public int HomeAddressID { get; set; }
         public Address Address { get; set; }
+
+        public Account Account { get; set; }
 
         [Required]
         [MinLength(2)]

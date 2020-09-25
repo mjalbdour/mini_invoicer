@@ -16,7 +16,7 @@ namespace MiniInvoicer.Models
         public int CompanyID { get; set; }
         public Company Company { get; set; }
 
-        [ForeignKey("EmployeeID")]
+        [ForeignKey("UserID")]
         public int ManagerID { get; set; }
         public Employee Employee { get; set; }
 

@@ -12,7 +12,7 @@ namespace MiniInvoicer.Models
         [Key]
         public int OrderID { get; set; }
         
-        [ForeignKey("EmployeeID")]
+        [ForeignKey("UserID")]
         public int SalesRepresentativeID { get; set; }
 
         [ForeignKey("CompanyID")]

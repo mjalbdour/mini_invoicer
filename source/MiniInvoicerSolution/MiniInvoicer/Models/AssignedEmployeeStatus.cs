@@ -16,9 +16,9 @@ namespace MiniInvoicer.Models
         public int EmployeeStatusID { get; set; }
         public EmployeeStatus EmployeeStatus { get; set; }
 
-        [ForeignKey("EmployeeID")]
+        [ForeignKey("UserId")]
         public int EmployeeID { get; set; }
-        public Employee MyProperty { get; set; }
+        public Employee Employee { get; set; }
 
         [Timestamp]
         [DataType(DataType.DateTime)]
