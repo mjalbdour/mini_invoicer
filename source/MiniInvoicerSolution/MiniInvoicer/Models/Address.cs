@@ -36,8 +36,9 @@ namespace MiniInvoicer.Models
         public int ZipcodeID { get; set; }
         public Zipcode Zipcode { get; set; }
 
-        [ForeignKey("HolderID")]
         public int HolderID { get; set; }
+        public IAddressHolder AddressHolder { get; set; }
+
 
         [ForeignKey("GovernorateID")]
         public int GovernorateID { get; set; }
