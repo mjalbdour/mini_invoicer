@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("AccountID")]
         public int FromAccountID { get; set; }
+        public Account FromAccount { get; set; }
 
         [ForeignKey("AccountID")]
         public int ToAccountID { get; set; }
+        public Account ToAccount { get; set; }
 
         [Required]
         [Column(TypeName = "money")]
