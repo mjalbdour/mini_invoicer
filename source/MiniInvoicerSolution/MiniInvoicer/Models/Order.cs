@@ -14,12 +14,15 @@ namespace MiniInvoicer.Models
         
         [ForeignKey("UserID")]
         public int SalesRepresentativeID { get; set; }
+        public Employee Employee { get; set; }
 
         [ForeignKey("CompanyID")]
         public int VendorID { get; set; }
+        public Company Vendor { get; set; }
 
         [ForeignKey("CompanyID")]
         public int CustomerID { get; set; }
+        public Company Buyer { get; set; }
 
         [Required]
         [Column(TypeName = "money")]
