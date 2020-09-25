@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("CompanyStatusID")]
         public int CompanyStatusID { get; set; }
+        public CompanyStatus CompanyStatus { get; set; }
 
         [ForeignKey("CompanyID")]
         public int CompanyID { get; set; }
+        public Company Company { get; set; }
 
         [Timestamp]
         [DataType(DataType.DateTime)]
