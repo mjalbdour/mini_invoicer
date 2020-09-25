@@ -34,8 +34,6 @@ namespace MiniInvoicer.Models
         public int NationalityID { get; set; }
         public Nationality Nationality { get; set; }
 
-        [ForeignKey("AddressID")]
-        public int HomeAddressID { get; set; }
         public Address Address { get; set; }
 
         public Account Account { get; set; }
