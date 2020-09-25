@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("WarehouseID")]
         public int FromWarehouseID { get; set; }
+        public Warehouse FromWarehouse { get; set; }
 
         [ForeignKey("WarehouseID")]
         public int ToWarehouseID { get; set; }
+        public Warehouse ToWarehouse { get; set; }
 
         public string Note { get; set; }
 
