@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("InvoiceID")]
         public int InvoiceID { get; set; }
+        public Invoice Invoice { get; set; }
 
         [ForeignKey("CurrencyID")]
         public int CurrencyID { get; set; }
+        public Currency Currency { get; set; }
 
         [Required]
         [Range(1, 99999)]
