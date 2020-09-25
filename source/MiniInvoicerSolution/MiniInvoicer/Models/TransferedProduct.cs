@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("ProductTransferID")]
         public int ProductTransferID { get; set; }
-        
+        public ProductTransfer ProductTransfer { get; set; }
+
         [ForeignKey("ProductID")]
         public int ProductID { get; set; }
+        public Product Product { get; set; }
 
         [Required]
         public int Quantity { get; set; }
