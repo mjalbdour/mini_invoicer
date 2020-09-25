@@ -11,10 +11,14 @@ namespace MiniInvoicer.Models
     {
         [Key]
         public int InventoryID { get; set; }
-        [ForeignKey("ProductID")]
+
+        [ForeignKey("ProductID")] 
         public int ProductID { get; set; }
+        public Product Product { get; set; }
+
         [ForeignKey("WarehouseID")]
         public int WarehouseID { get; set; }
+        public Warehouse Warehouse { get; set; }
 
         [Required]
         [Range(1, 9999999)]
