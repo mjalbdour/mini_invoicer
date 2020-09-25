@@ -14,9 +14,11 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("ProductID")]
         public int ProductID { get; set; }
+        public Product Product { get; set; }
 
         [ForeignKey("ProductPricingTypeID")]
         public int ProductPricingTypeID { get; set; }
+        public ProductPricingType ProductPricingType { get; set; }
 
         [Required]
         [Range(0.1, 9999)]
