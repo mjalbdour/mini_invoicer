@@ -14,12 +14,15 @@ namespace MiniInvoicer.Models
 
         [ForeignKey("BrandID")]
         public int BrandID { get; set; }
+        public ProductBrand ProductBrand { get; set; }
 
         [ForeignKey("CompanyID")]
         public int CompanyID { get; set; }
+        public Company Company { get; set; }
 
         [ForeignKey("CategoryID")]
         public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
         [Required]
         [MinLength(3)]
