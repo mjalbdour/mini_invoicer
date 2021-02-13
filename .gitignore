@@ -1,49 +1,86 @@
 # Miscellaneous
-mini_invoicer_app_deprecated/*.class
-mini_invoicer_app_deprecated/*.log
-mini_invoicer_app_deprecated/*.pyc
-mini_invoicer_app_deprecated/*.swp
-mini_invoicer_app_deprecated/.DS_Store
-mini_invoicer_app_deprecated/.atom/
-mini_invoicer_app_deprecated/.buildlog/
-mini_invoicer_app_deprecated/.history
-mini_invoicer_app_deprecated/.svn/
+mini_invoicer_app_deprecated/**/*.class
+mini_invoicer_app_deprecated/**/*.log
+mini_invoicer_app_deprecated/**/*.pyc
+mini_invoicer_app_deprecated/**/*.swp
+mini_invoicer_app_deprecated/**/.DS_Store
+mini_invoicer_app_deprecated/**/.atom/
+mini_invoicer_app_deprecated/**/.buildlog/
+mini_invoicer_app_deprecated/**/.history
+mini_invoicer_app_deprecated/**/.svn/
 
 # IntelliJ related
-mini_invoicer_app_deprecated/*.iml
-mini_invoicer_app_deprecated/*.ipr
-mini_invoicer_app_deprecated/*.iws
-mini_invoicer_app_deprecated/.idea/
+mini_invoicer_app_deprecated/**/*.iml
+mini_invoicer_app_deprecated/**/*.ipr
+mini_invoicer_app_deprecated/**/*.iws
+mini_invoicer_app_deprecated/**/.idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
 .vscode/
-source/**/.vs/
+src/**/.vscode/
+src/**/.vs/
+
+mini_invoicer_app_deprecated/.vscode/
+mini_invoicer_app_deprecated/**/.vscode/
+mini_invoicer_app_deprecated/**/.vs/
 
 
 # Flutter/Dart/Pub related
 mini_invoicer_app_deprecated/**/doc/api/
-mini_invoicer_app_deprecated/.dart_tool/
-mini_invoicer_app_deprecated/.flutter-plugins
-mini_invoicer_app_deprecated/.flutter-plugins-dependencies
-mini_invoicer_app_deprecated/.packages
-mini_invoicer_app_deprecated/.pub-cache/
-mini_invoicer_app_deprecated/.pub/
-mini_invoicer_app_deprecated/build/
-mini_invoicer_app_deprecated/pubspec.lock
+mini_invoicer_app_deprecated/**/.dart_tool/
+mini_invoicer_app_deprecated/**/.flutter-plugins
+mini_invoicer_app_deprecated/**/.flutter-plugins-dependencies
+mini_invoicer_app_deprecated/**/.packages
+mini_invoicer_app_deprecated/**/.pub-cache/
+mini_invoicer_app_deprecated/**/.pub/
+mini_invoicer_app_deprecated/**/build/
+mini_invoicer_app_deprecated/**/pubspec.lock
 
 # Web related
-mini_invoicer_app_deprecated/lib/generated_plugin_registrant.dart
+mini_invoicer_app_deprecated/**/lib/generated_plugin_registrant.dart
 
 # Symbolication related
-mini_invoicer_app_deprecated/app.*.symbols
+mini_invoicer_app_deprecated/**/app.*.symbols
 
 # Obfuscation related
-mini_invoicer_app_deprecated/app.*.map.json
+mini_invoicer_app_deprecated/**/app.*.map.json
 
 # Exceptions to above rules.
-mini_invoicer_app_deprecated/!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+mini_invoicer_app_deprecated/**/!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # google services
-mini_invoicer_app_deprecated/android/app/google-services.json
+mini_invoicer_app_deprecated/**/android/app/google-services.json
+
+src/**/.swp
+src/**/*.*~
+src/**/project.lock.json
+src/**/.DS_Store
+src/**/*.pyc
+src/**/nupkg/
+src/**/
+# Visual Studio Code
+src/**/.vscode
+# Rider
+src/**/.idea
+# User-specific files
+src/**/*.suo
+src/**/*.user
+src/**/*.userosscache
+src/**/*.sln.docstates
+
+# Build results
+src/**/[Dd]ebug/
+src/**/[Dd]ebugPublic/
+src/**/[Rr]elease/
+src/**/[Rr]eleases/
+src/**/x64/
+src/**/x86/
+src/**/build/
+src/**/bld/
+src/**/[Bb]in/
+src/**/[Oo]bj/
+src/**/[Oo]ut/
+src/**/msbuild.log
+src/**/msbuild.err
+src/**/msbuild.wrn
+# Visual Studio 2015
+src/**/.vs/
