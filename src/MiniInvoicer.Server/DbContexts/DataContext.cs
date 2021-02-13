@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MiniInvoicer.Server.Models;
 
 namespace MiniInvoicer.Server.DbContexts
 {
