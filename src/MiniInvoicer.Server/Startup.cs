@@ -25,7 +25,7 @@ namespace MiniInvoicer.Server
         {
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(_config.GetConnectionString("DataContext"));
+                options.UseSqlServer(_config.GetConnectionString("MiniInvoicerDataConnectionString"));
                 options.EnableSensitiveDataLogging(true);
             });
         }
