@@ -65,6 +65,7 @@ src/**/*.suo
 src/**/*.user
 src/**/*.userosscache
 src/**/*.sln.docstates
+src/**/wwwroot/lib
 
 # Build results
 src/**/[Dd]ebug/
