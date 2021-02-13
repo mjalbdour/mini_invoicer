@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,10 +29,16 @@ namespace MiniInvoicer.Server
             services.AddControllers();
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(_config.GetConnectionString("MiniInvoicerDataConnectionString"));
+                options.UseSqlServer(_config
+                    .GetConnectionString("MiniInvoicerDataConnectionString"));
                 options.EnableSensitiveDataLogging(true);
             });
 
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseSqlServer(_config
+                    .GetConnectionString("MiniInvoicerIdentityConnectionString")));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
+            
             services.AddResponseCompression(options =>
             {
                 options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
