@@ -10,5 +10,7 @@ namespace MiniInvoicer.Server.DbContexts
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductPricing> ProductPricings { get; set; }
+        public DbSet<PricingType> PricingTypes { get; set; }
     }
 }
