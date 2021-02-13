@@ -56,7 +56,6 @@ src/**/project.lock.json
 src/**/.DS_Store
 src/**/*.pyc
 src/**/nupkg/
-src/**/
 # Visual Studio Code
 src/**/.vscode
 # Rider
