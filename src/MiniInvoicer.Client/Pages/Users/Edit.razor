@@ -32,35 +32,35 @@ else
             <label>Email</label>
             <InputText class="form-control" @bind-Value="_userModel.Email"/>
         </div>
-          <div class="form-group">
-                <label>Role</label>
-                @if (_roles == null)
-                {
-                    <em style="margin: 30px">Loading roles...</em>
-                }
-                else if (!_roles.Any())
-                {
-                    <div class="card">
-                        <div class="card-header">No roles found</div>
-                        <div class="card-body">
-                            Add ROLES to use this feature
-                        </div>
-                        <div class="card-footer">
-                            <NavLink href="roles/create" class="btn btn-outline-primary">+</NavLink>
-                        </div>
+        <div class="form-group">
+            <label>Role</label>
+            @if (_roles == null)
+            {
+                <em style="margin: 30px">Loading roles...</em>
+            }
+            else if (!_roles.Any())
+            {
+                <div class="card">
+                    <div class="card-header">No roles found</div>
+                    <div class="card-body">
+                        Add ROLES to use this feature
                     </div>
-                }
-                else
-                {
-                    <InputSelect @bind-Value="_userModel.RoleId" class="form-control">
-                        @foreach (var role in _roles)
-                        {
-                            <option value="">--Select Role--</option>
-                            <option value="@role.Id">@role.Name</option>
-                        }
-                    </InputSelect>
-                }
-          </div>
+                    <div class="card-footer">
+                        <NavLink href="roles/create" class="btn btn-outline-primary">+</NavLink>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <InputSelect @bind-Value="_userModel.RoleId" class="form-control">
+                    <option value="">--Select Role--</option>
+                    @foreach (var role in _roles)
+                    {
+                        <option value="@role.Id">@role.Name</option>
+                    }
+                </InputSelect>
+            }
+        </div>
         <div class="form-group">
             <label>New Password</label>
             <InputText type="password" class="form-control" @bind-Value="_userModel.Password"/>
