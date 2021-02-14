@@ -6,7 +6,7 @@
 <h5 class="bg-warning text-white text-center p-2">Edit User</h5>
 @if (_userModel == null)
 {
-    if (string.IsNullOrWhiteSpace(id))
+    if (string.IsNullOrWhiteSpace(Id))
     {
         <em style="margin: 30px">Invalid user, redirecting to /users</em>
     }
@@ -32,6 +32,35 @@ else
             <label>Email</label>
             <InputText class="form-control" @bind-Value="_userModel.Email"/>
         </div>
+          <div class="form-group">
+                <label>Role</label>
+                @if (_roles == null)
+                {
+                    <em style="margin: 30px">Loading roles...</em>
+                }
+                else if (!_roles.Any())
+                {
+                    <div class="card">
+                        <div class="card-header">No roles found</div>
+                        <div class="card-body">
+                            Add ROLES to use this feature
+                        </div>
+                        <div class="card-footer">
+                            <NavLink href="roles/create" class="btn btn-outline-primary">+</NavLink>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <InputSelect @bind-Value="_userModel.RoleId" class="form-control">
+                        @foreach (var role in _roles)
+                        {
+                            <option value="">--Select Role--</option>
+                            <option value="@role.Id">@role.Name</option>
+                        }
+                    </InputSelect>
+                }
+          </div>
         <div class="form-group">
             <label>New Password</label>
             <InputText type="password" class="form-control" @bind-Value="_userModel.Password"/>
@@ -54,19 +83,21 @@ else
 @code {
 
     [Parameter]
-    public string id { get; set; }
+    public string Id { get; set; }
 
     private EditUserModel _userModel;
+    private List<IdentityRole> _roles;
+
 
     private List<string> _errors = new List<string>();
 
     protected override async Task OnInitializedAsync()
     {
-        if (string.IsNullOrWhiteSpace(id))
+        if (string.IsNullOrWhiteSpace(Id))
         {
             NavigationManager.NavigateTo("users", forceLoad: true);
         }
-        var result = await HttpClient.GetAsync($"api/users/{id}");
+        var result = await HttpClient.GetAsync($"api/users/{Id}");
         if (result.IsSuccessStatusCode)
         {
             var tempUser = await result.Content.ReadFromJsonAsync<EditUserModel>();
@@ -76,6 +107,8 @@ else
             }
             _userModel = tempUser;
         }
+        _roles = await HttpClient.GetFromJsonAsync<List<IdentityRole>>("api/roles");
+        StateHasChanged();
     }
 
     private async void HandleValidSubmit()
