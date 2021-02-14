@@ -44,12 +44,13 @@ else
     private string _deleteMessage;
     private IEnumerable<IdentityRole> _roles;
 
-    private async void GetRoles()
+    protected override async Task OnInitializedAsync()
     {
-        _roles = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityRole>>("api/roles");
+        GetRoles();
+        StateHasChanged();
     }
 
-    private async void Get()
+    private async void GetRoles()
     {
         _roles = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityRole>>("api/roles");
     }
