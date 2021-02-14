@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiniInvoicer.Client.Pages.Users;
 using MiniInvoicer.Server.DbContexts;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace MiniInvoicer.Server.Controllers
 {
