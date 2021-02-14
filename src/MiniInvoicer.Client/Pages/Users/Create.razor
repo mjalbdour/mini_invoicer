@@ -1,0 +1,32 @@
+﻿@page "/users/create"
+@inject HttpClient HttpClient
+
+<h5 class="bg-primary text-white text-center p-2">Create User</h5>
+
+<EditForm OnValidSubmit="HandleValidSubmit" Model="@_userModel">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary class="text-danger"></ValidationSummary>
+    <div class="form-group">
+        <label>User Name</label>
+        <InputText class="form-control" @bind-Value="_userModel.Username"/>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <InputText class="form-control" @bind-Value="_userModel.Email"/>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <InputText type="password" class="form-control"  @bind-Value="_userModel.Password"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <NavLink href="users">go back</NavLink>
+</EditForm>
+
+@code {
+    private CreateUserModel _userModel = new CreateUserModel { Username = "", Email = "", Password = ""};
+
+    private async void HandleValidSubmit()
+    {
+        await HttpClient.PostAsJsonAsync("api/users", _userModel);
+    }
+}
