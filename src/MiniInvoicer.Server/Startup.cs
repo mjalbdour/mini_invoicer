@@ -42,7 +42,7 @@ namespace MiniInvoicer.Server
                 options.Password.RequireUppercase = false;
                 options.Password.RequireDigit = false;
                 options.User.RequireUniqueEmail = true;
-                options.User.AllowedUserNameCharacters = @"/([a-z])/";
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
             });
 
             services.AddResponseCompression(options =>
