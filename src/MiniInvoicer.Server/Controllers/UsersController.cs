@@ -95,5 +95,23 @@ namespace MiniInvoicer.Server.Controllers
 
             return NotFound(userModel.Id);
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteUser([FromRoute] string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                var result = await _userManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return Ok($"User with id: {id} was deleted.");
+                }
+                return BadRequest(result.Errors);
+            }
+
+            return NotFound($"User with id: {id} was not found.");
+        }
     }
 }
