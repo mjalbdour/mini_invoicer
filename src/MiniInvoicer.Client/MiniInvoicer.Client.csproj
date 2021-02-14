@@ -140,4 +140,8 @@
     <_ContentIncludedByDefault Remove="wwwroot\lib\twitter-bootstrap\scss\_variables.scss" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\sample-data" />
+  </ItemGroup>
+
 </Project>
