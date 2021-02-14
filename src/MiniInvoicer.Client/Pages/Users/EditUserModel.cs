@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MiniInvoicer.Client.Pages.Users
 {
-    public class CreateUserModel
+    public class EditUserModel
     {
+        public string Id { get; set; }
+        
         [Required]
         [StringLength(16, MinimumLength = 3)]
         public string Username { get; set; }
