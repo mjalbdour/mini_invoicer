@@ -1,6 +1,4 @@
 ﻿@page "/users/create"
-@using System.Net
-@using System.Text.Json
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
 @layout _Layout
@@ -37,7 +35,7 @@
 }
 
 @code {
-    private CreateUserModel _userModel = new CreateUserModel();
+    private EditUserModel _userModel = new EditUserModel();
     private List<string> errors = new List<string>();
     
     private async void HandleValidSubmit()
