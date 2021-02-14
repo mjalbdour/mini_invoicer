@@ -1,10 +1,16 @@
 ﻿@page "/users"
+@using System.ComponentModel
 @inject HttpClient HttpClient
 @layout _Layout
 
 @if (_users == null)
 {
     <em style="margin: 30px; display: block;">Loading...</em>
+}
+else if (!_users.Any())
+{
+    
+    <h3 style="margin: 30px; display: block;">No users found</h3>
 }
 else
 {
@@ -33,7 +39,7 @@ else
                         <form asp-page="List" method="post">
                             <input type="hidden" name="Id" value="@user.Id"/>
                             <NavLink href="@($"users/edit/{user.Id}")" class="btn btn-sm btn-warning">Edit</NavLink>
-                            <button type="submit" class="btn btn-sm btn-danger">
+                            <button type="button" class="btn btn-sm btn-danger" @onclick="@(e => DeleteUser(user.Id))">
                                 Delete
                             </button>
                         </form>
@@ -45,14 +51,36 @@ else
 }
 <NavLink class="btn btn-primary" href="users/create">Create</NavLink>
 
+@if (string.IsNullOrWhiteSpace(_deleteMessage))
+{
+    <h6>@_deleteMessage</h6>
+}
+
 @code {
-
-    private IEnumerable<IdentityUser> _users = null;
-
+    private IEnumerable<IdentityUser> _users;
+    private string _deleteMessage;
+    
     protected override async Task OnInitializedAsync()
+    {
+        GetUsers();
+    }
+    private async void GetUsers()
     {
         _users = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityUser>>("api/users");
         StateHasChanged();
     }
-
+    
+    private async Task DeleteUser(string id)
+    {
+        var result = await HttpClient.DeleteAsync($"api/users/{id}");
+        if (result.IsSuccessStatusCode)
+        {
+            GetUsers();
+            StateHasChanged();
+        }
+        else
+        {
+            _deleteMessage = await result.Content.ReadAsStringAsync();
+        }
+    }
 }
