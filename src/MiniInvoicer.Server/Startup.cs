@@ -33,7 +33,17 @@ namespace MiniInvoicer.Server
             services.AddDbContext<IdentityContext>(options =>
                 options.UseSqlServer(_config
                     .GetConnectionString("MiniInvoicerIdentityConnectionString")));
-            
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+                options.User.RequireUniqueEmail = true;
+            });
+
             services.AddResponseCompression(options =>
             {
                 options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
