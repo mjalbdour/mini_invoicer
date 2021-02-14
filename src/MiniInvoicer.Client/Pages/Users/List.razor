@@ -1,0 +1,52 @@
+﻿@page "/list"
+@inject HttpClient HttpClient
+
+<table class="table table-sm table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    @if (_users.Count() == 0)
+    {
+        <tr>
+            <td colspan="4" class="text-center">No User Accounts</td>
+        </tr>
+    }
+    else
+    {
+        foreach (IdentityUser user in _users)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td class="text-center">
+                    <form asp-page="List" method="post">
+                        <input type="hidden" name="Id" value="@user.Id"/>
+                        <a class="btn btn-sm btn-warning" asp-page="Editor"
+                           asp-route-id="@user.Id" asp-route-mode="edit">
+                            Edit
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    }
+</table>
+<a class="btn btn-primary" asp-page="create">Create</a>
+
+@code {
+
+    private IEnumerable<IdentityUser> _users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _users = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityUser>>("api/users");
+    }
+
+}
