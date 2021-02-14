@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MiniInvoicer.Client.Pages.Users;
 
 namespace MiniInvoicer.Server.Controllers
 {
@@ -22,6 +23,12 @@ namespace MiniInvoicer.Server.Controllers
         public async Task<ActionResult<IEnumerable<IdentityUser>>> GetUsers()
         {
             return await Task.FromResult(_userManager.Users.ToList());
+        }
+
+        [HttpPost]
+        public async Task CreateUser(CreateUserModel userModel)
+        {
+            Console.WriteLine(userModel.Username);
         }
     }
 }
