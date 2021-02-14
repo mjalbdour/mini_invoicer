@@ -26,9 +26,26 @@ namespace MiniInvoicer.Server.Controllers
         }
 
         [HttpPost]
-        public async Task CreateUser(CreateUserModel userModel)
+        public async Task<IActionResult> CreateUser(CreateUserModel userModel)
         {
-            Console.WriteLine(userModel.Username);
+            if (ModelState.IsValid)
+            {
+                IdentityUser user = new IdentityUser { UserName = userModel.Username, Email = userModel.Email};
+                IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
+                if (result.Succeeded)
+                {
+                    return Accepted();
+                }
+
+                if (!result.Succeeded)
+                {
+                    var errors = result.Errors.Select(x => x.Description);
+
+                    return BadRequest(errors);
+                }
+            }
+
+            return BadRequest();
         }
     }
 }

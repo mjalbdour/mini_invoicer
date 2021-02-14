@@ -2,48 +2,55 @@
 @inject HttpClient HttpClient
 @layout _Layout
 
-<table class="table table-sm table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th></th>
-    </tr>
-    @if (_users.Count() == 0)
-    {
+@if (_users == null)
+{
+    <em style="margin: 30px; display: block;">Loading...</em>
+}
+else
+{
+    <table class="table table-sm table-bordered">
         <tr>
-            <td colspan="4" class="text-center">No User Accounts</td>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
         </tr>
-    }
-    else
-    {
-        foreach (IdentityUser user in _users)
+        @if (!_users.Any())
         {
             <tr>
-                <td>@user.Id</td>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
-                <td class="text-center">
-                    <form asp-page="List" method="post">
-                        <input type="hidden" name="Id" value="@user.Id"/>
-                        <a class="btn btn-sm btn-warning" asp-page="Editor"
-                           asp-route-id="@user.Id" asp-route-mode="edit">
-                            Edit
-                        </a>
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            Delete
-                        </button>
-                    </form>
-                </td>
+                <td colspan="4" class="text-center">No User Accounts</td>
             </tr>
         }
-    }
-</table>
+        else
+        {
+            foreach (IdentityUser user in _users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td class="text-center">
+                        <form asp-page="List" method="post">
+                            <input type="hidden" name="Id" value="@user.Id"/>
+                            <a class="btn btn-sm btn-warning" asp-page="Editor"
+                               asp-route-id="@user.Id" asp-route-mode="edit">
+                                Edit
+                            </a>
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+}
 <NavLink class="btn btn-primary" href="users/create">Create</NavLink>
 
 @code {
 
-    private IEnumerable<IdentityUser> _users = new List<IdentityUser> {};
+    private IEnumerable<IdentityUser> _users;
 
     protected override async Task OnInitializedAsync()
     {
