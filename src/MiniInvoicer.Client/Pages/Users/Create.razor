@@ -16,8 +16,38 @@
         <InputText class="form-control" @bind-Value="_userModel.Email"/>
     </div>
     <div class="form-group">
+        <label>Role</label>
+        @if (_roles == null)
+        {
+            <em style="margin: 30px">Loading roles...</em>
+        }
+        else if (!_roles.Any())
+        {
+            <div class="card">
+                <div class="card-header">No roles found</div>
+                <div class="card-body">
+                    Add ROLES to use this feature
+                </div>
+                <div class="card-footer">
+                    <NavLink href="roles/create" class="btn btn-outline-primary">+</NavLink>
+                </div>
+            </div>
+        }
+        else
+        {
+            <InputSelect @bind-Value="_userModel.RoleId" class="form-control">
+                @foreach (var role in _roles)
+                {
+                    <option value="">--Select Role--</option>
+                    <option value="@role.Id">@role.Name</option>
+                }
+            </InputSelect>
+        }
+
+    </div>
+    <div class="form-group">
         <label>Password</label>
-        <InputText type="password" class="form-control"  @bind-Value="_userModel.Password"/>
+        <InputText type="password" class="form-control" @bind-Value="_userModel.Password"/>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     <NavLink class="btn btn-secondary" href="users">go back</NavLink>
@@ -26,18 +56,23 @@
 @if (errors.Any())
 {
     <ul>
-    @foreach (var error in errors)
+        @foreach (var error in errors)
         {
             <li>@error</li>
-        }    
+        }
     </ul>
-    
 }
 
 @code {
     private EditUserModel _userModel = new EditUserModel();
     private List<string> errors = new List<string>();
-    
+    private List<IdentityRole> _roles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _roles = await HttpClient.GetFromJsonAsync<List<IdentityRole>>("api/roles");
+    }
+
     private async void HandleValidSubmit()
     {
         errors.Clear();
@@ -52,4 +87,5 @@
             StateHasChanged();
         }
     }
+
 }
