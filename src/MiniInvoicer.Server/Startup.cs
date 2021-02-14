@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using MiniInvoicer.Server.DbContexts;
 
 namespace MiniInvoicer.Server
@@ -33,11 +28,11 @@ namespace MiniInvoicer.Server
                     .GetConnectionString("MiniInvoicerDataConnectionString"));
                 options.EnableSensitiveDataLogging(true);
             });
-
+            
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
             services.AddDbContext<IdentityContext>(options =>
                 options.UseSqlServer(_config
                     .GetConnectionString("MiniInvoicerIdentityConnectionString")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
             
             services.AddResponseCompression(options =>
             {

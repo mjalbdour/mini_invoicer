@@ -1,5 +1,6 @@
-﻿@page "/list"
+﻿@page "/users"
 @inject HttpClient HttpClient
+@layout _Layout
 
 <table class="table table-sm table-bordered">
     <tr>
@@ -42,7 +43,7 @@
 
 @code {
 
-    private IEnumerable<IdentityUser> _users;
+    private IEnumerable<IdentityUser> _users = new List<IdentityUser> {};
 
     protected override async Task OnInitializedAsync()
     {
