@@ -32,10 +32,7 @@ else
                     <td class="text-center">
                         <form asp-page="List" method="post">
                             <input type="hidden" name="Id" value="@user.Id"/>
-                            <a class="btn btn-sm btn-warning" asp-page="Editor"
-                               asp-route-id="@user.Id" asp-route-mode="edit">
-                                Edit
-                            </a>
+                            <NavLink href="@($"users/edit/{user.Id}")" class="btn btn-sm btn-warning">Edit</NavLink>
                             <button type="submit" class="btn btn-sm btn-danger">
                                 Delete
                             </button>
@@ -50,11 +47,12 @@ else
 
 @code {
 
-    private IEnumerable<IdentityUser> _users;
+    private IEnumerable<IdentityUser> _users = null;
 
     protected override async Task OnInitializedAsync()
     {
         _users = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityUser>>("api/users");
+        StateHasChanged();
     }
 
 }
