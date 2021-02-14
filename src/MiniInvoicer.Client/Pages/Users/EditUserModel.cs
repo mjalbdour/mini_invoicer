@@ -16,6 +16,8 @@ namespace MiniInvoicer.Client.Pages.Users
         [EmailAddress]
         public string Email { get; set; }
 
+        public string RoleId { get; set; }
+
         [Required]
         [PasswordPropertyText]
         [StringLength(32, MinimumLength = 8)]
