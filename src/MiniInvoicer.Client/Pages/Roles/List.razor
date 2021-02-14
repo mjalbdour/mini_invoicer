@@ -1,5 +1,7 @@
 ﻿@page "/roles"
+@layout _RoleManagementToolsLayout
 @inject HttpClient HttpClient
+
 
 @if (_roles == null)
 {
@@ -47,12 +49,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         GetRoles();
-        StateHasChanged();
     }
 
     private async void GetRoles()
     {
         _roles = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityRole>>("api/roles");
+        StateHasChanged();
     }
 
     private async Task DeleteRole(string id)
