@@ -1,0 +1,71 @@
+﻿@page "/roles"
+@inject HttpClient HttpClient
+
+@if (_roles == null)
+{
+    <em style="margin: 30px;">Loading roles...</em>
+}
+else if (!_roles.Any())
+{
+    <h4>No Roles Found</h4>
+}
+else
+{
+    <table class="table table-sm table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <tbody>
+        @foreach (IdentityRole role in _roles)
+        {
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td class="text-center">
+                    <NavLink class="btn btn-sm btn-warning"
+                             href="@($"roles/create/{role.Id}")">
+                        Edit
+                    </NavLink>
+                    <button type="button" class="btn btn-sm btn-danger" @onclick="@(() => DeleteRole(role.Id))">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+<NavLink class="btn btn-primary" href="roles/create">Create</NavLink>
+
+@code {
+
+    private string _deleteMessage;
+    private IEnumerable<IdentityRole> _roles;
+
+    private async void GetRoles()
+    {
+        _roles = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityRole>>("api/roles");
+    }
+
+    private async void Get()
+    {
+        _roles = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityRole>>("api/roles");
+    }
+
+    private async Task DeleteRole(string id)
+    {
+        var result = await HttpClient.DeleteAsync($"api/roles/{id}");
+        if (result.IsSuccessStatusCode)
+        {
+            GetRoles();
+            StateHasChanged();
+        }
+        else
+        {
+            _deleteMessage = await result.Content.ReadAsStringAsync();
+        }
+    }
+
+}
