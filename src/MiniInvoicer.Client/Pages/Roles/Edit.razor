@@ -1,0 +1,76 @@
+﻿@page "/roles/edit/{id}"
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+@layout _RoleManagementToolsLayout
+
+<h5 class="bg-primary text-white text-center p-2">Edit Role</h5>
+
+@if (_roleModel == null)
+{
+    <h3 style="margin: 30px">Loading Role...</h3>
+}
+else
+{
+    <EditForm OnValidSubmit="HandleValidSubmit" Model="@_roleModel">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary class="text-danger"></ValidationSummary>
+        <div class="form-group">
+            <label>Name</label>
+            <InputText class="form-control" @bind-Value="_roleModel.Name"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <NavLink class="btn btn-secondary" href="Roles">go back</NavLink>
+    </EditForm>
+}
+
+
+@if (errors.Any())
+{
+    <ul>
+        @foreach (var error in errors)
+        {
+            <li>@error</li>
+        }    
+    </ul>
+    
+}
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+    private EditRoleModel _roleModel;
+    private List<string> errors = new List<string>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            NavigationManager.NavigateTo("roles", forceLoad:true);
+        }
+        var result = await HttpClient.GetAsync($"api/roles/{id}");
+        if (result.IsSuccessStatusCode)
+        {
+            var tempRole = await result.Content.ReadFromJsonAsync<EditRoleModel>();
+            if (tempRole == null)
+            {
+                NavigationManager.NavigateTo("/users");
+            }
+            _roleModel = tempRole;
+        }
+    }
+    
+    private async void HandleValidSubmit()
+    {
+        errors.Clear();
+        var result = await HttpClient.PostAsJsonAsync("api/roles", _roleModel);
+        if (result.StatusCode == HttpStatusCode.Accepted)
+        {
+            NavigationManager.NavigateTo("/roles");
+        }
+        else
+        {
+            errors = await result.Content.ReadFromJsonAsync<List<String>>();
+            StateHasChanged();
+        }
+    }
+}

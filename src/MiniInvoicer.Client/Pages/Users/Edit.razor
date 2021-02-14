@@ -3,6 +3,7 @@
 @inject NavigationManager NavigationManager
 @layout _UserManagementToolsLayout
 
+<h5 class="bg-warning text-white text-center p-2">Edit User</h5>
 @if (_userModel == null)
 {
     if (string.IsNullOrWhiteSpace(id))
@@ -12,11 +13,10 @@
     else
     {
         <em style="margin: 30px">Loading user...</em>
-    }                                            
-}                                                
+    }
+}
 else
 {
-    <h5 class="bg-warning text-white text-center p-2">Edit User</h5>
     <EditForm OnValidSubmit="HandleValidSubmit" Model="_userModel">
         <DataAnnotationsValidator></DataAnnotationsValidator>
         <ValidationSummary></ValidationSummary>
@@ -44,19 +44,18 @@ else
 @if (_errors.Any())
 {
     <ul>
-    @foreach (var error in _errors)
+        @foreach (var error in _errors)
         {
             <li>@error</li>
-        }    
+        }
     </ul>
-    
 }
 
 @code {
 
     [Parameter]
     public string id { get; set; }
-    
+
     private EditUserModel _userModel;
 
     private List<string> _errors = new List<string>();
@@ -65,7 +64,7 @@ else
     {
         if (string.IsNullOrWhiteSpace(id))
         {
-            NavigationManager.NavigateTo("users", forceLoad:true);
+            NavigationManager.NavigateTo("users", forceLoad: true);
         }
         var result = await HttpClient.GetAsync($"api/users/{id}");
         if (result.IsSuccessStatusCode)
