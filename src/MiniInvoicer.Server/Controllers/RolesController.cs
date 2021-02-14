@@ -19,7 +19,7 @@ namespace MiniInvoicer.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<IdentityRole>>> GetRoles()
+        public async Task<ActionResult<List<IdentityRole>>> GetRoles()
         {
             return await Task.FromResult(_roleManager.Roles.ToList());
         }
