@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiniInvoicer.Client.Pages.Users;
+using MiniInvoicer.Server.DbContexts;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace MiniInvoicer.Server.Controllers
 {
@@ -13,16 +15,33 @@ namespace MiniInvoicer.Server.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IdentityContext _identityContext;
 
-        public UsersController(UserManager<IdentityUser> userManager)
+        public UsersController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IdentityContext identityContext)
         {
-            this._userManager = userManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _identityContext = identityContext;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<IdentityUser>>> GetUsers()
+        public async Task<ActionResult<List<UserViewModel>>> GetUsers()
         {
-            return await Task.FromResult(_userManager.Users.ToList());
+            List<UserViewModel> userViewModels = new List<UserViewModel>();
+            var userRoles = _identityContext.UserRoles.ToList();
+            foreach (var user in _userManager.Users)
+            {
+                var userViewModel = new UserViewModel();
+                userViewModel.IdentityUser = user;
+                var userRole = userRoles.FirstOrDefault(ur => ur.UserId == user.Id);
+                if (userRole != null)
+                {
+                    userViewModel.IdentityRole = _roleManager.Roles.FirstOrDefault(r => r.Id == userRole.RoleId);
+                }
+                userViewModels.Add(userViewModel);
+            }
+            return await Task.FromResult(userViewModels);
         }
 
         [HttpGet("{id}")]

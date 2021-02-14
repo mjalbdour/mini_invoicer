@@ -1,5 +1,4 @@
 ﻿@page "/users"
-@using System.ComponentModel
 @inject HttpClient HttpClient
 @layout _UserManagementToolsLayout
 
@@ -19,6 +18,7 @@ else
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Role</th>
             <th></th>
         </tr>
         @if (!_users.Any())
@@ -29,20 +29,25 @@ else
         }
         else
         {
-            foreach (IdentityUser user in _users)
+            foreach (UserViewModel user in _users)
             {
                 <tr>
-                    <td>@user.Id</td>
-                    <td>@user.UserName</td>
-                    <td>@user.Email</td>
+                    <td>@user.IdentityUser.Id</td>
+                    <td>@user.IdentityUser.UserName</td>
+                    <td>@user.IdentityUser.Email</td>
+                    @if (user.IdentityRole == null)
+                    {
+                        <td>None</td>
+                    }
+                    else
+                    {
+                        <td>@user.IdentityRole.Name</td>
+                    }
                     <td class="text-center">
-                        <form asp-page="List" method="post">
-                            <input type="hidden" name="Id" value="@user.Id"/>
-                            <NavLink href="@($"users/edit/{user.Id}")" class="btn btn-sm btn-warning">Edit</NavLink>
-                            <button type="button" class="btn btn-sm btn-danger" @onclick="@(e => DeleteUser(user.Id))">
+                            <NavLink href="@($"users/edit/{user.IdentityUser.Id}")" class="btn btn-sm btn-warning">Edit</NavLink>
+                            <button type="button" class="btn btn-sm btn-danger" @onclick="@(e => DeleteUser(user.IdentityUser.Id))">
                                 Delete
                             </button>
-                        </form>
                     </td>
                 </tr>
             }
@@ -57,7 +62,7 @@ else
 }
 
 @code {
-    private IEnumerable<IdentityUser> _users;
+    private IEnumerable<UserViewModel> _users;
     private string _deleteMessage;
     
     protected override async Task OnInitializedAsync()
@@ -66,7 +71,7 @@ else
     }
     private async void GetUsers()
     {
-        _users = await HttpClient.GetFromJsonAsync<IEnumerable<IdentityUser>>("api/users");
+        _users = await HttpClient.GetFromJsonAsync<IEnumerable<UserViewModel>>("api/users");
         StateHasChanged();
     }
     
