@@ -1,7 +1,7 @@
 ﻿@page "/users/create"
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
-@layout _Layout
+@layout _UserManagementToolsLayout
 <h5 class="bg-primary text-white text-center p-2">Create User</h5>
 
 <EditForm OnValidSubmit="HandleValidSubmit" Model="@_userModel">
