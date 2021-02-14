@@ -1,6 +1,6 @@
 ﻿@page "/users/create"
 @inject HttpClient HttpClient
-
+@layout _Layout
 <h5 class="bg-primary text-white text-center p-2">Create User</h5>
 
 <EditForm OnValidSubmit="HandleValidSubmit" Model="@_userModel">
