@@ -16,33 +16,37 @@
     <NavLink class="btn btn-secondary" href="Roles">go back</NavLink>
 </EditForm>
 
-@if (errors.Any())
+@if (_errors.Any())
 {
     <ul>
-    @foreach (var error in errors)
+        @foreach (var error in _errors)
         {
-            <li>@error</li>
-        }    
+            <li>@error.Description - @error.Code</li>
+        }
     </ul>
-    
 }
 
 @code {
     private EditRoleModel _roleModel = new EditRoleModel();
-    private List<string> errors = new List<string>();
-    
+    private List<IdentityError> _errors = new List<IdentityError>();
+
     private async void HandleValidSubmit()
     {
-        errors.Clear();
+        _errors.Clear();
         var result = await HttpClient.PostAsJsonAsync("api/roles", _roleModel);
-        if (result.StatusCode == HttpStatusCode.Accepted)
+        if (result.StatusCode == HttpStatusCode.OK)
         {
-            NavigationManager.NavigateTo("/roles");
+            NavigationManager.NavigateTo("roles");
         }
         else
         {
-            errors = await result.Content.ReadFromJsonAsync<List<String>>();
-            StateHasChanged();
+            var errorResult = await result.Content.ReadFromJsonAsync<IEnumerable<IdentityError>>();
+            if (errorResult.Any())
+            {
+                _errors = errorResult.ToList();
+                StateHasChanged();
+            }
         }
     }
+
 }

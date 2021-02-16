@@ -26,10 +26,10 @@ else
                 <td>@role.Id</td>
                 <td>@role.Name</td>
                 <td class="text-center">
-                    <NavLink class="btn btn-sm btn-warning"
-                             href="@($"roles/edit/{role.Id}")">
-                        Edit
-                    </NavLink>
+                    @* <NavLink class="btn btn-sm btn-warning" *@
+                    @*          href="@($"roles/edit/{role.Id}")"> *@
+                    @*     Edit *@
+                    @* </NavLink> *@
                     <button type="button" class="btn btn-sm btn-danger" @onclick="@(() => DeleteRole(role.Id))">
                         Delete
                     </button>

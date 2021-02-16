@@ -39,32 +39,33 @@ namespace MiniInvoicer.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRole([FromBody] EditRoleModel roleModel)
         {
-            var result = await _roleManager.CreateAsync(new IdentityRole(roleName: roleModel.Name));
-            if (result.Succeeded)
+            var role = new IdentityRole(roleModel.Name);
+            var result = await _roleManager.CreateAsync(role);
+            if (!result.Succeeded)
             {
-                return Accepted();
+                return BadRequest(result.Errors);
             }
-            return BadRequest(result.Errors);
+
+            return Ok();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> EditRole([FromBody] EditRoleModel roleModel)
-        {
-            var role = await _roleManager.FindByIdAsync(roleModel.Id);
-            if (role == null)
-            {
-                return NotFound($"Role with id: {roleModel.Id} was not found.");
-            }
-
-            role.Name = roleModel.Name;
-            var result = await _roleManager.UpdateAsync(role);
-            if (result.Succeeded)
-            {
-                return Accepted();
-            }
-
-            return BadRequest(result.Errors);
-        }
+        // [HttpPut]
+        // public async Task<IActionResult> EditRole([FromBody] EditRoleModel roleModel)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return BadRequest();
+        //     }
+        //
+        //     var role = await _roleManager.FindByIdAsync(roleModel.Id);
+        //     var result = await _roleManager.SetRoleNameAsync(role, roleModel.Name);
+        //     if (result == null)
+        //     {
+        //         return BadRequest(new List<IdentityError> {new IdentityError {Description = "Duplicate role name"}});
+        //     }
+        //
+        //     return Ok();
+        // }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRole([FromRoute] string id)
@@ -72,15 +73,16 @@ namespace MiniInvoicer.Server.Controllers
             var role = await _roleManager.FindByIdAsync(id);
             if (role == null)
             {
-                return NotFound($"Role with id: {id} was not found.");
+                return NotFound($"Role with id: {id} not found.");
             }
 
             var result = await _roleManager.DeleteAsync(role);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return Ok($"Role with id: {id} was deleted");
+                return BadRequest(result.Errors);
             }
-            return BadRequest(result.Errors);
+
+            return Ok();
         }
     }
 }
