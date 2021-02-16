@@ -60,3 +60,5 @@ My Official Senior Project --> Mini Invoicer System repository
 * Serverless variation
 * GCP
 * Backend literally re-written in Golang.
+
+### Branching strategy: One branch at a time, after commits --> create tag, merge then delete local and remote
