@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +16,8 @@ namespace MiniInvoicer.Server.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IdentityContext _identityContext;
 
-        public UsersController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IdentityContext identityContext)
+        public UsersController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,
+            IdentityContext identityContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -38,8 +38,10 @@ namespace MiniInvoicer.Server.Controllers
                 {
                     userViewModel.IdentityRole = _roleManager.Roles.FirstOrDefault(r => r.Id == userRole.RoleId);
                 }
+
                 userViewModels.Add(userViewModel);
             }
+
             return await Task.FromResult(userViewModels);
         }
 
@@ -52,68 +54,93 @@ namespace MiniInvoicer.Server.Controllers
                 return NotFound(id);
             }
 
-            return Ok(new EditUserModel {Id = id, Email = user.Email, Username = user.UserName});
+            var editUserModel = new EditUserModel();
+            var userRole = _identityContext.UserRoles.FirstOrDefault(ur => ur.UserId == user.Id);
+            if (userRole != null)
+            {
+                editUserModel.RoleId = _roleManager.Roles.FirstOrDefault(r => r.Id == userRole.RoleId).Id;
+            }
+
+            editUserModel.Id = id;
+            editUserModel.Username = user.UserName;
+            editUserModel.Email = user.Email;
+            return Ok(editUserModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] EditUserModel userModel)
-        {
-            if (ModelState.IsValid)
-            {
-                IdentityUser user = new IdentityUser {UserName = userModel.Username, Email = userModel.Email};
-                IdentityResult result = await _userManager.CreateAsync(user, userModel.Password);
-                if (result.Succeeded)
-                {
-                    return Accepted();
-                }
-
-                if (!result.Succeeded)
-                {
-                    var errors = result.Errors.Select(x => x.Description);
-
-                    return BadRequest(errors);
-                }
-            }
-
-            return BadRequest();
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> EditUser([FromBody] EditUserModel userModel)
+        public async Task<IActionResult> CreateUser([FromBody] EditUserModel editUserModel)
         {
             if (!ModelState.IsValid)
             {
-                Console.WriteLine(ModelState.ErrorCount);
                 return BadRequest();
             }
 
-            IdentityUser user = await _userManager.FindByIdAsync(userModel.Id);
-            if (user != null)
+            IdentityUser user = new IdentityUser {UserName = editUserModel.Username, Email = editUserModel.Email};
+            IdentityResult result = await _userManager.CreateAsync(user, editUserModel.Password);
+            if (!result.Succeeded)
             {
-                user.Email = userModel.Email;
-                user.UserName = userModel.Username;
-                IdentityResult result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    await _userManager.RemovePasswordAsync(user);
-                    result = await _userManager.AddPasswordAsync(user, userModel.Password);
-                    if (result.Succeeded)
-                    {
-                        return Accepted();
-                    }
-
-                    var passwordChangeErrors = result.Errors.Select(x => x.Description);
-
-                    return BadRequest(passwordChangeErrors);
-                }
-                var emailusernameErrors = result.Errors.Select(x => x.Description);
-
-                return BadRequest(emailusernameErrors);
+                return BadRequest(result.Errors);
             }
 
-            return NotFound(userModel.Id);
+            var role = await _roleManager.FindByIdAsync(editUserModel.RoleId);
+            if (role != null)
+            {
+                result = await _userManager.AddToRoleAsync(user, role.Name);
+                if (!result.Succeeded)
+                {
+                    return BadRequest(result.Errors);
+                }
+            }
+
+            return Accepted();
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> EditUser([FromBody] EditUserModel editUserModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Check Model");
+            }
+
+            IdentityUser user = await _userManager.FindByIdAsync(editUserModel.Id);
+            if (user == null)
+            {
+                return NotFound($"User with id: {editUserModel.Id} was not found.");
+            }
+
+            var roleResult = await _roleManager.FindByIdAsync(editUserModel.RoleId);
+            if (roleResult == null)
+            {
+                return BadRequest($"Role with id: {editUserModel.Id} doesn't exist");
+            }
+
+            user.Email = editUserModel.Email;
+            user.UserName = editUserModel.Username;
+
+            IdentityResult result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            var checkIsInRoleResult = await _userManager.IsInRoleAsync(user, roleResult.Name);
+            if (!checkIsInRoleResult)
+            {
+                await _userManager.RemoveFromRolesAsync(user, _roleManager.Roles.Select(r => r.Name));
+                await _userManager.AddToRoleAsync(user, roleResult.Name);
+            }
+
+            await _userManager.RemovePasswordAsync(user);
+            result = await _userManager.AddPasswordAsync(user, editUserModel.Password);
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            return Accepted($"User updated");
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser([FromRoute] string id)
@@ -126,6 +153,7 @@ namespace MiniInvoicer.Server.Controllers
                 {
                     return Ok($"User with id: {id} was deleted.");
                 }
+
                 return BadRequest(result.Errors);
             }
 

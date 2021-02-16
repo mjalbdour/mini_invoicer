@@ -53,19 +53,19 @@
     <NavLink class="btn btn-secondary" href="users">go back</NavLink>
 </EditForm>
 
-@if (_errors.Any())
+@if (_errors.Any() && _errors != null)
 {
     <ul>
         @foreach (var error in _errors)
         {
-            <li>@error</li>
+            <li>@error.Description - @error.Code</li>
         }
     </ul>
 }
 
 @code {
     private EditUserModel _userModel = new EditUserModel();
-    private List<string> _errors = new List<string>();
+    private List<IdentityError> _errors = new List<IdentityError>();
     private List<IdentityRole> _roles;
 
     protected override async Task OnInitializedAsync()
@@ -83,8 +83,13 @@
         }
         else
         {
-            _errors = await result.Content.ReadFromJsonAsync<List<String>>();
-            StateHasChanged();
+            var errorResult = await result.Content.ReadFromJsonAsync<IEnumerable<IdentityError>>();
+            if (errorResult.Any())
+            {
+                _errors = errorResult.ToList();
+                StateHasChanged();
+            }
         }
     }
+
 }
