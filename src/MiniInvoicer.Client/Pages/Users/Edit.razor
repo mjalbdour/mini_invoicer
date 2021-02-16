@@ -53,7 +53,7 @@ else
             else
             {
                 <InputSelect @bind-Value="_userModel.RoleId" class="form-control">
-                    <option value="">--Select Role--</option>
+                    <option value="none">none</option>
                     @foreach (var role in _roles)
                     {
                         <option value="@role.Id">@role.Name</option>
@@ -125,5 +125,4 @@ else
             StateHasChanged();
         }
     }
-
 }

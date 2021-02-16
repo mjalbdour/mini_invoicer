@@ -36,9 +36,9 @@
         else
         {
             <InputSelect @bind-Value="_userModel.RoleId" class="form-control">
+                <option value="none">none</option>
                 @foreach (var role in _roles)
                 {
-                    <option value="">--Select Role--</option>
                     <option value="@role.Id">@role.Name</option>
                 }
             </InputSelect>
@@ -53,10 +53,10 @@
     <NavLink class="btn btn-secondary" href="users">go back</NavLink>
 </EditForm>
 
-@if (errors.Any())
+@if (_errors.Any())
 {
     <ul>
-        @foreach (var error in errors)
+        @foreach (var error in _errors)
         {
             <li>@error</li>
         }
@@ -65,7 +65,7 @@
 
 @code {
     private EditUserModel _userModel = new EditUserModel();
-    private List<string> errors = new List<string>();
+    private List<string> _errors = new List<string>();
     private List<IdentityRole> _roles;
 
     protected override async Task OnInitializedAsync()
@@ -75,17 +75,16 @@
 
     private async void HandleValidSubmit()
     {
-        errors.Clear();
+        _errors.Clear();
         var result = await HttpClient.PostAsJsonAsync("api/users", _userModel);
         if (result.StatusCode == HttpStatusCode.Accepted)
         {
-            NavigationManager.NavigateTo("/users");
+            NavigationManager.NavigateTo("users");
         }
         else
         {
-            errors = await result.Content.ReadFromJsonAsync<List<String>>();
+            _errors = await result.Content.ReadFromJsonAsync<List<String>>();
             StateHasChanged();
         }
     }
-
 }
