@@ -56,7 +56,7 @@ else
 }
 <NavLink class="btn btn-primary" href="users/create">Create</NavLink>
 
-@if (string.IsNullOrWhiteSpace(_deleteMessage))
+@if (!string.IsNullOrWhiteSpace(_deleteMessage))
 {
     <h6>@_deleteMessage</h6>
 }
