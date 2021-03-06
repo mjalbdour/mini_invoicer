@@ -9,6 +9,10 @@ class FirebaseAuthenticationService {
   Future<String> signInWithEmailAndPassword(
       {String email, String password}) async {
     try {
+      // REF: When enabling email sign in, create a user with
+      // these following credentials:
+      // emai:      slick@dope.com
+      // password:  Supercoolbeans123!
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
       return 'Signed In';
