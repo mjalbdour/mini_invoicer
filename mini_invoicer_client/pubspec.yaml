@@ -12,8 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-
+  # iOS related
   cupertino_icons: ^1.0.2
+
+  # Essential for FlutterFire plugins
+  firebase_core: ^1.0.0
+
+  # Authentication with Firebase
+  firebase_auth: ^1.0.0
 
 dev_dependencies:
   flutter_test:
