@@ -22,10 +22,10 @@ class ProductPricing {
         id: id,
         value: json['value'] as double,
         salesTax: json['salesTax'] as int,
-        description: json['description'],
-        productId: json['productId'],
-        pricingId: json['pricingId'],
-        currencyId: json['currencyId'],
+        description: json['description'] as String,
+        productId: json['productId'] as String,
+        pricingId: json['pricingId'] as String,
+        currencyId: json['currencyId'] as String,
       );
 
   Map<String, dynamic> toJson() => {
