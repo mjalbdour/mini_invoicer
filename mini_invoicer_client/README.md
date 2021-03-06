@@ -1,16 +1,25 @@
-# mini_invoicer_client
+# Mini Invoicer Client Application
+The *Client* & *UI* interactivity Component/Layer of the Mini Invoicer *System*
 
-A new Flutter project.
+## Overview
+### Architecture ~ *Clean*
+* Level 0: *Core* 
+* Level 1.1: *App*
+* Level 1.2: *Infrastructure*
+* Level 2: *UI*
 
-## Getting Started
+### Doc
+* ...*Coming Soon*
 
-This project is a starting point for a Flutter application.
+### Main Technology
+*Flutter* SDK <3
+### Support Technologies
+* Google Firebase Cloud Firestore
+* Google Firebase Authentication
+* Google Cloud Storage
+* ...*Coming Soon*
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Development Tools/Env
+* VS Code ^1.54.1 - Extentions: Flutter/Dart | Dracula Official | JetBrains Mono
+* Android Emulator - Pixel 3a API 30 x86 | *...Coming Soon*
+* Ubuntu 20.10
