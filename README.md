@@ -7,7 +7,8 @@ You want to generate invoices or receipts to your customers where payments are n
 ## Rough Sketch - Data Models
 * https://drive.google.com/file/d/1QFft3HzL2Jleizu2Xy1ONcVks4vP17Fj/view?usp=sharing
 
-### Documentation - any related docs coming soon
+### Documentation & any related docs coming soon
+### *Screenshots* & *Videos* coming soon
 
 ## Tech Stack
 * Flutter - Dart
