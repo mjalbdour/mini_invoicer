@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_client/infrastructure/services/auth/firebase_auth_service.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatelessWidget {
   // ROUTE
@@ -48,13 +50,20 @@ class SignInScreen extends StatelessWidget {
                     child: Text("reset"),
                   ),
                   ElevatedButton.icon(
-                    onPressed: () => null,
+                    onPressed: () => {
+                      context
+                          .read<FirebaseAuthenticationService>()
+                          .signInWithEmailAndPassword(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          ),
+                    },
                     icon: Icon(Icons.arrow_forward_rounded),
                     label: Text("next"),
                   ),
                 ],
               ),
-              TextButton(onPressed: () => null, child: Text("Create Account")),
+              // TextButton(onPressed: () => null, child: Text("Create Account")),
             ],
           ),
         ),
