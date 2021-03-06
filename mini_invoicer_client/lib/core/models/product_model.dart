@@ -1,13 +1,13 @@
 class Product {
-  String id;
-  String name;
-  String description;
-  int weight;
+  final String id;
+  final String name;
+  final String description;
+  final int weight;
 
-  String brandId;
-  String vendorId;
+  final String brandId;
+  final String vendorId;
 
-  Product(
+  const Product(
       {this.id,
       this.name,
       this.description,
