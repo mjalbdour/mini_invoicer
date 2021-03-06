@@ -16,8 +16,8 @@ class PricingType {
         'description': this.description,
       };
 
-  Map<String, dynamic> toJsonWithId(String id) => {
-        id: id,
+  Map<String, dynamic> toJsonWithId() => {
+        id: this.id,
         'name': this.name,
         'description': this.description,
       };

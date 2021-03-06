@@ -24,7 +24,7 @@ class Currency {
         'sign': this.sign,
       };
 
-  Map<String, dynamic> toJsonWithId(String id) => {
+  Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'name': this.name,
         'shorthand': this.shorthand,

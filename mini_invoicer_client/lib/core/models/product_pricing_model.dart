@@ -37,8 +37,8 @@ class ProductPricing {
         'currencyId': this.currencyId,
       };
 
-  Map<String, dynamic> toJsonWithId(String id) => {
-        'id': id,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
         'value': this.value,
         'salesTax': this.salesTax,
         'description': this.description,
