@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mini_invoicer_client/ui/screens/auth/sign_in_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/home.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,13 +13,9 @@ class AuthWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
     if (firebaseUser != null) {
-      return Center(
-        child: Text("Signed in"),
-      );
-      //TODO: return HomeScreen
+      return HomeScreen();
     } else {
-      return Center(child: Text("Not signed in"));
-      // TODO: return SignInScreen
+      return SignInScreen();
     }
   }
 }
