@@ -4,6 +4,7 @@ class Customer {
   final String description;
   final String addressId;
   final String accountId;
+  final String inventoryId;
   final String pricingTypeId;
 
   const Customer(
@@ -12,6 +13,7 @@ class Customer {
       this.description,
       this.addressId,
       this.accountId,
+      this.inventoryId,
       this.pricingTypeId});
 
   factory Customer.fromJson(String id, Map<String, dynamic> json) => Customer(
@@ -20,6 +22,7 @@ class Customer {
         description: json['description'] as String,
         addressId: json['addressId'] as String,
         accountId: json['accountId'] as String,
+        inventoryId: json['inventoryId'] as String,
         pricingTypeId: json['pricingTypeId'] as String,
       );
 
@@ -28,6 +31,7 @@ class Customer {
         'description': this.description,
         'addressId': this.addressId,
         'accountId': this.accountId,
+        'inventoryId': this.inventoryId,
         'pricingTypeId': this.pricingTypeId,
       };
 
@@ -37,6 +41,7 @@ class Customer {
         'description': this.description,
         'addressId': this.addressId,
         'accountId': this.accountId,
+        'inventoryId': this.inventoryId,
         'pricingTypeId': this.pricingTypeId,
       };
 }
