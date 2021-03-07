@@ -3,7 +3,7 @@ class Product {
   final String name;
   final String description;
   final int weight;
-
+  final bool requiresRefrigeration;
   final String brandId;
   final String vendorId;
 
@@ -12,6 +12,7 @@ class Product {
       this.name,
       this.description,
       this.weight,
+      this.requiresRefrigeration,
       this.brandId,
       this.vendorId});
 
@@ -21,6 +22,7 @@ class Product {
       name: json['name'] as String,
       description: json['description'] as String,
       weight: json['weight'] as int,
+      requiresRefrigeration: json['requiresRefrigeration'],
       brandId: json['brandId'] as String,
       vendorId: json['vendorId'] as String,
     );
@@ -30,6 +32,7 @@ class Product {
         'name': this.name,
         'description': this.description,
         'weight': this.weight,
+        'requiresRefrigeration': this.requiresRefrigeration,
         'brandId': this.brandId,
         'vendorId': this.vendorId,
       };
@@ -38,6 +41,7 @@ class Product {
         'name': this.name,
         'description': this.description,
         'weight': this.weight,
+        'requiresRefrigeration': this.requiresRefrigeration,
         'brandId': this.brandId,
         'vendorId': this.vendorId,
       };
