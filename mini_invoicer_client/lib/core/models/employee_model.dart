@@ -1,5 +1,6 @@
 class Employee {
   final String id;
+  final String uid;
   final Map<String, String> name;
   final String accountId;
   final String vendorId;
@@ -8,6 +9,7 @@ class Employee {
 
   const Employee({
     this.id,
+    this.uid,
     this.name,
     this.accountId,
     this.vendorId,
@@ -17,6 +19,7 @@ class Employee {
 
   factory Employee.fromJson(String id, Map<String, dynamic> json) => Employee(
         id: id,
+        uid: json['uid'] as String,
         name: json['name'] as Map<String, String>,
         accountId: json['accountId'] as String,
         vendorId: json['vendorId'] as String,
@@ -25,6 +28,7 @@ class Employee {
       );
 
   Map<String, dynamic> toJson() => {
+        'uid': this.uid,
         'name': this.name,
         'accountId': this.accountId,
         'vendorId': this.vendorId,
@@ -34,6 +38,7 @@ class Employee {
 
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
+        'uid': this.uid,
         'name': this.name,
         'accountId': this.accountId,
         'vendorId': this.vendorId,
