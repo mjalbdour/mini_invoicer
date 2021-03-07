@@ -2,6 +2,7 @@ class Employee {
   final String id;
   final String uid;
   final Map<String, String> name;
+  final String employeeTypeId;
   final String accountId;
   final String vendorId;
   final String inventoryId;
@@ -11,6 +12,7 @@ class Employee {
     this.id,
     this.uid,
     this.name,
+    this.employeeTypeId,
     this.accountId,
     this.vendorId,
     this.inventoryId,
@@ -21,6 +23,7 @@ class Employee {
         id: id,
         uid: json['uid'] as String,
         name: json['name'] as Map<String, String>,
+        employeeTypeId: json['employeeTypeId'] as String,
         accountId: json['accountId'] as String,
         vendorId: json['vendorId'] as String,
         inventoryId: json['inventoryId'] as String,
@@ -30,6 +33,7 @@ class Employee {
   Map<String, dynamic> toJson() => {
         'uid': this.uid,
         'name': this.name,
+        'employeeTypeId': this.employeeTypeId,
         'accountId': this.accountId,
         'vendorId': this.vendorId,
         'inventoryId': this.inventoryId,
@@ -40,6 +44,7 @@ class Employee {
         'id': this.id,
         'uid': this.uid,
         'name': this.name,
+        'employeeTypeId': this.employeeTypeId,
         'accountId': this.accountId,
         'vendorId': this.vendorId,
         'inventoryId': this.inventoryId,
