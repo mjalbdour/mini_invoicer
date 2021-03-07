@@ -3,7 +3,7 @@ class ProductTransferType {
   final String name;
   final String description;
 
-  ProductTransferType({
+  const ProductTransferType({
     this.id,
     this.name,
     this.description,

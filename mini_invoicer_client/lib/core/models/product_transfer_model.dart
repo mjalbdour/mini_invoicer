@@ -10,7 +10,7 @@ class ProductTransfer {
   final String productTransferTypeId;
   final String sourceProductTransferId;
 
-  ProductTransfer({
+  const ProductTransfer({
     this.id,
     this.value,
     this.description,
