@@ -22,7 +22,7 @@ class Product {
       name: json['name'] as String,
       description: json['description'] as String,
       weight: json['weight'] as int,
-      requiresRefrigeration: json['requiresRefrigeration'],
+      requiresRefrigeration: json['requiresRefrigeration'] as bool,
       brandId: json['brandId'] as String,
       vendorId: json['vendorId'] as String,
     );
