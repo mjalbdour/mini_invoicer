@@ -16,14 +16,14 @@ class ProductTransferType {
         description: json['description'] as String,
       );
 
-  Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'description': this.description,
+  static Map<String, dynamic> toJson(ProductTransferType productTransferType) => {
+        'name': productTransferType.name,
+        'description': productTransferType.description,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
+  static Map<String, dynamic> toJsonWithId(ProductTransferType productTransferType) => {
+        'id': productTransferType.id,
+        'name': productTransferType.name,
+        'description': productTransferType.description,
       };
 }

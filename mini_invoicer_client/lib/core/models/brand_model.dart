@@ -13,16 +13,16 @@ class Brand {
         country: ['country'] as String,
       );
 
-  Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'description': this.description,
-        'country': this.country,
+  static Map<String, dynamic> toJson(Brand brand) => {
+        'name': brand.name,
+        'description': brand.description,
+        'country': brand.country,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
-        'country': this.country,
+  static Map<String, dynamic> toJsonWithId(Brand brand) => {
+        'id': brand.id,
+        'name': brand.name,
+        'description': brand.description,
+        'country': brand.country,
       };
 }

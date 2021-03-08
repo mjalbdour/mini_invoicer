@@ -34,26 +34,26 @@ class ProductTransfer {
         sourceProductTransferId: json['sourceProductTransferId'] as String,
       );
 
-  Map<String, dynamic> toJson() => {
-        'value': this.value,
-        'description': this.description,
-        'timestamp': this.timestamp,
-        'productId': this.productId,
-        'sourceInventoryId': this.sourceInventoryId,
-        'destinationInventoryId': this.destinationInventoryId,
-        'productTransferTypeId': this.productTransferTypeId,
-        'sourceProductTransferId': this.sourceProductTransferId,
+  static Map<String, dynamic> toJson(ProductTransfer productTransfer) => {
+        'value': productTransfer.value,
+        'description': productTransfer.description,
+        'timestamp': productTransfer.timestamp,
+        'productId': productTransfer.productId,
+        'sourceInventoryId': productTransfer.sourceInventoryId,
+        'destinationInventoryId': productTransfer.destinationInventoryId,
+        'productTransferTypeId': productTransfer.productTransferTypeId,
+        'sourceProductTransferId': productTransfer.sourceProductTransferId,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'value': this.value,
-        'description': this.description,
-        'timestamp': this.timestamp,
-        'productId': this.productId,
-        'sourceInventoryId': this.sourceInventoryId,
-        'destinationInventoryId': this.destinationInventoryId,
-        'productTransferTypeId': this.productTransferTypeId,
-        'sourceProductTransferId': this.sourceProductTransferId,
+  static Map<String, dynamic> toJsonWithId(ProductTransfer productTransfer) => {
+        'id': productTransfer.id,
+        'value': productTransfer.value,
+        'description': productTransfer.description,
+        'timestamp': productTransfer.timestamp,
+        'productId': productTransfer.productId,
+        'sourceInventoryId': productTransfer.sourceInventoryId,
+        'destinationInventoryId': productTransfer.destinationInventoryId,
+        'productTransferTypeId': productTransfer.productTransferTypeId,
+        'sourceProductTransferId': productTransfer.sourceProductTransferId,
       };
 }

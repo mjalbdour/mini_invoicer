@@ -30,24 +30,24 @@ class Address {
         ownerId: json['ownerId'] as String,
       );
 
-  Map<String, dynamic> toJson() => {
-        'street': this.street,
-        'building': this.building,
-        'area': this.area,
-        'city': this.city,
-        'country': this.country,
-        'postalCode': this.postalCode,
-        'ownerId': this.ownerId,
+  static Map<String, dynamic> toJson(Address address) => {
+        'street': address.street,
+        'building': address.building,
+        'area': address.area,
+        'city': address.city,
+        'country': address.country,
+        'postalCode': address.postalCode,
+        'ownerId': address.ownerId,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'street': this.street,
-        'building': this.building,
-        'area': this.area,
-        'city': this.city,
-        'country': this.country,
-        'postalCode': this.postalCode,
-        'ownerId': this.ownerId,
+  static Map<String, dynamic> toJsonWithId(Address address) => {
+        'id': address.id,
+        'street': address.street,
+        'building': address.building,
+        'area': address.area,
+        'city': address.city,
+        'country': address.country,
+        'postalCode': address.postalCode,
+        'ownerId': address.ownerId,
       };
 }

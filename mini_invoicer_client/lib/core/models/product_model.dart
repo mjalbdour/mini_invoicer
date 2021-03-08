@@ -28,21 +28,21 @@ class Product {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'description': this.description,
-        'weight': this.weight,
-        'requiresRefrigeration': this.requiresRefrigeration,
-        'brandId': this.brandId,
-        'vendorId': this.vendorId,
+  static Map<String, dynamic> toJson(Product product) => {
+        'name': product.name,
+        'description': product.description,
+        'weight': product.weight,
+        'requiresRefrigeration': product.requiresRefrigeration,
+        'brandId': product.brandId,
+        'vendorId': product.vendorId,
       };
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
-        'weight': this.weight,
-        'requiresRefrigeration': this.requiresRefrigeration,
-        'brandId': this.brandId,
-        'vendorId': this.vendorId,
+  static Map<String, dynamic> toJsonWithId(Product product) => {
+        'id': product.id,
+        'name': product.name,
+        'description': product.description,
+        'weight': product.weight,
+        'requiresRefrigeration': product.requiresRefrigeration,
+        'brandId': product.brandId,
+        'vendorId': product.vendorId,
       };
 }

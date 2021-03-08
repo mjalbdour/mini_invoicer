@@ -27,22 +27,24 @@ class Image {
         ownerId: json['ownerId'] as String,
       );
 
-  Map<String, dynamic> toJson() => {
-        'title': this.title,
-        'description': this.description,
-        'url': this.url,
-        'sensitive': this.sensitive,
-        // timestamp is done server-side
-        'ownerId': this.ownerId,
+  static Map<String, dynamic> toJson(Image image) => {
+        'title': image.title,
+        'description': image.description,
+        'url': image.url,
+        'sensitive': image.sensitive,
+        // timestamp should be done server-side
+        'timestamp': DateTime.now().toIso8601String(),
+        'ownerId': image.ownerId,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'title': this.title,
-        'description': this.description,
-        'url': this.url,
-        'sensitive': this.sensitive,
+  static Map<String, dynamic> toJsonWithId(Image image) => {
+        'id': image.id,
+        'title': image.title,
+        'description': image.description,
+        'url': image.url,
+        'sensitive': image.sensitive,
         // timestamp is done server-side
-        'ownerId': this.ownerId,
+        'timestamp': DateTime.now().toIso8601String(),
+        'ownerId': image.ownerId,
       };
 }

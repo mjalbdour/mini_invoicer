@@ -14,16 +14,16 @@ class InventoryType {
         refrigerated: json['refrigerated'] as bool,
       );
 
-  Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'description': this.description,
-        'refrigerated': this.refrigerated,
+  static Map<String, dynamic> toJson(InventoryType inventoryType) => {
+        'name': inventoryType.name,
+        'description': inventoryType.description,
+        'refrigerated': inventoryType.refrigerated,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
-        'refrigerated': this.refrigerated,
+  static Map<String, dynamic> toJsonWithId(InventoryType inventoryType) => {
+        'id': inventoryType.id,
+        'name': inventoryType.name,
+        'description': inventoryType.description,
+        'refrigerated': inventoryType.refrigerated,
       };
 }

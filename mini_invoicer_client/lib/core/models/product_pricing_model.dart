@@ -28,22 +28,22 @@ class ProductPricing {
         currencyId: json['currencyId'] as String,
       );
 
-  Map<String, dynamic> toJson() => {
-        'value': this.value,
-        'salesTax': this.salesTax,
-        'description': this.description,
-        'productId': this.productId,
-        'pricingId': this.pricingId,
-        'currencyId': this.currencyId,
+  static Map<String, dynamic> toJson(ProductPricing productPricing) => {
+        'value': productPricing.value,
+        'salesTax': productPricing.salesTax,
+        'description': productPricing.description,
+        'productId': productPricing.productId,
+        'pricingId': productPricing.pricingId,
+        'currencyId': productPricing.currencyId,
       };
 
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'value': this.value,
-        'salesTax': this.salesTax,
-        'description': this.description,
-        'productId': this.productId,
-        'pricingId': this.pricingId,
-        'currencyId': this.currencyId,
+  static Map<String, dynamic> toJsonWithId(ProductPricing productPricing) => {
+        'id': productPricing.id,
+        'value': productPricing.value,
+        'salesTax': productPricing.salesTax,
+        'description': productPricing.description,
+        'productId': productPricing.productId,
+        'pricingId': productPricing.pricingId,
+        'currencyId': productPricing.currencyId,
       };
 }
