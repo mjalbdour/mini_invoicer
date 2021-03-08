@@ -1,9 +1,9 @@
 class PricingType {
-  final String id;
-  final String name;
-  final String description;
+  String id;
+  String name;
+  String description;
 
-  const PricingType({this.id, this.name, this.description});
+  PricingType({this.id, this.name, this.description});
 
   factory PricingType.fromJson(String id, Map<String, dynamic> json) =>
       PricingType(

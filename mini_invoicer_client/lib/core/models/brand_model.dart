@@ -1,10 +1,10 @@
 class Brand {
-  final String id;
-  final String name;
-  final String description;
-  final String country;
+  String id;
+  String name;
+  String description;
+  String country;
 
-  const Brand({this.id, this.name, this.description, this.country});
+  Brand({this.id, this.name, this.description, this.country});
 
   factory Brand.fromJson(String id, Map<String, dynamic> json) => Brand(
         id: id,

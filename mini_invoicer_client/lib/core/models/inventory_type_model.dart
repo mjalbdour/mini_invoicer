@@ -1,11 +1,10 @@
 class InventoryType {
-  final String id;
-  final String name;
-  final String description;
-  final bool refrigerated;
+  String id;
+  String name;
+  String description;
+  bool refrigerated;
 
-  const InventoryType(
-      {this.id, this.name, this.description, this.refrigerated});
+  InventoryType({this.id, this.name, this.description, this.refrigerated});
 
   factory InventoryType.fromJson(String id, Map<String, dynamic> json) =>
       InventoryType(

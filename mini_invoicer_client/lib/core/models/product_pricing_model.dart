@@ -1,13 +1,13 @@
 class ProductPricing {
-  final String id;
-  final double value;
-  final int salesTax;
-  final String description;
-  final String productId;
-  final String pricingId;
-  final String currencyId;
+  String id;
+  double value;
+  int salesTax;
+  String description;
+  String productId;
+  String pricingId;
+  String currencyId;
 
-  const ProductPricing({
+  ProductPricing({
     this.id,
     this.value,
     this.salesTax,

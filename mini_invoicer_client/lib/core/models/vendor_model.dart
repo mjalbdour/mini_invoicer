@@ -1,12 +1,12 @@
 class Vendor {
-  final String id;
-  final String name;
-  final String description;
-  final String taxNumber;
-  final String addressId;
-  final String accountId;
+  String id;
+  String name;
+  String description;
+  String taxNumber;
+  String addressId;
+  String accountId;
 
-  const Vendor({
+  Vendor({
     this.id,
     this.name,
     this.description,

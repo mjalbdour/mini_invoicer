@@ -1,13 +1,13 @@
 class Customer {
-  final String id;
-  final String name;
-  final String description;
-  final String addressId;
-  final String accountId;
-  final String inventoryId;
-  final String pricingTypeId;
+  String id;
+  String name;
+  String description;
+  String addressId;
+  String accountId;
+  String inventoryId;
+  String pricingTypeId;
 
-  const Customer(
+  Customer(
       {this.id,
       this.name,
       this.description,

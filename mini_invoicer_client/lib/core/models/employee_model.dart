@@ -1,14 +1,14 @@
 class Employee {
-  final String id;
-  final String uid;
-  final Map<String, String> name;
-  final String employeeTypeId;
-  final String accountId;
-  final String vendorId;
-  final String inventoryId;
-  final String addressId;
+  String id;
+  String uid;
+  Map<String, String> name;
+  String employeeTypeId;
+  String accountId;
+  String vendorId;
+  String inventoryId;
+  String addressId;
 
-  const Employee({
+  Employee({
     this.id,
     this.uid,
     this.name,

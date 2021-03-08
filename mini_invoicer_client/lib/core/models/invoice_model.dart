@@ -1,15 +1,15 @@
 class Invoice {
-  final String id;
-  final double value;
-  final Map<String, dynamic> serialNumber;
-  final DateTime timestamp;
-  final String vendorId;
-  final String employeeId;
-  final String customerId;
-  final String currencyId;
-  final String paymentTypeId;
+  String id;
+  double value;
+  Map<String, dynamic> serialNumber;
+  DateTime timestamp;
+  String vendorId;
+  String employeeId;
+  String customerId;
+  String currencyId;
+  String paymentTypeId;
 
-  const Invoice({
+  Invoice({
     this.id,
     this.value,
     this.serialNumber,

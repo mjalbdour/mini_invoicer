@@ -1,11 +1,11 @@
 class Inventory {
-  final String id;
-  final String name;
-  final String ownerId;
-  final DateTime lastUpdated;
-  final String inventoryTypeId;
+  String id;
+  String name;
+  String ownerId;
+  DateTime lastUpdated;
+  String inventoryTypeId;
 
-  const Inventory({
+  Inventory({
     this.id,
     this.name,
     this.lastUpdated,

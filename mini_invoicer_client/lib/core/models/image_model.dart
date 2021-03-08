@@ -1,13 +1,13 @@
 class Image {
-  final String id;
-  final String title;
-  final String description;
-  final String url;
-  final bool sensitive;
-  final DateTime timestamp;
-  final String ownerId;
+  String id;
+  String title;
+  String description;
+  String url;
+  bool sensitive;
+  DateTime timestamp;
+  String ownerId;
 
-  const Image({
+  Image({
     this.id,
     this.title,
     this.description,

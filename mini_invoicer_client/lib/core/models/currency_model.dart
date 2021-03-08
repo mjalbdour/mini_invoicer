@@ -1,10 +1,10 @@
 class Currency {
-  final String id;
-  final String name;
-  final String shorthand;
-  final String sign;
+  String id;
+  String name;
+  String shorthand;
+  String sign;
 
-  const Currency({
+  Currency({
     this.id,
     this.name,
     this.shorthand,

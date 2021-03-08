@@ -1,9 +1,9 @@
 class ProductTransferType {
-  final String id;
-  final String name;
-  final String description;
+  String id;
+  String name;
+  String description;
 
-  const ProductTransferType({
+  ProductTransferType({
     this.id,
     this.name,
     this.description,

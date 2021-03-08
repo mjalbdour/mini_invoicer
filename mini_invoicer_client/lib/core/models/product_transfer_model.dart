@@ -1,16 +1,15 @@
 class ProductTransfer {
-  final String id;
-  final int value;
-  final String description;
-  final DateTime timestamp;
+  String id;
+  int value;
+  String description;
+  DateTime timestamp;
+  String productId;
+  String sourceInventoryId;
+  String destinationInventoryId;
+  String productTransferTypeId;
+  String sourceProductTransferId;
 
-  final String productId;
-  final String sourceInventoryId;
-  final String destinationInventoryId;
-  final String productTransferTypeId;
-  final String sourceProductTransferId;
-
-  const ProductTransfer({
+  ProductTransfer({
     this.id,
     this.value,
     this.description,

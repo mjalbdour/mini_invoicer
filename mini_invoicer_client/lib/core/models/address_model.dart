@@ -1,14 +1,14 @@
 class Address {
-  final String id;
-  final String street;
-  final String building;
-  final String area;
-  final String city;
-  final String country;
-  final String postalCode;
-  final String ownerId;
+  String id;
+  String street;
+  String building;
+  String area;
+  String city;
+  String country;
+  String postalCode;
+  String ownerId;
 
-  const Address({
+  Address({
     this.id,
     this.street,
     this.building,
