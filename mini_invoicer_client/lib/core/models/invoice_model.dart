@@ -3,6 +3,7 @@ class Invoice {
   double value;
   Map<String, dynamic> serialNumber;
   bool aborted;
+  int timesPrinted;
   DateTime timestamp;
   String vendorId;
   String employeeId;
@@ -16,6 +17,7 @@ class Invoice {
     this.value,
     this.serialNumber,
     this.aborted,
+    this.timesPrinted,
     this.timestamp,
     this.vendorId,
     this.employeeId,
@@ -30,6 +32,7 @@ class Invoice {
         value: json['value'] as double,
         serialNumber: json['serialNumber'] as Map<String, dynamic>,
         aborted: json['aborted'] as bool,
+        timesPrinted: json['timesPrinted'] as int,
         timestamp: json['timestamp'].toDate() as DateTime,
         vendorId: json['vendorId'] as String,
         employeeId: json['employeeId'] as String,
@@ -42,6 +45,7 @@ class Invoice {
         'value': this.value,
         'serialNumber': this.serialNumber,
         'aborted': this.aborted,
+        'timesPrinted': this.timesPrinted,
         'timestamp': this.timestamp,
         'vendorId': this.vendorId,
         'employeeId': this.employeeId,
@@ -55,6 +59,7 @@ class Invoice {
         'value': this.value,
         'serialNumber': this.serialNumber,
         'aborted': this.aborted,
+        'timesPrinted': this.timesPrinted,
         'timestamp': this.timestamp,
         'vendorId': this.vendorId,
         'employeeId': this.employeeId,
