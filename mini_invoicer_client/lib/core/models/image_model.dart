@@ -42,7 +42,6 @@ class Image {
         'description': this.description,
         'url': this.url,
         'sensitive': this.sensitive,
-        // timestamp is done server-side
         'timestamp': this.timestamp,
         'ownerId': this.ownerId,
       };

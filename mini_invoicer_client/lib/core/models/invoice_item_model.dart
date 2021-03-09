@@ -40,6 +40,7 @@ class InvoiceItem {
         'productId': this.productId,
         'productPricingId': this.productPricingId,
       };
+
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'quantity': this.quantity,

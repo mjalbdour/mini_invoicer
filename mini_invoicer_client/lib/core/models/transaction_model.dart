@@ -32,6 +32,7 @@ class Transaction {
         'receiverAccountId': this.receiverAccountId,
         'currencyId': this.currencyId,
       };
+
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'value': this.value,

@@ -4,7 +4,12 @@ class InventoryType {
   String description;
   bool refrigerated;
 
-  InventoryType({this.id, this.name, this.description, this.refrigerated});
+  InventoryType({
+    this.id,
+    this.name,
+    this.description,
+    this.refrigerated,
+  });
 
   factory InventoryType.fromJson(String id, Map<String, dynamic> json) =>
       InventoryType(

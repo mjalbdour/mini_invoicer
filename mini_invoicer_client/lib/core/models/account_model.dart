@@ -11,13 +11,6 @@ class Account {
     this.ownerId,
   });
 
-/*
-`'id'`
-`'balance'`
-`'lastUpdated'`
-`'ownerId'`
-*/
-
   factory Account.fromJson(String id, Map<String, dynamic> json) => Account(
         id: id,
         balance: json['balance'] as double,
@@ -30,6 +23,7 @@ class Account {
         'lastUpdated': this.lastUpdated,
         'ownerId': this.ownerId,
       };
+
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'balance': this.balance,

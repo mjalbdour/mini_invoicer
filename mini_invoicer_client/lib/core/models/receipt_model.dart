@@ -35,6 +35,7 @@ class Receipt {
         'currencyId': this.currencyId,
         'paymentTypeId': this.paymentTypeId,
       };
+
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'value': this.value,

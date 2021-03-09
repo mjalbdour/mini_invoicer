@@ -7,14 +7,15 @@ class Customer {
   String inventoryId;
   String pricingTypeId;
 
-  Customer(
-      {this.id,
-      this.name,
-      this.description,
-      this.addressId,
-      this.accountId,
-      this.inventoryId,
-      this.pricingTypeId});
+  Customer({
+    this.id,
+    this.name,
+    this.description,
+    this.addressId,
+    this.accountId,
+    this.inventoryId,
+    this.pricingTypeId,
+  });
 
   factory Customer.fromJson(String id, Map<String, dynamic> json) => Customer(
         id: id,

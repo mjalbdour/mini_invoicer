@@ -3,7 +3,11 @@ class PricingType {
   String name;
   String description;
 
-  PricingType({this.id, this.name, this.description});
+  PricingType({
+    this.id,
+    this.name,
+    this.description,
+  });
 
   factory PricingType.fromJson(String id, Map<String, dynamic> json) =>
       PricingType(

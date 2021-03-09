@@ -7,14 +7,15 @@ class Product {
   String brandId;
   String vendorId;
 
-  Product(
-      {this.id,
-      this.name,
-      this.description,
-      this.weight,
-      this.requiresRefrigeration,
-      this.brandId,
-      this.vendorId});
+  Product({
+    this.id,
+    this.name,
+    this.description,
+    this.weight,
+    this.requiresRefrigeration,
+    this.brandId,
+    this.vendorId,
+  });
 
   factory Product.fromJson(String id, Map<String, dynamic> json) {
     return Product(
@@ -36,6 +37,7 @@ class Product {
         'brandId': this.brandId,
         'vendorId': this.vendorId,
       };
+
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'name': this.name,
