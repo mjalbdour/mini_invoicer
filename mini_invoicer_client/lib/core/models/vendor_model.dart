@@ -24,20 +24,20 @@ class Vendor {
         accountId: json['accountId'] as String,
       );
 
-  static Map<String, dynamic> toJson(Vendor vendor) => {
-        'name': vendor.name,
-        'description': vendor.description,
-        'taxNumber': vendor.taxNumber,
-        'addressId': vendor.addressId,
-        'accountId': vendor.accountId,
+  Map<String, dynamic> toJson() => {
+        'name': this.name,
+        'description': this.description,
+        'taxNumber': this.taxNumber,
+        'addressId': this.addressId,
+        'accountId': this.accountId,
       };
 
-  static Map<String, dynamic> toJsonWithId(Vendor vendor) => {
-        'id': vendor.id,
-        'name': vendor.name,
-        'description': vendor.description,
-        'taxNumber': vendor.taxNumber,
-        'addressId': vendor.addressId,
-        'accountId': vendor.accountId,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'name': this.name,
+        'description': this.description,
+        'taxNumber': this.taxNumber,
+        'addressId': this.addressId,
+        'accountId': this.accountId,
       };
 }

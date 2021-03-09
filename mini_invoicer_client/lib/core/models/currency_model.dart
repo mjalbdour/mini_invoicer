@@ -18,16 +18,16 @@ class Currency {
         sign: json['sign'] as String,
       );
 
-  static Map<String, dynamic> toJson(Currency currency) => {
-        'name': currency.name,
-        'shorthand': currency.shorthand,
-        'sign': currency.sign,
+  Map<String, dynamic> toJson() => {
+        'name': this.name,
+        'shorthand': this.shorthand,
+        'sign': this.sign,
       };
 
-  static Map<String, dynamic> toJsonWithId(Currency currency) => {
-        'id': currency.id,
-        'name': currency.name,
-        'shorthand': currency.shorthand,
-        'sign': currency.sign,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'name': this.name,
+        'shorthand': this.shorthand,
+        'sign': this.sign,
       };
 }

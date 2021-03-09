@@ -21,18 +21,18 @@ class Inventory {
         inventoryTypeId: json['inventoryTypeId'] as String,
       );
 
-  static Map<String, dynamic> toJson(Inventory inventory) => {
-        'name': inventory.name,
-        'lastUpdated': inventory.lastUpdated,
-        'ownerId': inventory.ownerId,
-        'inventoryTypeId': inventory.inventoryTypeId,
+  Map<String, dynamic> toJson() => {
+        'name': this.name,
+        'lastUpdated': this.lastUpdated,
+        'ownerId': this.ownerId,
+        'inventoryTypeId': this.inventoryTypeId,
       };
 
-  static Map<String, dynamic> toJsonWithId(Inventory inventory) => {
-        'id': inventory.id,
-        'name': inventory.name,
-        'lastUpdated': inventory.lastUpdated,
-        'ownerId': inventory.ownerId,
-        'inventoryTypeId': inventory.inventoryTypeId,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'name': this.name,
+        'lastUpdated': this.lastUpdated,
+        'ownerId': this.ownerId,
+        'inventoryTypeId': this.inventoryTypeId,
       };
 }

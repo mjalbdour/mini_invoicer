@@ -30,24 +30,24 @@ class Employee {
         addressId: json['addressId'] as String,
       );
 
-  static Map<String, dynamic> toJson(Employee employee) => {
-        'uid': employee.uid,
-        'name': employee.name,
-        'employeeTypeId': employee.employeeTypeId,
-        'accountId': employee.accountId,
-        'vendorId': employee.vendorId,
-        'inventoryId': employee.inventoryId,
-        'addressId': employee.addressId,
+  Map<String, dynamic> toJson() => {
+        'uid': this.uid,
+        'name': this.name,
+        'employeeTypeId': this.employeeTypeId,
+        'accountId': this.accountId,
+        'vendorId': this.vendorId,
+        'inventoryId': this.inventoryId,
+        'addressId': this.addressId,
       };
 
-  static Map<String, dynamic> toJsonWithId(Employee employee) => {
-        'id': employee.id,
-        'uid': employee.uid,
-        'name': employee.name,
-        'employeeTypeId': employee.employeeTypeId,
-        'accountId': employee.accountId,
-        'vendorId': employee.vendorId,
-        'inventoryId': employee.inventoryId,
-        'addressId': employee.addressId,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'uid': this.uid,
+        'name': this.name,
+        'employeeTypeId': this.employeeTypeId,
+        'accountId': this.accountId,
+        'vendorId': this.vendorId,
+        'inventoryId': this.inventoryId,
+        'addressId': this.addressId,
       };
 }

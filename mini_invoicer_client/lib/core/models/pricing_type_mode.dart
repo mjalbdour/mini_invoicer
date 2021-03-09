@@ -11,14 +11,14 @@ class PricingType {
           name: json['name'] as String,
           description: json['description'] as String);
 
-  static Map<String, dynamic> toJson(PricingType pricingType) => {
-        'name': pricingType.name,
-        'description': pricingType.description,
+  Map<String, dynamic> toJson() => {
+        'name': this.name,
+        'description': this.description,
       };
 
-  static Map<String, dynamic> toJsonWithId(PricingType pricingType) => {
-        'id': pricingType.id,
-        'name': pricingType.name,
-        'description': pricingType.description,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'name': this.name,
+        'description': this.description,
       };
 }

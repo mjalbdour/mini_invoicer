@@ -31,23 +31,23 @@ class InvoiceItem {
         productPricingId: json['productPricingId'] as String,
       );
 
-  static Map<String, dynamic> toJson(InvoiceItem invoiceItem) => {
-        'quantity': invoiceItem.quantity,
-        'discount': invoiceItem.discount,
-        'salesTax': invoiceItem.salesTax,
-        'totalValue': invoiceItem.totalValue,
-        'invoiceId': invoiceItem.invoiceId,
-        'productId': invoiceItem.productId,
-        'productPricingId': invoiceItem.productPricingId,
+  Map<String, dynamic> toJson() => {
+        'quantity': this.quantity,
+        'discount': this.discount,
+        'salesTax': this.salesTax,
+        'totalValue': this.totalValue,
+        'invoiceId': this.invoiceId,
+        'productId': this.productId,
+        'productPricingId': this.productPricingId,
       };
-  static Map<String, dynamic> toJsonWithId(InvoiceItem invoiceItem) => {
-        'id': invoiceItem.id,
-        'quantity': invoiceItem.quantity,
-        'discount': invoiceItem.discount,
-        'salesTax': invoiceItem.salesTax,
-        'totalValue': invoiceItem.totalValue,
-        'invoiceId': invoiceItem.invoiceId,
-        'productId': invoiceItem.productId,
-        'productPricingId': invoiceItem.productPricingId,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'quantity': this.quantity,
+        'discount': this.discount,
+        'salesTax': this.salesTax,
+        'totalValue': this.totalValue,
+        'invoiceId': this.invoiceId,
+        'productId': this.productId,
+        'productPricingId': this.productPricingId,
       };
 }

@@ -32,24 +32,24 @@ class Invoice {
         paymentTypeId: json['paymentTypeId'] as String,
       );
 
-  static Map<String, dynamic> toJson(Invoice invoice) => {
-        'value': invoice.value,
-        'serialNumber': invoice.serialNumber,
-        'timestamp': invoice.timestamp,
-        'vendorId': invoice.vendorId,
-        'employeeId': invoice.employeeId,
-        'currencyId': invoice.currencyId,
-        'paymentTypeId': invoice.paymentTypeId,
+  Map<String, dynamic> toJson() => {
+        'value': this.value,
+        'serialNumber': this.serialNumber,
+        'timestamp': this.timestamp,
+        'vendorId': this.vendorId,
+        'employeeId': this.employeeId,
+        'currencyId': this.currencyId,
+        'paymentTypeId': this.paymentTypeId,
       };
 
-  static Map<String, dynamic> toJsonWithId(Invoice invoice) => {
-        'id': invoice.id,
-        'value': invoice.value,
-        'serialNumber': invoice.serialNumber,
-        'timestamp': invoice.timestamp,
-        'vendorId': invoice.vendorId,
-        'employeeId': invoice.employeeId,
-        'currencyId': invoice.currencyId,
-        'paymentTypeId': invoice.paymentTypeId,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'value': this.value,
+        'serialNumber': this.serialNumber,
+        'timestamp': this.timestamp,
+        'vendorId': this.vendorId,
+        'employeeId': this.employeeId,
+        'currencyId': this.currencyId,
+        'paymentTypeId': this.paymentTypeId,
       };
 }

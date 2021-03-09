@@ -26,22 +26,22 @@ class Customer {
         pricingTypeId: json['pricingTypeId'] as String,
       );
 
-  static Map<String, dynamic> toJson(Customer customer) => {
-        'name': customer.name,
-        'description': customer.description,
-        'addressId': customer.addressId,
-        'accountId': customer.accountId,
-        'inventoryId': customer.inventoryId,
-        'pricingTypeId': customer.pricingTypeId,
+  Map<String, dynamic> toJson() => {
+        'name': this.name,
+        'description': this.description,
+        'addressId': this.addressId,
+        'accountId': this.accountId,
+        'inventoryId': this.inventoryId,
+        'pricingTypeId': this.pricingTypeId,
       };
 
-  static Map<String, dynamic> toJsonWithId(Customer customer) => {
-        'id': customer.id,
-        'name': customer.name,
-        'description': customer.description,
-        'addressId': customer.addressId,
-        'accountId': customer.accountId,
-        'inventoryId': customer.inventoryId,
-        'pricingTypeId': customer.pricingTypeId,
+  Map<String, dynamic> toJsonWithId() => {
+        'id': this.id,
+        'name': this.name,
+        'description': this.description,
+        'addressId': this.addressId,
+        'accountId': this.accountId,
+        'inventoryId': this.inventoryId,
+        'pricingTypeId': this.pricingTypeId,
       };
 }
