@@ -21,7 +21,6 @@ class _AuthFormScreenState extends State<AuthFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(formType);
     return Scaffold(
       body: Center(
         child: Form(
