@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/product/product_screen.dart';
 import "package:provider/provider.dart";
 
 class ProductsScreen extends StatelessWidget {
@@ -44,7 +45,8 @@ class ProductsScreen extends StatelessWidget {
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: null,
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProductScreen(_products[index].id))),
                 child: Container(
                   height: 100.0,
                   child: Card(
