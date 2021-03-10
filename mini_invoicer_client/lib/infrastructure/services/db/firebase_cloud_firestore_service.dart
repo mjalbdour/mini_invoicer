@@ -5,7 +5,7 @@ class FirebaseCloudFirestoreService {
   final FirebaseFirestore _db;
   FirebaseCloudFirestoreService(this._db);
 
-  // Product Section
+  // Product QUERY
   Stream<Product> streamProduct(String id) => _db
       .collection('products')
       .doc(id)
