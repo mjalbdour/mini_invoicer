@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 
 class FirebaseCloudFirestoreService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db;
+  FirebaseCloudFirestoreService(this._db);
 
   // Product Section
   Stream<Product> streamProduct(String id) => _db
