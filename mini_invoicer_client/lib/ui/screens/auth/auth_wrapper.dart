@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter/widgets.dart';
 
 class AuthWrapper extends StatelessWidget {
-  static const String Route = '/auth';
+  static const String ROUTE = '/auth';
   const AuthWrapper({
     Key key,
   }) : super(key: key);

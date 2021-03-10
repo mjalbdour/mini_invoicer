@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-import 'package:mini_invoicer_client/ui/common/auth_wrapper.dart';
+import 'package:mini_invoicer_client/ui/screens/auth/auth_wrapper.dart';
 import 'package:mini_invoicer_client/ui/routes/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +36,7 @@ class MiniInvoicer extends StatelessWidget {
       child: MaterialApp(
         title: 'Mini Invoicer',
         routes: routes,
-        initialRoute: AuthWrapper.Route,
+        initialRoute: AuthWrapper.ROUTE,
       ),
     );
   }

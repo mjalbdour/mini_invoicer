@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 class AuthFormScreen extends StatefulWidget {
   // ROUTE
-  static const String Route = '/auth/form';
+  static const String ROUTE = '/auth/form';
 
   @override
   _AuthFormScreenState createState() => _AuthFormScreenState();
