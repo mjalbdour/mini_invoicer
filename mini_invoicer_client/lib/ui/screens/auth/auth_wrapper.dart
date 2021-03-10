@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mini_invoicer_client/ui/screens/auth/auth_form_screen.dart';
-import 'package:mini_invoicer_client/ui/screens/home.dart';
+import 'package:mini_invoicer_client/ui/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/widgets.dart';
 

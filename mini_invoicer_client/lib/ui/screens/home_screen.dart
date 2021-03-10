@@ -3,6 +3,7 @@ import 'package:mini_invoicer_client/infrastructure/services/auth/firebase_auth_
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String ROUTE = "/home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
