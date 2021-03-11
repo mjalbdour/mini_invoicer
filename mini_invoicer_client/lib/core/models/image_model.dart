@@ -1,4 +1,4 @@
-class Image {
+class ImageModel {
   String id;
   String title;
   String description;
@@ -7,7 +7,7 @@ class Image {
   DateTime timestamp;
   String ownerId;
 
-  Image({
+  ImageModel({
     this.id,
     this.title,
     this.description,
@@ -17,7 +17,8 @@ class Image {
     this.ownerId,
   });
 
-  factory Image.fromJson(String id, Map<String, dynamic> json) => Image(
+  factory ImageModel.fromJson(String id, Map<String, dynamic> json) =>
+      ImageModel(
         id: json['id'] as String,
         title: json['title'] as String,
         description: json['description'] as String,
