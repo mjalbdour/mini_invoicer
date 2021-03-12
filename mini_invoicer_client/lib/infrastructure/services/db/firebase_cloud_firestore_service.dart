@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mini_invoicer_client/core/models/account_model.dart';
+import 'package:mini_invoicer_client/core/models/address_model.dart';
 import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
@@ -194,4 +195,13 @@ class FirebaseCloudFirestoreService {
   Stream<List<TransactionModel>> streamTransactionModels() =>
       _streamMultiple<TransactionModel>(
           'transactions', (id, json) => TransactionModel.fromJson(id, json));
+
+  // Address QUERY
+  // SINGLE
+  Stream<Address> streamAddress(String id) => _streamSingle<Address>(
+      id, 'addresses', (id, json) => Address.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Address>> streamAddresss() => _streamMultiple<Address>(
+      'addresses', (id, json) => Address.fromJson(id, json));
 }
