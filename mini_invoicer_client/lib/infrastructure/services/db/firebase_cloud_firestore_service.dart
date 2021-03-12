@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mini_invoicer_client/core/models/account_model.dart';
 import 'package:mini_invoicer_client/core/models/address_model.dart';
 import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/currency_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
@@ -123,7 +124,7 @@ class FirebaseCloudFirestoreService {
       id, 'inventories', (id, json) => Inventory.fromJson(id, json));
 
   // MULTIPLE
-  Stream<List<Inventory>> streamInventorys() => _streamMultiple<Inventory>(
+  Stream<List<Inventory>> streamInventories() => _streamMultiple<Inventory>(
       'inventories', (id, json) => Inventory.fromJson(id, json));
 
   // InventoryType QUERY
@@ -154,7 +155,7 @@ class FirebaseCloudFirestoreService {
       _streamSingle<ProductTransferType>(id, 'producttransfertypes',
           (id, json) => ProductTransferType.fromJson(id, json));
 
-  // MULTIPLEg
+  // MULTIPLE
   Stream<List<ProductTransferType>> streamProductTransferTypes() =>
       _streamMultiple<ProductTransferType>('producttransfertypes',
           (id, json) => ProductTransferType.fromJson(id, json));
@@ -207,6 +208,15 @@ class FirebaseCloudFirestoreService {
   Stream<List<TransactionModel>> streamTransactionModels() =>
       _streamMultiple<TransactionModel>(
           'transactions', (id, json) => TransactionModel.fromJson(id, json));
+
+  // Currency QUERY
+  // SINGLE
+  Stream<Currency> streamCurrency(String id) => _streamSingle<Currency>(
+      id, 'currencies', (id, json) => Currency.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Currency>> streamCurrencies() => _streamMultiple<Currency>(
+      'currencies', (id, json) => Currency.fromJson(id, json));
 
   // Address QUERY
   // SINGLE
