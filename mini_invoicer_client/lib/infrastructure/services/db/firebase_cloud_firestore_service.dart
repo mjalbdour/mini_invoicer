@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mini_invoicer_client/core/models/employee_model.dart';
+import 'package:mini_invoicer_client/core/models/employee_model.dart';
+import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/core/models/vendor_model.dart';
 
@@ -42,4 +45,13 @@ class FirebaseCloudFirestoreService {
   // SINGLE
   Stream<Vendor> streamVendor(String id) => _streamSingle<Vendor>(
       id, 'vendors', (id, json) => Vendor.fromJson(id, json));
+
+  // Employee QUERY
+  // SINGLE
+  Stream<Employee> streamEmployee(String id) => _streamSingle<Employee>(
+      id, 'employees', (id, json) => Employee.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Employee>> streamEmployees() => _streamMultiple<Employee>(
+      'employees', (id, json) => Employee.fromJson(id, json));
 }
