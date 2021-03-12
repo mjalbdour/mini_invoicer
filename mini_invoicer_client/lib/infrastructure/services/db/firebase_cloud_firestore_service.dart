@@ -3,6 +3,7 @@ import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
+import 'package:mini_invoicer_client/core/models/inventory_model.dart';
 import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
 import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
 import 'package:mini_invoicer_client/core/models/invoice_model.dart';
@@ -86,6 +87,15 @@ class FirebaseCloudFirestoreService {
   Stream<List<ImageModel>> streamImageModels() => _streamMultiple<ImageModel>(
       'images', (id, json) => ImageModel.fromJson(id, json));
 
+  // Inventory QUERY
+  // SINGLE
+  Stream<Inventory> streamInventory(String id) => _streamSingle<Inventory>(
+      id, 'inventories', (id, json) => Inventory.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Inventory>> streamInventorys() => _streamMultiple<Inventory>(
+      'inventories', (id, json) => Inventory.fromJson(id, json));
+
   // InventoryType QUERY
   // SINGLE
   Stream<InventoryType> streamInventoryType(String id) =>
@@ -106,13 +116,14 @@ class FirebaseCloudFirestoreService {
   Stream<List<Invoice>> streamInvoices() => _streamMultiple<Invoice>(
       'invoices', (id, json) => Invoice.fromJson(id, json));
 
-
   // InvoiceItem QUERY
   // SINGLE
-  Stream<InvoiceItem> streamInvoiceItem(String id) => _streamSingle<InvoiceItem>(
-      id, 'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
+  Stream<InvoiceItem> streamInvoiceItem(String id) =>
+      _streamSingle<InvoiceItem>(
+          id, 'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
 
   // MULTIPLE
-  Stream<List<InvoiceItem>> streamInvoiceItems() => _streamMultiple<InvoiceItem>(
-      'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
+  Stream<List<InvoiceItem>> streamInvoiceItems() =>
+      _streamMultiple<InvoiceItem>(
+          'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
 }
