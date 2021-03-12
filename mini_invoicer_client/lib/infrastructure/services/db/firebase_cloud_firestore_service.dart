@@ -1,4 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
@@ -54,4 +63,13 @@ class FirebaseCloudFirestoreService {
   // MULTIPLE
   Stream<List<Employee>> streamEmployees() => _streamMultiple<Employee>(
       'employees', (id, json) => Employee.fromJson(id, json));
+
+  // Brand QUERY
+  // SINGLE
+  Stream<Brand> streamBrand(String id) => _streamSingle<Brand>(
+      id, 'employees', (id, json) => Brand.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Brand>> streamBrands() => _streamMultiple<Brand>(
+      'brands', (id, json) => Brand.fromJson(id, json));
 }
