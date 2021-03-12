@@ -3,13 +3,7 @@ import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
-import 'package:mini_invoicer_client/core/models/image_model.dart';
+import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/core/models/vendor_model.dart';
 
@@ -89,4 +83,15 @@ class FirebaseCloudFirestoreService {
   // MULTIPLE
   Stream<List<ImageModel>> streamImageModels() => _streamMultiple<ImageModel>(
       'images', (id, json) => ImageModel.fromJson(id, json));
+
+  // InventoryType QUERY
+  // SINGLE
+  Stream<InventoryType> streamInventoryType(String id) =>
+      _streamSingle<InventoryType>(
+          id, 'inventorytypes', (id, json) => InventoryType.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<InventoryType>> streamInventoryTypes() =>
+      _streamMultiple<InventoryType>(
+          'inventorytypes', (id, json) => InventoryType.fromJson(id, json));
 }
