@@ -4,6 +4,16 @@ import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
 import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
+import 'package:mini_invoicer_client/core/models/invoice_model.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/core/models/vendor_model.dart';
 
@@ -94,4 +104,23 @@ class FirebaseCloudFirestoreService {
   Stream<List<InventoryType>> streamInventoryTypes() =>
       _streamMultiple<InventoryType>(
           'inventorytypes', (id, json) => InventoryType.fromJson(id, json));
+
+  // Invoice QUERY
+  // SINGLE
+  Stream<Invoice> streamInvoice(String id) => _streamSingle<Invoice>(
+      id, 'invoices', (id, json) => Invoice.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Invoice>> streamInvoices() => _streamMultiple<Invoice>(
+      'invoices', (id, json) => Invoice.fromJson(id, json));
+
+
+  // InvoiceItem QUERY
+  // SINGLE
+  Stream<InvoiceItem> streamInvoiceItem(String id) => _streamSingle<InvoiceItem>(
+      id, 'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<InvoiceItem>> streamInvoiceItems() => _streamMultiple<InvoiceItem>(
+      'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
 }
