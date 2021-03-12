@@ -20,6 +20,7 @@ The *Client* & *UI* interactivity Component/Layer of the Mini Invoicer *System*
 * ...*Coming Soon*
 
 #### Development Tools/Env
-* VS Code ^1.54.1 - Extentions: Flutter/Dart | Dracula Official | JetBrains Mono
+* VS Code ^1.54.1 - Extensions: Flutter/Dart | Dracula Official | JetBrains Mono
+* Android Studio 4.1.2
 * Android Emulator - Pixel 3a API 30 x86 | *...Coming Soon*
 * Ubuntu 20.10
