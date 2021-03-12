@@ -9,6 +9,8 @@ import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
 import 'package:mini_invoicer_client/core/models/invoice_model.dart';
 import 'package:mini_invoicer_client/core/models/pricing_type_model.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
+import 'package:mini_invoicer_client/core/models/product_pricing_model.dart';
+import 'package:mini_invoicer_client/core/models/receipt_model.dart';
 import 'package:mini_invoicer_client/core/models/vendor_model.dart';
 
 class FirebaseCloudFirestoreService {
@@ -49,12 +51,25 @@ class FirebaseCloudFirestoreService {
 
   // PricingType QUERY
   // SINGLE
-  Stream<PricingType> streamPricingType(String id) => _streamSingle<PricingType>(
-      id, 'pricingtypes', (id, json) => PricingType.fromJson(id, json));
+  Stream<PricingType> streamPricingType(String id) =>
+      _streamSingle<PricingType>(
+          id, 'pricingtypes', (id, json) => PricingType.fromJson(id, json));
 
   // MULTIPLE
-  Stream<List<PricingType>> streamPricingTypes() => _streamMultiple<PricingType>(
-      'pricingtypes', (id, json) => PricingType.fromJson(id, json));
+  Stream<List<PricingType>> streamPricingTypes() =>
+      _streamMultiple<PricingType>(
+          'pricingtypes', (id, json) => PricingType.fromJson(id, json));
+
+  // ProductPricing QUERY
+  // SINGLE
+  Stream<ProductPricing> streamProductPricing(String id) =>
+      _streamSingle<ProductPricing>(id, 'productpricings',
+          (id, json) => ProductPricing.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<ProductPricing>> streamProductPricings() =>
+      _streamMultiple<ProductPricing>(
+          'productpricings', (id, json) => ProductPricing.fromJson(id, json));
 
   // Vendor QUERY
   // SINGLE
@@ -136,4 +151,13 @@ class FirebaseCloudFirestoreService {
   Stream<List<InvoiceItem>> streamInvoiceItems() =>
       _streamMultiple<InvoiceItem>(
           'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
+
+  // Receipt QUERY
+  // SINGLE
+  Stream<Receipt> streamReceipt(String id) => _streamSingle<Receipt>(
+      id, 'receipts', (id, json) => Receipt.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Receipt>> streamReceipts() => _streamMultiple<Receipt>(
+      'receipts', (id, json) => Receipt.fromJson(id, json));
 }
