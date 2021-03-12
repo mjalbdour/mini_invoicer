@@ -7,6 +7,7 @@ import 'package:mini_invoicer_client/core/models/inventory_model.dart';
 import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
 import 'package:mini_invoicer_client/core/models/invoice_item_model.dart';
 import 'package:mini_invoicer_client/core/models/invoice_model.dart';
+import 'package:mini_invoicer_client/core/models/pricing_type_model.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/core/models/vendor_model.dart';
 
@@ -45,6 +46,15 @@ class FirebaseCloudFirestoreService {
   // MULTIPLE
   Stream<List<Product>> streamProducts() => _streamMultiple<Product>(
       'products', (id, json) => Product.fromJson(id, json));
+
+  // PricingType QUERY
+  // SINGLE
+  Stream<PricingType> streamPricingType(String id) => _streamSingle<PricingType>(
+      id, 'pricingtypes', (id, json) => PricingType.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<PricingType>> streamPricingTypes() => _streamMultiple<PricingType>(
+      'pricingtypes', (id, json) => PricingType.fromJson(id, json));
 
   // Vendor QUERY
   // SINGLE
