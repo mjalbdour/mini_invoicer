@@ -14,7 +14,7 @@ class TransactionsScreen extends StatelessWidget {
         title: Text("Transaction s"),
         centerTitle: true,
       ),
-      body: StreamBuilder<List<Transaction>>(
+      body: StreamBuilder<List<TransactionModel>>(
         initialData: [],
         stream: _transactionsStream,
         builder: (context, snapshot) {

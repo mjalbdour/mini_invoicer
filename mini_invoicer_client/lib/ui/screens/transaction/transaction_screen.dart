@@ -13,10 +13,10 @@ class TransactionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Stream<Transaction> _transactionStream =
+    Stream<TransactionModel> _transactionStream =
         context.watch<FirebaseCloudFirestoreService>().streamTransaction(_id);
-    return StreamBuilder<Transaction>(
-      initialData: Transaction(),
+    return StreamBuilder<TransactionModel>(
+      initialData: TransactionModel(),
       stream: _transactionStream,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -42,7 +42,7 @@ class TransactionScreen extends StatelessWidget {
           );
         }
 
-        Transaction _transaction = snapshot.data;
+        TransactionModel _transaction = snapshot.data;
 
         return Scaffold(
           appBar: AppBar(

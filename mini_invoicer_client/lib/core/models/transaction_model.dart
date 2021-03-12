@@ -1,4 +1,4 @@
-class Transaction {
+class TransactionModel {
   String id;
   double value;
   DateTime timestamp;
@@ -6,7 +6,7 @@ class Transaction {
   String receiverAccountId;
   String currencyId;
 
-  Transaction({
+  TransactionModel({
     this.id,
     this.value,
     this.timestamp,
@@ -15,8 +15,8 @@ class Transaction {
     this.currencyId,
   });
 
-  factory Transaction.fromJson(String id, Map<String, dynamic> json) =>
-      Transaction(
+  factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
+      TransactionModel(
         id: id,
         value: json['value'] as double,
         timestamp: json['timestamp'].toDate() as DateTime,
