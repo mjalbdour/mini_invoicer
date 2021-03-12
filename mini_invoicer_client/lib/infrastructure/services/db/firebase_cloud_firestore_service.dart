@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mini_invoicer_client/core/models/account_model.dart';
 import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
@@ -136,8 +137,8 @@ class FirebaseCloudFirestoreService {
   // ProductTransfer QUERY
   // SINGLE
   Stream<ProductTransfer> streamProductTransfer(String id) =>
-      _streamSingle<ProductTransfer>(
-          id, 'producttransfers', (id, json) => ProductTransfer.fromJson(id, json));
+      _streamSingle<ProductTransfer>(id, 'producttransfers',
+          (id, json) => ProductTransfer.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ProductTransfer>> streamProductTransfers() =>
@@ -172,4 +173,13 @@ class FirebaseCloudFirestoreService {
   // MULTIPLE
   Stream<List<Receipt>> streamReceipts() => _streamMultiple<Receipt>(
       'receipts', (id, json) => Receipt.fromJson(id, json));
+
+  // Account QUERY
+  // SINGLE
+  Stream<Account> streamAccount(String id) => _streamSingle<Account>(
+      id, 'accounts', (id, json) => Account.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<Account>> streamAccounts() => _streamMultiple<Account>(
+      'accounts', (id, json) => Account.fromJson(id, json));
 }
