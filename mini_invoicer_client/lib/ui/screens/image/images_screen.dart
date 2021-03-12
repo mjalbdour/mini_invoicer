@@ -6,10 +6,11 @@ import "package:provider/provider.dart";
 
 class ImagesScreen extends StatelessWidget {
   static const String ROUTE = "/images";
+
   @override
   Widget build(BuildContext context) {
     final _imagesStream =
-        context.watch<FirebaseCloudFirestoreService>().streamImages();
+        context.watch<FirebaseCloudFirestoreService>().streamImageModels();
     return Scaffold(
       appBar: AppBar(
         title: Text("Images"),
@@ -46,7 +47,7 @@ class ImagesScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ImageScreen(_images[index].id))),
+                    builder: (context) => ImageModelScreen(_images[index].id))),
                 child: Container(
                   height: 100.0,
                   child: Card(

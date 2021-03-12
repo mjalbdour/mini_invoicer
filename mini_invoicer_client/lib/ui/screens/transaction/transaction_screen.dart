@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 class TransactionScreen extends StatelessWidget {
   String _id;
   String _route;
+
   TransactionScreen(String id) {
     this._id = id;
     this._route = "/transactions/$id";
@@ -13,8 +14,9 @@ class TransactionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Stream<TransactionModel> _transactionStream =
-        context.watch<FirebaseCloudFirestoreService>().streamTransaction(_id);
+    Stream<TransactionModel> _transactionStream = context
+        .watch<FirebaseCloudFirestoreService>()
+        .streamTransactionModel(_id);
     return StreamBuilder<TransactionModel>(
       initialData: TransactionModel(),
       stream: _transactionStream,

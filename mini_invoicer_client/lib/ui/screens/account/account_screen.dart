@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 class AccountScreen extends StatelessWidget {
   String _id;
   String _route;
+
   AccountScreen(String id) {
     this._id = id;
     this._route = "/accounts/$id";

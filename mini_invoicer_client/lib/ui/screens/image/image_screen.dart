@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 class ImageModelScreen extends StatelessWidget {
   String _id;
   String _route;
+
   ImageModelScreen(String id) {
     this._id = id;
     this._route = "/images/$id";

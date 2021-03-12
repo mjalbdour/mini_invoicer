@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_client/core/models/inventory_model.dart';
 import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/inventory/inventory_screen.dart';
 import "package:provider/provider.dart";
 
 class InventoriesScreen extends StatelessWidget {
   static const String ROUTE = "/inventorytypes";
+
   @override
   Widget build(BuildContext context) {
     final _inventoriesStream =
@@ -14,7 +17,7 @@ class InventoriesScreen extends StatelessWidget {
         title: Text("Inventory Types"),
         centerTitle: true,
       ),
-      body: StreamBuilder<List<InventoryType>>(
+      body: StreamBuilder<List<Inventory>>(
         initialData: [],
         stream: _inventoriesStream,
         builder: (context, snapshot) {
@@ -46,7 +49,7 @@ class InventoriesScreen extends StatelessWidget {
               return GestureDetector(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        InventoryTypeScreen(_inventories[index].id))),
+                        InventoryScreen(_inventories[index].id))),
                 child: Container(
                   height: 100.0,
                   child: Card(
