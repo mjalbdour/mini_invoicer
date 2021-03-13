@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/product/product_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product/product_screen.dart';
 import "package:provider/provider.dart";
 
 class ProductsScreen extends StatelessWidget {
   static const String ROUTE = "/products";
+
   @override
   Widget build(BuildContext context) {
     final _productsStream =
@@ -14,6 +16,11 @@ class ProductsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Products"),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            Navigator.of(context).pushNamed(ProductAddScreen.ROUTE),
+        child: Icon(Icons.add),
       ),
       body: StreamBuilder<List<Product>>(
         initialData: [],
