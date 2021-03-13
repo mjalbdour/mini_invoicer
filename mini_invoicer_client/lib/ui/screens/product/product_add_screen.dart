@@ -29,6 +29,34 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                 labelText: "Product Name",
               ),
             ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: "Description",
+              ),
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: "Weight (g)",
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            DropdownButtonFormField(
+              decoration: InputDecoration(labelText: "Brand"),
+              items: [
+                DropdownMenuItem(child: Text("Dulcesol")),
+              ],
+            ),
+            DropdownButtonFormField(
+                decoration:
+                    InputDecoration(labelText: "Requires Refrigeration?"),
+                items: [
+                  DropdownMenuItem(
+                    child: Text("No"),
+                  ),
+                  DropdownMenuItem(
+                    child: Text("Yes"),
+                  ),
+                ]),
             ButtonBar(
               children: [
                 TextButton(
@@ -47,3 +75,11 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
     );
   }
 }
+
+/*
+  String name;
+  String description;
+  int weight;
+  bool requiresRefrigeration;
+  String brandId;
+*/
