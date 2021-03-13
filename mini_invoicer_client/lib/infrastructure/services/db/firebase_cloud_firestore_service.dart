@@ -55,6 +55,19 @@ class FirebaseCloudFirestoreService {
   Stream<List<Product>> streamProducts() => _streamMultiple<Product>(
       'products', (id, json) => Product.fromJson(id, json));
 
+  // Product COMMAND
+  // CREATE
+  Future<DocumentReference> addProduct(Product product) async {
+    DocumentReference docRef;
+    try {
+      docRef = await _db.collection("/products").add(product.toJson());
+    } catch (ex) {
+      print(ex);
+      throw ex;
+    }
+    return docRef;
+  }
+
   // PricingType QUERY
   // SINGLE
   Stream<PricingType> streamPricingType(String id) =>
