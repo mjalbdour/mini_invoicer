@@ -14,8 +14,8 @@ class Brand {
   factory Brand.fromJson(String id, Map<String, dynamic> json) => Brand(
         id: id,
         name: json['name'] as String,
-        description: ['description'] as String,
-        country: ['country'] as String,
+        description: json['description'] as String,
+        country: json['country'] as String,
       );
 
   Map<String, dynamic> toJson() => {
