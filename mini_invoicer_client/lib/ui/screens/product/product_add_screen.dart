@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_invoicer_client/core/models/product_model.dart';
 
 class ProductAddScreen extends StatefulWidget {
   static const String ROUTE = "/products/create";
@@ -9,6 +10,7 @@ class ProductAddScreen extends StatefulWidget {
 
 class _ProductAddScreenState extends State<ProductAddScreen> {
   final _formKey = GlobalKey<FormState>();
+  Product _product = Product();
 
   @override
   Widget build(BuildContext context) {
