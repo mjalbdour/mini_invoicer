@@ -227,6 +227,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                     ElevatedButton(
                       onPressed: () async {
                         _formKey.currentState.save();
+                        _newProduct.id = _oldProduct.id;
                         bool validationResult =
                             _formKey.currentState.validate();
                         if (validationResult) {
@@ -237,7 +238,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                             .updateProduct(_newProduct);
 
                         if (docRef == null) {
-                          print("Error adding product");
+                          print("Error updating product");
                         } else {
                           Navigator.of(context).pop();
                         }
