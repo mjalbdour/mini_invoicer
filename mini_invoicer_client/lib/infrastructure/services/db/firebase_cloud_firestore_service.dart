@@ -68,6 +68,19 @@ class FirebaseCloudFirestoreService {
     return docRef;
   }
 
+  // UPDATE
+  Future<DocumentReference> updateProduct(Product product) async {
+    DocumentReference docRef;
+    try {
+      docRef = _db.doc("products/${product.id}");
+      await docRef.update(product.toJson());
+    } on FirebaseException catch (ex) {
+      print(ex);
+      throw ex;
+    }
+    return docRef;
+  }
+
   // PricingType QUERY
   // SINGLE
   Stream<PricingType> streamPricingType(String id) =>
