@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/product/product_update_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Stream<Product> _productStream =
         context.watch<FirebaseCloudFirestoreService>().streamProduct(_id);
+
     return StreamBuilder<Product>(
       initialData: Product(),
       stream: _productStream,
@@ -47,6 +49,12 @@ class ProductScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text("${_product.name}"),
+            actions: [
+              IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ProductUpdateScreen(_id))))
+            ],
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
