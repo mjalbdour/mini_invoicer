@@ -81,6 +81,19 @@ class FirebaseCloudFirestoreService {
     return docRef;
   }
 
+  // DELETE
+  Future<DocumentReference> deleteProduct(String id) async {
+    DocumentReference docRef;
+    try {
+      docRef = _db.doc("products/$id");
+      await docRef.delete();
+    } on FirebaseException catch (ex) {
+      print(ex);
+      throw ex;
+    }
+    return docRef;
+  }
+
   // PricingType QUERY
   // SINGLE
   Stream<PricingType> streamPricingType(String id) =>
