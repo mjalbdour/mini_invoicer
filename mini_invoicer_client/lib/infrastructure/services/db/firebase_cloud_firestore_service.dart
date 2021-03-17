@@ -304,6 +304,20 @@ class FirebaseCloudFirestoreService {
       _streamMultiple<ProductTransfer>(
           'producttransfers', (id, json) => ProductTransfer.fromJson(id, json));
 
+  // ProductTransfer COMMAND
+  // CREATE
+  Future<void> addProductTransfer(ProductTransfer productTransfer) =>
+      add<ProductTransfer>("/producttransfers", () => productTransfer.toJson());
+
+  // UPDATE
+  Future<void> updateProductTransfer(ProductTransfer productTransfer) =>
+      update<ProductTransfer>("/producttransfers", productTransfer.id,
+          () => productTransfer.toJson());
+
+  // DELETE
+  Future<void> deleteProductTransfer(String id) =>
+      delete<ProductTransfer>("/producttransfers", id);
+
   // ProductTransferType QUERY
   // SINGLE
   Stream<ProductTransferType> streamProductTransferType(String id) =>
