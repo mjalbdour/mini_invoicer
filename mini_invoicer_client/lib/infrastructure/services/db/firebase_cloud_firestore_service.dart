@@ -47,6 +47,14 @@ class FirebaseCloudFirestoreService {
           .toList());
 
   // GENERIC COMMANDS
+  // ADD
+  Future<void> add<T>(String collectionPath, Map<String, dynamic> toJson()) =>
+      _db
+          .collection(collectionPath)
+          .add(toJson())
+          .then((value) => print("add successful"))
+          .catchError((error) => print(error));
+
   // UPDATE
   Future<void> update<T>(
           String collectionPath, String id, Map<String, dynamic> toJson()) =>
