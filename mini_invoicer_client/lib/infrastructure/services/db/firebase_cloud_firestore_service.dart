@@ -130,6 +130,20 @@ class FirebaseCloudFirestoreService {
       _streamMultiple<ProductPricing>(
           'productpricings', (id, json) => ProductPricing.fromJson(id, json));
 
+  // ProductPricing COMMAND
+  // CREATE
+  Future<void> addProductPricing(ProductPricing pricingType) =>
+      add<ProductPricing>("/productpricings", () => pricingType.toJson());
+
+  // UPDATE
+  Future<void> updateProductPricing(ProductPricing pricingType) =>
+      update<ProductPricing>(
+          "/productpricings", pricingType.id, () => pricingType.toJson());
+
+  // DELETE
+  Future<void> deleteProductPricing(String id) =>
+      delete<ProductPricing>("/productpricings", id);
+
   // Vendor QUERY
   // SINGLE
   Stream<Vendor> streamVendor(String id) => _streamSingle<Vendor>(
