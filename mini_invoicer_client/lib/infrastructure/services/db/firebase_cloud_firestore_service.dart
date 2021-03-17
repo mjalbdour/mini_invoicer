@@ -401,6 +401,18 @@ class FirebaseCloudFirestoreService {
   Stream<List<Receipt>> streamReceipts() => _streamMultiple<Receipt>(
       'receipts', (id, json) => Receipt.fromJson(id, json));
 
+  // Receipt COMMAND
+  // CREATE
+  Future<void> addReceipt(Receipt receipt) =>
+      add<Receipt>("/receipts", () => receipt.toJson());
+
+  // UPDATE
+  Future<void> updateReceipt(Receipt receipt) =>
+      update<Receipt>("/receipts", receipt.id, () => receipt.toJson());
+
+  // DELETE
+  Future<void> deleteReceipt(String id) => delete<Receipt>("/receipts", id);
+
   // Account QUERY
   // SINGLE
   Stream<Account> streamAccount(String id) => _streamSingle<Account>(
