@@ -4,13 +4,8 @@ import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_f
 import 'package:provider/provider.dart';
 
 class ImageModelScreen extends StatelessWidget {
-  String _id;
-  String _route;
-
-  ImageModelScreen(String id) {
-    this._id = id;
-    this._route = "/images/$id";
-  }
+  final String _id;
+  ImageModelScreen(this._id);
 
   @override
   Widget build(BuildContext context) {

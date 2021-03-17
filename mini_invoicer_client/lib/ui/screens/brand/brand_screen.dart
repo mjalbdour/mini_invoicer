@@ -4,13 +4,9 @@ import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_f
 import 'package:provider/provider.dart';
 
 class BrandScreen extends StatelessWidget {
-  String _id;
-  String _route;
-  BrandScreen(String id) {
-    this._id = id;
-    this._route = "/brands/$id";
-  }
-
+  final String _id;
+  BrandScreen(this._id);
+  
   @override
   Widget build(BuildContext context) {
     Stream<Brand> _brandStream =

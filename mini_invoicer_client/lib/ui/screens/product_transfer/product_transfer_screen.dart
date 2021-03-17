@@ -4,12 +4,8 @@ import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_f
 import 'package:provider/provider.dart';
 
 class ProductTransferScreen extends StatelessWidget {
-  String _id;
-  String _route;
-  ProductTransferScreen(String id) {
-    this._id = id;
-    this._route = "/producttransfers/$id";
-  }
+  final String _id;
+  ProductTransferScreen(this._id);
 
   @override
   Widget build(BuildContext context) {

@@ -5,12 +5,8 @@ import 'package:mini_invoicer_client/ui/screens/product/product_update_screen.da
 import 'package:provider/provider.dart';
 
 class ProductScreen extends StatelessWidget {
-  String _id;
-  String _route;
-  ProductScreen(String id) {
-    this._id = id;
-    this._route = "/products/$id";
-  }
+  final String _id;
+  ProductScreen(this._id);
 
   @override
   Widget build(BuildContext context) {

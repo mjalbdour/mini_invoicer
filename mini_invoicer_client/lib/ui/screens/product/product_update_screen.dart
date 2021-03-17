@@ -86,7 +86,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
               IconButton(
                   icon: Icon(Icons.delete_forever),
                   onPressed: () {
-                    var decision = showDialog<bool>(
+                    showDialog<bool>(
                       barrierDismissible: false,
                       context: context,
                       builder: (context) {

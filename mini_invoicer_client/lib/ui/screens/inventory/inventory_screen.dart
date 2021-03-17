@@ -4,12 +4,8 @@ import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_f
 import 'package:provider/provider.dart';
 
 class InventoryScreen extends StatelessWidget {
-  String _id;
-  String _route;
-  InventoryScreen(String id) {
-    this._id = id;
-    this._route = "/inventories/$id";
-  }
+  final String _id;
+  InventoryScreen(this._id);
 
   @override
   Widget build(BuildContext context) {
