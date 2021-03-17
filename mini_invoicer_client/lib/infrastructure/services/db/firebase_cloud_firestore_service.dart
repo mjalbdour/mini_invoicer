@@ -469,6 +469,18 @@ class FirebaseCloudFirestoreService {
   Stream<List<Currency>> streamCurrencies() => _streamMultiple<Currency>(
       'currencies', (id, json) => Currency.fromJson(id, json));
 
+  // Currency COMMAND
+  // CREATE
+  Future<void> addCurrency(Currency currency) =>
+      add<Currency>("/currencies", () => currency.toJson());
+
+  // UPDATE
+  Future<void> updateCurrency(Currency currency) =>
+      update<Currency>("/currencies", currency.id, () => currency.toJson());
+
+  // DELETE
+  Future<void> deleteCurrency(String id) => delete<Currency>("/currencies", id);
+
   // Address QUERY
   // SINGLE
   Stream<Address> streamAddress(String id) => _streamSingle<Address>(
