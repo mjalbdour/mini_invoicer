@@ -85,24 +85,14 @@ class FirebaseCloudFirestoreService {
   // Product COMMAND
   // CREATE
   Future<void> addProduct(Product product) =>
-      add("/products", () => product.toJson());
+      add<Product>("/products", () => product.toJson());
 
   // UPDATE
   Future<void> updateProduct(Product product) =>
-      update("/products", product.id, () => product.toJson());
+      update<Product>("/products", product.id, () => product.toJson());
 
   // DELETE
-  Future<DocumentReference> deleteProduct(String id) async {
-    DocumentReference docRef;
-    try {
-      docRef = _db.doc("products/$id");
-      await docRef.delete();
-    } on FirebaseException catch (ex) {
-      print(ex);
-      throw ex;
-    }
-    return docRef;
-  }
+  Future<void> deleteProduct(String id) => delete<Product>("/products", id);
 
   // PricingType QUERY
   // SINGLE
