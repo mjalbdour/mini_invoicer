@@ -233,6 +233,19 @@ class FirebaseCloudFirestoreService {
   Stream<List<ImageModel>> streamImageModels() => _streamMultiple<ImageModel>(
       'images', (id, json) => ImageModel.fromJson(id, json));
 
+  // ImageModel COMMAND
+  // CREATE
+  Future<void> addImageModel(ImageModel imageModel) =>
+      add<ImageModel>("/imagemodels", () => imageModel.toJson());
+
+  // UPDATE
+  Future<void> updateImageModel(ImageModel imageModel) => update<ImageModel>(
+      "/imagemodels", imageModel.id, () => imageModel.toJson());
+
+  // DELETE
+  Future<void> deleteImageModel(String id) =>
+      delete<ImageModel>("/imagemodels", id);
+
   // Inventory QUERY
   // SINGLE
   Stream<Inventory> streamInventory(String id) => _streamSingle<Inventory>(
