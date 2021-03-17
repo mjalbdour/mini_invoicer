@@ -378,6 +378,20 @@ class FirebaseCloudFirestoreService {
       _streamMultiple<InvoiceItem>(
           'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
 
+  // InvoiceItem COMMAND
+  // CREATE
+  Future<void> addInvoiceItem(InvoiceItem invoiceItem) =>
+      add<InvoiceItem>("/invoiceitems", () => invoiceItem.toJson());
+
+  // UPDATE
+  Future<void> updateInvoiceItem(InvoiceItem invoiceItem) =>
+      update<InvoiceItem>(
+          "/invoiceitems", invoiceItem.id, () => invoiceItem.toJson());
+
+  // DELETE
+  Future<void> deleteInvoiceItem(String id) =>
+      delete<InvoiceItem>("/invoiceitems", id);
+
   // Receipt QUERY
   // SINGLE
   Stream<Receipt> streamReceipt(String id) => _streamSingle<Receipt>(
