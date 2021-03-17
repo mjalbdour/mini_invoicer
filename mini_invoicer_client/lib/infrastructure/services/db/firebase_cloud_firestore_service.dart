@@ -445,6 +445,21 @@ class FirebaseCloudFirestoreService {
       _streamMultiple<TransactionModel>(
           'transactions', (id, json) => TransactionModel.fromJson(id, json));
 
+  // TransactionModel COMMAND
+  // CREATE
+  Future<void> addTransactionModel(TransactionModel transactionModel) =>
+      add<TransactionModel>(
+          "/transactionmodels", () => transactionModel.toJson());
+
+  // UPDATE
+  Future<void> updateTransactionModel(TransactionModel transactionModel) =>
+      update<TransactionModel>("/transactionmodels", transactionModel.id,
+          () => transactionModel.toJson());
+
+  // DELETE
+  Future<void> deleteTransactionModel(String id) =>
+      delete<TransactionModel>("/transactionmodels", id);
+
   // Currency QUERY
   // SINGLE
   Stream<Currency> streamCurrency(String id) => _streamSingle<Currency>(
