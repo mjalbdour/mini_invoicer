@@ -49,11 +49,11 @@ class FirebaseCloudFirestoreService {
   // GENERIC COMMANDS
   // UPDATE
   Future<void> update<T>(
-          String collectionPath, String id, Map<String, dynamic> toJson(T)) =>
+          String collectionPath, String id, Map<String, dynamic> toJson()) =>
       _db
           .collection(collectionPath)
           .doc(id)
-          .update(toJson(T))
+          .update(toJson())
           .then((value) => print("update successul"))
           .catchError((error) => print(error));
 
