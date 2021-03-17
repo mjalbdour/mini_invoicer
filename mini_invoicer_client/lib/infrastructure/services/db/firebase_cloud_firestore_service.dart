@@ -57,6 +57,14 @@ class FirebaseCloudFirestoreService {
           .then((value) => print("update successul"))
           .catchError((error) => print(error));
 
+  // DELETE
+  Future<void> delete<T>(String collectionPath, String id) => _db
+      .collection(collectionPath)
+      .doc(id)
+      .delete()
+      .then((value) => print("delete successful"))
+      .catchError((error) => print(error));
+
   // Product QUERY
   // SINGLE
   Stream<Product> streamProduct(String id) => _streamSingle<Product>(
