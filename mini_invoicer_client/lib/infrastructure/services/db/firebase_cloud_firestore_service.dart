@@ -149,6 +149,18 @@ class FirebaseCloudFirestoreService {
   Stream<Vendor> streamVendor(String id) => _streamSingle<Vendor>(
       id, 'vendors', (id, json) => Vendor.fromJson(id, json));
 
+  // Vendor COMMAND
+  // CREATE
+  Future<void> addVendor(Vendor vendor) =>
+      add<Vendor>("/vendors", () => vendor.toJson());
+
+  // UPDATE
+  Future<void> updateVendor(Vendor vendor) =>
+      update<Vendor>("/vendors", vendor.id, () => vendor.toJson());
+
+  // DELETE
+  Future<void> deleteVendor(String id) => delete<Vendor>("/vendors", id);
+
   // Employee QUERY
   // SINGLE
   Stream<Employee> streamEmployee(String id) => _streamSingle<Employee>(
