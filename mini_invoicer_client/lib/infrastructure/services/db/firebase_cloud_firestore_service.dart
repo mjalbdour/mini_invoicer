@@ -84,16 +84,8 @@ class FirebaseCloudFirestoreService {
 
   // Product COMMAND
   // CREATE
-  Future<DocumentReference> addProduct(Product product) async {
-    DocumentReference docRef;
-    try {
-      docRef = await _db.collection("/products").add(product.toJson());
-    } catch (ex) {
-      print(ex);
-      throw ex;
-    }
-    return docRef;
-  }
+  Future<void> addProduct(Product product) =>
+      add("/products", () => product.toJson());
 
   // UPDATE
   Future<DocumentReference> updateProduct(Product product) async {
