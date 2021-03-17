@@ -255,6 +255,19 @@ class FirebaseCloudFirestoreService {
   Stream<List<Inventory>> streamInventories() => _streamMultiple<Inventory>(
       'inventories', (id, json) => Inventory.fromJson(id, json));
 
+  // Inventory COMMAND
+  // CREATE
+  Future<void> addInventory(Inventory inventory) =>
+      add<Inventory>("/inventories", () => inventory.toJson());
+
+  // UPDATE
+  Future<void> updateInventory(Inventory inventory) =>
+      update<Inventory>("/inventories", inventory.id, () => inventory.toJson());
+
+  // DELETE
+  Future<void> deleteInventory(String id) =>
+      delete<Inventory>("/inventories", id);
+
   // InventoryType QUERY
   // SINGLE
   Stream<InventoryType> streamInventoryType(String id) =>
