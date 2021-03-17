@@ -489,4 +489,18 @@ class FirebaseCloudFirestoreService {
   // MULTIPLE
   Stream<List<Address>> streamAddresss() => _streamMultiple<Address>(
       'addresses', (id, json) => Address.fromJson(id, json));
+
+  // Address COMMAND
+  // CREATE
+  Future<void> addAddress(Address address) =>
+      add<Address>("/addresss", () => address.toJson());
+
+  // UPDATE
+  Future<void> updateAddress(Address address) =>
+      update<Address>("/addresss", address.id, () => address.toJson());
+
+  // DELETE
+  Future<void> deleteAddress(String id) => delete<Address>("/addresss", id);
+
+  // DOPE
 }
