@@ -191,6 +191,18 @@ class FirebaseCloudFirestoreService {
   Stream<List<Brand>> streamBrands() =>
       _streamMultiple<Brand>('brands', (id, json) => Brand.fromJson(id, json));
 
+  // Brand COMMAND
+  // CREATE
+  Future<void> addBrand(Brand brand) =>
+      add<Brand>("/brands", () => brand.toJson());
+
+  // UPDATE
+  Future<void> updateBrand(Brand brand) =>
+      update<Brand>("/brands", brand.id, () => brand.toJson());
+
+  // DELETE
+  Future<void> deleteBrand(String id) => delete<Brand>("/brands", id);
+
   // Customer QUERY
   // SINGLE
   Stream<Customer> streamCustomer(String id) => _streamSingle<Customer>(
