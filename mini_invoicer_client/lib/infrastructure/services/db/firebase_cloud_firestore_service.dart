@@ -46,6 +46,17 @@ class FirebaseCloudFirestoreService {
           )
           .toList());
 
+  // GENERIC COMMANDS
+  // UPDATE
+  Future<void> update<T>(
+          String collectionPath, String id, Map<String, dynamic> toJson(T)) =>
+      _db
+          .collection(collectionPath)
+          .doc(id)
+          .update(toJson(T))
+          .then((value) => print("update successul"))
+          .catchError((error) => print(error));
+
   // Product QUERY
   // SINGLE
   Stream<Product> streamProduct(String id) => _streamSingle<Product>(
