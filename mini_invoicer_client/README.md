@@ -1,6 +1,10 @@
 # Mini Invoicer Client Application
 The *Client* & *UI* interactivity Component/Layer of the Mini Invoicer *System*
 
+/*
+*I'm currently writing code and committing changes as often as possible because I'm short on time, however major refactorings and clean up will follow later...*
+*/
+
 ## Overview
 ### Architecture ~ *Clean*
 * Level 0: *Core* 
