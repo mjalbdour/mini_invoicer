@@ -422,6 +422,18 @@ class FirebaseCloudFirestoreService {
   Stream<List<Account>> streamAccounts() => _streamMultiple<Account>(
       'accounts', (id, json) => Account.fromJson(id, json));
 
+  // Account COMMAND
+  // CREATE
+  Future<void> addAccount(Account account) =>
+      add<Account>("/accounts", () => account.toJson());
+
+  // UPDATE
+  Future<void> updateAccount(Account account) =>
+      update<Account>("/accounts", account.id, () => account.toJson());
+
+  // DELETE
+  Future<void> deleteAccount(String id) => delete<Account>("/accounts", id);
+
   // Transaction QUERY
   // SINGLE
   Stream<TransactionModel> streamTransactionModel(String id) =>
