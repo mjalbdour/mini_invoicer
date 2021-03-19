@@ -48,15 +48,21 @@ class FirebaseCloudFirestoreService {
 
   // GENERIC COMMANDS
   // ADD
-  Future<void> add<T>(String collectionPath, Map<String, dynamic> toJson()) =>
-      _db
-          .collection(collectionPath)
-          .add(toJson())
-          .then((value) => print("add successful"))
-          .catchError((error) => print(error));
+  Future<DocumentReference> add<T>(
+      String collectionPath, Map<String, dynamic> toJson()) async {
+    DocumentReference docRef;
+    try {
+      docRef = await _db.collection(collectionPath).add(toJson());
+      print("add successful");
+    } catch (ex) {
+      print("add unsuccessful, exception: $ex");
+      throw ex;
+    }
+    return docRef;
+  }
 
   // UPDATE
-  Future<void> update<T>(
+  Future<DocumentReference> update<T>(
           String collectionPath, String id, Map<String, dynamic> toJson()) =>
       _db
           .collection(collectionPath)
@@ -66,7 +72,7 @@ class FirebaseCloudFirestoreService {
           .catchError((error) => print(error));
 
   // DELETE
-  Future<void> delete<T>(String collectionPath, String id) => _db
+  Future<DocumentReference> delete<T>(String collectionPath, String id) => _db
       .collection(collectionPath)
       .doc(id)
       .delete()
@@ -84,15 +90,16 @@ class FirebaseCloudFirestoreService {
 
   // Product COMMAND
   // CREATE
-  Future<void> addProduct(Product product) =>
+  Future<DocumentReference> addProduct(Product product) =>
       add<Product>("/products", () => product.toJson());
 
   // UPDATE
-  Future<void> updateProduct(Product product) =>
+  Future<DocumentReference> updateProduct(Product product) =>
       update<Product>("/products", product.id, () => product.toJson());
 
   // DELETE
-  Future<void> deleteProduct(String id) => delete<Product>("/products", id);
+  Future<DocumentReference> deleteProduct(String id) =>
+      delete<Product>("/products", id);
 
   // PricingType QUERY
   // SINGLE
@@ -107,16 +114,16 @@ class FirebaseCloudFirestoreService {
 
   // PricingType COMMAND
   // CREATE
-  Future<void> addPricingType(PricingType pricingType) =>
+  Future<DocumentReference> addPricingType(PricingType pricingType) =>
       add<PricingType>("/pricingtypes", () => pricingType.toJson());
 
   // UPDATE
-  Future<void> updatePricingType(PricingType pricingType) =>
+  Future<DocumentReference> updatePricingType(PricingType pricingType) =>
       update<PricingType>(
           "/pricingtypes", pricingType.id, () => pricingType.toJson());
 
   // DELETE
-  Future<void> deletePricingType(String id) =>
+  Future<DocumentReference> deletePricingType(String id) =>
       delete<PricingType>("/pricingtypes", id);
 
   // ProductPricing QUERY
@@ -132,16 +139,16 @@ class FirebaseCloudFirestoreService {
 
   // ProductPricing COMMAND
   // CREATE
-  Future<void> addProductPricing(ProductPricing pricingType) =>
+  Future<DocumentReference> addProductPricing(ProductPricing pricingType) =>
       add<ProductPricing>("/productpricings", () => pricingType.toJson());
 
   // UPDATE
-  Future<void> updateProductPricing(ProductPricing pricingType) =>
+  Future<DocumentReference> updateProductPricing(ProductPricing pricingType) =>
       update<ProductPricing>(
           "/productpricings", pricingType.id, () => pricingType.toJson());
 
   // DELETE
-  Future<void> deleteProductPricing(String id) =>
+  Future<DocumentReference> deleteProductPricing(String id) =>
       delete<ProductPricing>("/productpricings", id);
 
   // Vendor QUERY
@@ -151,15 +158,16 @@ class FirebaseCloudFirestoreService {
 
   // Vendor COMMAND
   // CREATE
-  Future<void> addVendor(Vendor vendor) =>
+  Future<DocumentReference> addVendor(Vendor vendor) =>
       add<Vendor>("/vendors", () => vendor.toJson());
 
   // UPDATE
-  Future<void> updateVendor(Vendor vendor) =>
+  Future<DocumentReference> updateVendor(Vendor vendor) =>
       update<Vendor>("/vendors", vendor.id, () => vendor.toJson());
 
   // DELETE
-  Future<void> deleteVendor(String id) => delete<Vendor>("/vendors", id);
+  Future<DocumentReference> deleteVendor(String id) =>
+      delete<Vendor>("/vendors", id);
 
   // Employee QUERY
   // SINGLE
@@ -172,15 +180,16 @@ class FirebaseCloudFirestoreService {
 
   // Employee COMMAND
   // CREATE
-  Future<void> addEmployee(Employee employee) =>
+  Future<DocumentReference> addEmployee(Employee employee) =>
       add<Employee>("/employees", () => employee.toJson());
 
   // UPDATE
-  Future<void> updateEmployee(Employee employee) =>
+  Future<DocumentReference> updateEmployee(Employee employee) =>
       update<Employee>("/employees", employee.id, () => employee.toJson());
 
   // DELETE
-  Future<void> deleteEmployee(String id) => delete<Employee>("/employees", id);
+  Future<DocumentReference> deleteEmployee(String id) =>
+      delete<Employee>("/employees", id);
 
   // Brand QUERY
   // SINGLE
@@ -193,15 +202,16 @@ class FirebaseCloudFirestoreService {
 
   // Brand COMMAND
   // CREATE
-  Future<void> addBrand(Brand brand) =>
+  Future<DocumentReference> addBrand(Brand brand) =>
       add<Brand>("/brands", () => brand.toJson());
 
   // UPDATE
-  Future<void> updateBrand(Brand brand) =>
+  Future<DocumentReference> updateBrand(Brand brand) =>
       update<Brand>("/brands", brand.id, () => brand.toJson());
 
   // DELETE
-  Future<void> deleteBrand(String id) => delete<Brand>("/brands", id);
+  Future<DocumentReference> deleteBrand(String id) =>
+      delete<Brand>("/brands", id);
 
   // Customer QUERY
   // SINGLE
@@ -214,15 +224,16 @@ class FirebaseCloudFirestoreService {
 
   // Customer COMMAND
   // CREATE
-  Future<void> addCustomer(Customer customer) =>
+  Future<DocumentReference> addCustomer(Customer customer) =>
       add<Customer>("/customers", () => customer.toJson());
 
   // UPDATE
-  Future<void> updateCustomer(Customer customer) =>
+  Future<DocumentReference> updateCustomer(Customer customer) =>
       update<Customer>("/customers", customer.id, () => customer.toJson());
 
   // DELETE
-  Future<void> deleteCustomer(String id) => delete<Customer>("/customers", id);
+  Future<DocumentReference> deleteCustomer(String id) =>
+      delete<Customer>("/customers", id);
 
   // ImageModel QUERY
   // SINGLE
@@ -235,15 +246,16 @@ class FirebaseCloudFirestoreService {
 
   // ImageModel COMMAND
   // CREATE
-  Future<void> addImageModel(ImageModel imageModel) =>
+  Future<DocumentReference> addImageModel(ImageModel imageModel) =>
       add<ImageModel>("/imagemodels", () => imageModel.toJson());
 
   // UPDATE
-  Future<void> updateImageModel(ImageModel imageModel) => update<ImageModel>(
-      "/imagemodels", imageModel.id, () => imageModel.toJson());
+  Future<DocumentReference> updateImageModel(ImageModel imageModel) =>
+      update<ImageModel>(
+          "/imagemodels", imageModel.id, () => imageModel.toJson());
 
   // DELETE
-  Future<void> deleteImageModel(String id) =>
+  Future<DocumentReference> deleteImageModel(String id) =>
       delete<ImageModel>("/imagemodels", id);
 
   // Inventory QUERY
@@ -257,15 +269,15 @@ class FirebaseCloudFirestoreService {
 
   // Inventory COMMAND
   // CREATE
-  Future<void> addInventory(Inventory inventory) =>
+  Future<DocumentReference> addInventory(Inventory inventory) =>
       add<Inventory>("/inventories", () => inventory.toJson());
 
   // UPDATE
-  Future<void> updateInventory(Inventory inventory) =>
+  Future<DocumentReference> updateInventory(Inventory inventory) =>
       update<Inventory>("/inventories", inventory.id, () => inventory.toJson());
 
   // DELETE
-  Future<void> deleteInventory(String id) =>
+  Future<DocumentReference> deleteInventory(String id) =>
       delete<Inventory>("/inventories", id);
 
   // InventoryType QUERY
@@ -281,16 +293,16 @@ class FirebaseCloudFirestoreService {
 
   // InventoryType COMMAND
   // CREATE
-  Future<void> addInventoryType(InventoryType inventoryType) =>
+  Future<DocumentReference> addInventoryType(InventoryType inventoryType) =>
       add<InventoryType>("/inventorytypes", () => inventoryType.toJson());
 
   // UPDATE
-  Future<void> updateInventoryType(InventoryType inventoryType) =>
+  Future<DocumentReference> updateInventoryType(InventoryType inventoryType) =>
       update<InventoryType>(
           "/inventorytypes", inventoryType.id, () => inventoryType.toJson());
 
   // DELETE
-  Future<void> deleteInventoryType(String id) =>
+  Future<DocumentReference> deleteInventoryType(String id) =>
       delete<InventoryType>("/inventorytypes", id);
 
   // ProductTransfer QUERY
@@ -306,16 +318,18 @@ class FirebaseCloudFirestoreService {
 
   // ProductTransfer COMMAND
   // CREATE
-  Future<void> addProductTransfer(ProductTransfer productTransfer) =>
+  Future<DocumentReference> addProductTransfer(
+          ProductTransfer productTransfer) =>
       add<ProductTransfer>("/producttransfers", () => productTransfer.toJson());
 
   // UPDATE
-  Future<void> updateProductTransfer(ProductTransfer productTransfer) =>
+  Future<DocumentReference> updateProductTransfer(
+          ProductTransfer productTransfer) =>
       update<ProductTransfer>("/producttransfers", productTransfer.id,
           () => productTransfer.toJson());
 
   // DELETE
-  Future<void> deleteProductTransfer(String id) =>
+  Future<DocumentReference> deleteProductTransfer(String id) =>
       delete<ProductTransfer>("/producttransfers", id);
 
   // ProductTransferType QUERY
@@ -331,19 +345,19 @@ class FirebaseCloudFirestoreService {
 
   // ProductTransferType COMMAND
   // CREATE
-  Future<void> addProductTransferType(
+  Future<DocumentReference> addProductTransferType(
           ProductTransferType productTransferType) =>
       add<ProductTransferType>(
           "/producttransfertypes", () => productTransferType.toJson());
 
   // UPDATE
-  Future<void> updateProductTransferType(
+  Future<DocumentReference> updateProductTransferType(
           ProductTransferType productTransferType) =>
       update<ProductTransferType>("/producttransfertypes",
           productTransferType.id, () => productTransferType.toJson());
 
   // DELETE
-  Future<void> deleteProductTransferType(String id) =>
+  Future<DocumentReference> deleteProductTransferType(String id) =>
       delete<ProductTransfer>("/producttransfertypes", id);
 
   // Invoice QUERY
@@ -357,15 +371,16 @@ class FirebaseCloudFirestoreService {
 
   // Invoice COMMAND
   // CREATE
-  Future<void> addInvoice(Invoice invoice) =>
+  Future<DocumentReference> addInvoice(Invoice invoice) =>
       add<Invoice>("/invoices", () => invoice.toJson());
 
   // UPDATE
-  Future<void> updateInvoice(Invoice invoice) =>
+  Future<DocumentReference> updateInvoice(Invoice invoice) =>
       update<Invoice>("/invoices", invoice.id, () => invoice.toJson());
 
   // DELETE
-  Future<void> deleteInvoice(String id) => delete<Invoice>("/invoices", id);
+  Future<DocumentReference> deleteInvoice(String id) =>
+      delete<Invoice>("/invoices", id);
 
   // InvoiceItem QUERY
   // SINGLE
@@ -380,16 +395,16 @@ class FirebaseCloudFirestoreService {
 
   // InvoiceItem COMMAND
   // CREATE
-  Future<void> addInvoiceItem(InvoiceItem invoiceItem) =>
+  Future<DocumentReference> addInvoiceItem(InvoiceItem invoiceItem) =>
       add<InvoiceItem>("/invoiceitems", () => invoiceItem.toJson());
 
   // UPDATE
-  Future<void> updateInvoiceItem(InvoiceItem invoiceItem) =>
+  Future<DocumentReference> updateInvoiceItem(InvoiceItem invoiceItem) =>
       update<InvoiceItem>(
           "/invoiceitems", invoiceItem.id, () => invoiceItem.toJson());
 
   // DELETE
-  Future<void> deleteInvoiceItem(String id) =>
+  Future<DocumentReference> deleteInvoiceItem(String id) =>
       delete<InvoiceItem>("/invoiceitems", id);
 
   // Receipt QUERY
@@ -403,15 +418,16 @@ class FirebaseCloudFirestoreService {
 
   // Receipt COMMAND
   // CREATE
-  Future<void> addReceipt(Receipt receipt) =>
+  Future<DocumentReference> addReceipt(Receipt receipt) =>
       add<Receipt>("/receipts", () => receipt.toJson());
 
   // UPDATE
-  Future<void> updateReceipt(Receipt receipt) =>
+  Future<DocumentReference> updateReceipt(Receipt receipt) =>
       update<Receipt>("/receipts", receipt.id, () => receipt.toJson());
 
   // DELETE
-  Future<void> deleteReceipt(String id) => delete<Receipt>("/receipts", id);
+  Future<DocumentReference> deleteReceipt(String id) =>
+      delete<Receipt>("/receipts", id);
 
   // Account QUERY
   // SINGLE
@@ -424,15 +440,16 @@ class FirebaseCloudFirestoreService {
 
   // Account COMMAND
   // CREATE
-  Future<void> addAccount(Account account) =>
+  Future<DocumentReference> addAccount(Account account) =>
       add<Account>("/accounts", () => account.toJson());
 
   // UPDATE
-  Future<void> updateAccount(Account account) =>
+  Future<DocumentReference> updateAccount(Account account) =>
       update<Account>("/accounts", account.id, () => account.toJson());
 
   // DELETE
-  Future<void> deleteAccount(String id) => delete<Account>("/accounts", id);
+  Future<DocumentReference> deleteAccount(String id) =>
+      delete<Account>("/accounts", id);
 
   // Transaction QUERY
   // SINGLE
@@ -447,17 +464,19 @@ class FirebaseCloudFirestoreService {
 
   // TransactionModel COMMAND
   // CREATE
-  Future<void> addTransactionModel(TransactionModel transactionModel) =>
+  Future<DocumentReference> addTransactionModel(
+          TransactionModel transactionModel) =>
       add<TransactionModel>(
           "/transactionmodels", () => transactionModel.toJson());
 
   // UPDATE
-  Future<void> updateTransactionModel(TransactionModel transactionModel) =>
+  Future<DocumentReference> updateTransactionModel(
+          TransactionModel transactionModel) =>
       update<TransactionModel>("/transactionmodels", transactionModel.id,
           () => transactionModel.toJson());
 
   // DELETE
-  Future<void> deleteTransactionModel(String id) =>
+  Future<DocumentReference> deleteTransactionModel(String id) =>
       delete<TransactionModel>("/transactionmodels", id);
 
   // Currency QUERY
@@ -471,15 +490,16 @@ class FirebaseCloudFirestoreService {
 
   // Currency COMMAND
   // CREATE
-  Future<void> addCurrency(Currency currency) =>
+  Future<DocumentReference> addCurrency(Currency currency) =>
       add<Currency>("/currencies", () => currency.toJson());
 
   // UPDATE
-  Future<void> updateCurrency(Currency currency) =>
+  Future<DocumentReference> updateCurrency(Currency currency) =>
       update<Currency>("/currencies", currency.id, () => currency.toJson());
 
   // DELETE
-  Future<void> deleteCurrency(String id) => delete<Currency>("/currencies", id);
+  Future<DocumentReference> deleteCurrency(String id) =>
+      delete<Currency>("/currencies", id);
 
   // Address QUERY
   // SINGLE
@@ -492,15 +512,16 @@ class FirebaseCloudFirestoreService {
 
   // Address COMMAND
   // CREATE
-  Future<void> addAddress(Address address) =>
+  Future<DocumentReference> addAddress(Address address) =>
       add<Address>("/addresss", () => address.toJson());
 
   // UPDATE
-  Future<void> updateAddress(Address address) =>
+  Future<DocumentReference> updateAddress(Address address) =>
       update<Address>("/addresss", address.id, () => address.toJson());
 
   // DELETE
-  Future<void> deleteAddress(String id) => delete<Address>("/addresss", id);
+  Future<DocumentReference> deleteAddress(String id) =>
+      delete<Address>("/addresss", id);
 
   // DOPE
 }
