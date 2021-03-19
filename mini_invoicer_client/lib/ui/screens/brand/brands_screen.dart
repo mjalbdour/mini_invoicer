@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/brand/brand_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/brand/brand_screen.dart';
 import "package:provider/provider.dart";
 
@@ -14,6 +15,10 @@ class BrandsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Brands"),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pushNamed(BrandAddScreen.ROUTE),
+        child: Icon(Icons.add),
       ),
       body: StreamBuilder<List<Brand>>(
         initialData: [],
