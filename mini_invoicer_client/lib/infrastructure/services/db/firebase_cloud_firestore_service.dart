@@ -93,11 +93,11 @@ class FirebaseCloudFirestoreService {
   // Product QUERY
   // SINGLE
   Stream<Product> streamProduct(String id) => _streamSingle<Product>(
-      id, 'products', (id, json) => Product.fromJson(id, json));
+      id, "/products", (id, json) => Product.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Product>> streamProducts() => _streamMultiple<Product>(
-      'products', (id, json) => Product.fromJson(id, json));
+      "/products", (id, json) => Product.fromJson(id, json));
 
   // Product COMMAND
   // CREATE
@@ -116,12 +116,12 @@ class FirebaseCloudFirestoreService {
   // SINGLE
   Stream<PricingType> streamPricingType(String id) =>
       _streamSingle<PricingType>(
-          id, 'pricingtypes', (id, json) => PricingType.fromJson(id, json));
+          id, "/pricingtypes", (id, json) => PricingType.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<PricingType>> streamPricingTypes() =>
       _streamMultiple<PricingType>(
-          'pricingtypes', (id, json) => PricingType.fromJson(id, json));
+          "/pricingtypes", (id, json) => PricingType.fromJson(id, json));
 
   // PricingType COMMAND
   // CREATE
@@ -140,13 +140,13 @@ class FirebaseCloudFirestoreService {
   // ProductPricing QUERY
   // SINGLE
   Stream<ProductPricing> streamProductPricing(String id) =>
-      _streamSingle<ProductPricing>(id, 'productpricings',
+      _streamSingle<ProductPricing>(id, "productpricings",
           (id, json) => ProductPricing.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ProductPricing>> streamProductPricings() =>
       _streamMultiple<ProductPricing>(
-          'productpricings', (id, json) => ProductPricing.fromJson(id, json));
+          "productpricings", (id, json) => ProductPricing.fromJson(id, json));
 
   // ProductPricing COMMAND
   // CREATE
@@ -165,7 +165,7 @@ class FirebaseCloudFirestoreService {
   // Vendor QUERY
   // SINGLE
   Stream<Vendor> streamVendor(String id) => _streamSingle<Vendor>(
-      id, 'vendors', (id, json) => Vendor.fromJson(id, json));
+      id, "/vendors", (id, json) => Vendor.fromJson(id, json));
 
   // Vendor COMMAND
   // CREATE
@@ -183,11 +183,11 @@ class FirebaseCloudFirestoreService {
   // Employee QUERY
   // SINGLE
   Stream<Employee> streamEmployee(String id) => _streamSingle<Employee>(
-      id, 'employees', (id, json) => Employee.fromJson(id, json));
+      id, "/employess", (id, json) => Employee.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Employee>> streamEmployees() => _streamMultiple<Employee>(
-      'employees', (id, json) => Employee.fromJson(id, json));
+      "/employess", (id, json) => Employee.fromJson(id, json));
 
   // Employee COMMAND
   // CREATE
@@ -205,11 +205,11 @@ class FirebaseCloudFirestoreService {
   // Brand QUERY
   // SINGLE
   Stream<Brand> streamBrand(String id) => _streamSingle<Brand>(
-      id, 'brands', (id, json) => Brand.fromJson(id, json));
+      id, "/brands", (id, json) => Brand.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Brand>> streamBrands() =>
-      _streamMultiple<Brand>('brands', (id, json) => Brand.fromJson(id, json));
+      _streamMultiple<Brand>("/brands", (id, json) => Brand.fromJson(id, json));
 
   // Brand COMMAND
   // CREATE
@@ -227,11 +227,11 @@ class FirebaseCloudFirestoreService {
   // Customer QUERY
   // SINGLE
   Stream<Customer> streamCustomer(String id) => _streamSingle<Customer>(
-      id, 'customers', (id, json) => Customer.fromJson(id, json));
+      id, "/customers", (id, json) => Customer.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Customer>> streamCustomers() => _streamMultiple<Customer>(
-      'customers', (id, json) => Customer.fromJson(id, json));
+      "/customers", (id, json) => Customer.fromJson(id, json));
 
   // Customer COMMAND
   // CREATE
@@ -249,11 +249,11 @@ class FirebaseCloudFirestoreService {
   // ImageModel QUERY
   // SINGLE
   Stream<ImageModel> streamImageModel(String id) => _streamSingle<ImageModel>(
-      id, 'images', (id, json) => ImageModel.fromJson(id, json));
+      id, "/images", (id, json) => ImageModel.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ImageModel>> streamImageModels() => _streamMultiple<ImageModel>(
-      'images', (id, json) => ImageModel.fromJson(id, json));
+      "/images", (id, json) => ImageModel.fromJson(id, json));
 
   // ImageModel COMMAND
   // CREATE
@@ -272,11 +272,11 @@ class FirebaseCloudFirestoreService {
   // Inventory QUERY
   // SINGLE
   Stream<Inventory> streamInventory(String id) => _streamSingle<Inventory>(
-      id, 'inventories', (id, json) => Inventory.fromJson(id, json));
+      id, "/inventories", (id, json) => Inventory.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Inventory>> streamInventories() => _streamMultiple<Inventory>(
-      'inventories', (id, json) => Inventory.fromJson(id, json));
+      "/inventories", (id, json) => Inventory.fromJson(id, json));
 
   // Inventory COMMAND
   // CREATE
@@ -294,13 +294,13 @@ class FirebaseCloudFirestoreService {
   // InventoryType QUERY
   // SINGLE
   Stream<InventoryType> streamInventoryType(String id) =>
-      _streamSingle<InventoryType>(
-          id, 'inventorytypes', (id, json) => InventoryType.fromJson(id, json));
+      _streamSingle<InventoryType>(id, "/inventorytypes",
+          (id, json) => InventoryType.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<InventoryType>> streamInventoryTypes() =>
       _streamMultiple<InventoryType>(
-          'inventorytypes', (id, json) => InventoryType.fromJson(id, json));
+          "/inventorytypes", (id, json) => InventoryType.fromJson(id, json));
 
   // InventoryType COMMAND
   // CREATE
@@ -319,13 +319,13 @@ class FirebaseCloudFirestoreService {
   // ProductTransfer QUERY
   // SINGLE
   Stream<ProductTransfer> streamProductTransfer(String id) =>
-      _streamSingle<ProductTransfer>(id, 'producttransfers',
+      _streamSingle<ProductTransfer>(id, "/producttransfers",
           (id, json) => ProductTransfer.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ProductTransfer>> streamProductTransfers() =>
-      _streamMultiple<ProductTransfer>(
-          'producttransfers', (id, json) => ProductTransfer.fromJson(id, json));
+      _streamMultiple<ProductTransfer>("/producttransfers",
+          (id, json) => ProductTransfer.fromJson(id, json));
 
   // ProductTransfer COMMAND
   // CREATE
@@ -346,12 +346,12 @@ class FirebaseCloudFirestoreService {
   // ProductTransferType QUERY
   // SINGLE
   Stream<ProductTransferType> streamProductTransferType(String id) =>
-      _streamSingle<ProductTransferType>(id, 'producttransfertypes',
+      _streamSingle<ProductTransferType>(id, "/producttransfertypes",
           (id, json) => ProductTransferType.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ProductTransferType>> streamProductTransferTypes() =>
-      _streamMultiple<ProductTransferType>('producttransfertypes',
+      _streamMultiple<ProductTransferType>("/producttransfertypes",
           (id, json) => ProductTransferType.fromJson(id, json));
 
   // ProductTransferType COMMAND
@@ -374,11 +374,11 @@ class FirebaseCloudFirestoreService {
   // Invoice QUERY
   // SINGLE
   Stream<Invoice> streamInvoice(String id) => _streamSingle<Invoice>(
-      id, 'invoices', (id, json) => Invoice.fromJson(id, json));
+      id, "/invoices", (id, json) => Invoice.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Invoice>> streamInvoices() => _streamMultiple<Invoice>(
-      'invoices', (id, json) => Invoice.fromJson(id, json));
+      "/invoices", (id, json) => Invoice.fromJson(id, json));
 
   // Invoice COMMAND
   // CREATE
@@ -397,12 +397,12 @@ class FirebaseCloudFirestoreService {
   // SINGLE
   Stream<InvoiceItem> streamInvoiceItem(String id) =>
       _streamSingle<InvoiceItem>(
-          id, 'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
+          id, "/invoiceitems", (id, json) => InvoiceItem.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<InvoiceItem>> streamInvoiceItems() =>
       _streamMultiple<InvoiceItem>(
-          'invoiceitems', (id, json) => InvoiceItem.fromJson(id, json));
+          "/invoiceitems", (id, json) => InvoiceItem.fromJson(id, json));
 
   // InvoiceItem COMMAND
   // CREATE
@@ -421,11 +421,11 @@ class FirebaseCloudFirestoreService {
   // Receipt QUERY
   // SINGLE
   Stream<Receipt> streamReceipt(String id) => _streamSingle<Receipt>(
-      id, 'receipts', (id, json) => Receipt.fromJson(id, json));
+      id, "/receipts", (id, json) => Receipt.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Receipt>> streamReceipts() => _streamMultiple<Receipt>(
-      'receipts', (id, json) => Receipt.fromJson(id, json));
+      "/receipts", (id, json) => Receipt.fromJson(id, json));
 
   // Receipt COMMAND
   // CREATE
@@ -443,11 +443,11 @@ class FirebaseCloudFirestoreService {
   // Account QUERY
   // SINGLE
   Stream<Account> streamAccount(String id) => _streamSingle<Account>(
-      id, 'accounts', (id, json) => Account.fromJson(id, json));
+      id, "/accounts", (id, json) => Account.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Account>> streamAccounts() => _streamMultiple<Account>(
-      'accounts', (id, json) => Account.fromJson(id, json));
+      "/accounts", (id, json) => Account.fromJson(id, json));
 
   // Account COMMAND
   // CREATE
@@ -465,13 +465,13 @@ class FirebaseCloudFirestoreService {
   // Transaction QUERY
   // SINGLE
   Stream<TransactionModel> streamTransactionModel(String id) =>
-      _streamSingle<TransactionModel>(id, 'transactions',
+      _streamSingle<TransactionModel>(id, "/transactions",
           (id, json) => TransactionModel.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<TransactionModel>> streamTransactionModels() =>
       _streamMultiple<TransactionModel>(
-          'transactions', (id, json) => TransactionModel.fromJson(id, json));
+          "/transactions", (id, json) => TransactionModel.fromJson(id, json));
 
   // TransactionModel COMMAND
   // CREATE
@@ -493,11 +493,11 @@ class FirebaseCloudFirestoreService {
   // Currency QUERY
   // SINGLE
   Stream<Currency> streamCurrency(String id) => _streamSingle<Currency>(
-      id, 'currencies', (id, json) => Currency.fromJson(id, json));
+      id, "/currencies", (id, json) => Currency.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Currency>> streamCurrencies() => _streamMultiple<Currency>(
-      'currencies', (id, json) => Currency.fromJson(id, json));
+      "/currencies", (id, json) => Currency.fromJson(id, json));
 
   // Currency COMMAND
   // CREATE
@@ -515,11 +515,11 @@ class FirebaseCloudFirestoreService {
   // Address QUERY
   // SINGLE
   Stream<Address> streamAddress(String id) => _streamSingle<Address>(
-      id, 'addresses', (id, json) => Address.fromJson(id, json));
+      id, "/addresses", (id, json) => Address.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Address>> streamAddresss() => _streamMultiple<Address>(
-      'addresses', (id, json) => Address.fromJson(id, json));
+      "/addresses", (id, json) => Address.fromJson(id, json));
 
   // Address COMMAND
   // CREATE
