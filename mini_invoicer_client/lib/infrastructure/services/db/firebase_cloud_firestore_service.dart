@@ -183,11 +183,11 @@ class FirebaseCloudFirestoreService {
   // Employee QUERY
   // SINGLE
   Stream<Employee> streamEmployee(String id) => _streamSingle<Employee>(
-      id, "/employess", (id, json) => Employee.fromJson(id, json));
+      id, "/employees", (id, json) => Employee.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<Employee>> streamEmployees() => _streamMultiple<Employee>(
-      "/employess", (id, json) => Employee.fromJson(id, json));
+      "/employees", (id, json) => Employee.fromJson(id, json));
 
   // Employee COMMAND
   // CREATE
