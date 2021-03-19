@@ -249,11 +249,11 @@ class FirebaseCloudFirestoreService {
   // ImageModel QUERY
   // SINGLE
   Stream<ImageModel> streamImageModel(String id) => _streamSingle<ImageModel>(
-      id, "/images", (id, json) => ImageModel.fromJson(id, json));
+      id, "/imagesmodels", (id, json) => ImageModel.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ImageModel>> streamImageModels() => _streamMultiple<ImageModel>(
-      "/images", (id, json) => ImageModel.fromJson(id, json));
+      "/imagesmodels", (id, json) => ImageModel.fromJson(id, json));
 
   // ImageModel COMMAND
   // CREATE
