@@ -63,13 +63,18 @@ class FirebaseCloudFirestoreService {
 
   // UPDATE
   Future<DocumentReference> update<T>(
-          String collectionPath, String id, Map<String, dynamic> toJson()) =>
-      _db
-          .collection(collectionPath)
-          .doc(id)
-          .update(toJson())
-          .then((value) => print("update successul"))
-          .catchError((error) => print(error));
+      String collectionPath, String id, Map<String, dynamic> toJson()) async {
+    DocumentReference docRef;
+    try {
+      docRef = _db.collection(collectionPath).doc(id);
+      await docRef.update(toJson());
+      print("update successful");
+    } catch (ex) {
+      print("update unsuccessful, exception: $ex");
+      throw ex;
+    }
+    return docRef;
+  }
 
   // DELETE
   Future<DocumentReference> delete<T>(String collectionPath, String id) => _db
