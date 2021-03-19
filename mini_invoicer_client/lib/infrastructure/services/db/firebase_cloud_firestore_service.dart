@@ -524,15 +524,15 @@ class FirebaseCloudFirestoreService {
   // Address COMMAND
   // CREATE
   Future<DocumentReference> addAddress(Address address) =>
-      add<Address>("/addresss", () => address.toJson());
+      add<Address>("/addresses", () => address.toJson());
 
   // UPDATE
   Future<DocumentReference> updateAddress(Address address) =>
-      update<Address>("/addresss", address.id, () => address.toJson());
+      update<Address>("/addresses", address.id, () => address.toJson());
 
   // DELETE
   Future<DocumentReference> deleteAddress(String id) =>
-      delete<Address>("/addresss", id);
+      delete<Address>("/addresses", id);
 
   // DOPE
 }
