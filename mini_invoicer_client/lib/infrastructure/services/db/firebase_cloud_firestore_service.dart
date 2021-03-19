@@ -77,12 +77,18 @@ class FirebaseCloudFirestoreService {
   }
 
   // DELETE
-  Future<DocumentReference> delete<T>(String collectionPath, String id) => _db
-      .collection(collectionPath)
-      .doc(id)
-      .delete()
-      .then((value) => print("delete successful"))
-      .catchError((error) => print(error));
+  Future<DocumentReference> delete<T>(String collectionPath, String id) async {
+    DocumentReference docRef;
+    try {
+      docRef = _db.collection(collectionPath).doc(id);
+      await docRef.delete();
+      print("delete successful");
+    } catch (ex) {
+      print("delete unsuccessful, exception: $ex");
+      throw ex;
+    }
+    return docRef;
+  }
 
   // Product QUERY
   // SINGLE
