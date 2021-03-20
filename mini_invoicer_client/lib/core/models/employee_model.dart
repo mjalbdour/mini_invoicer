@@ -1,7 +1,9 @@
+import 'dart:collection';
+
 class Employee {
   String id;
   String uid;
-  Map<String, String> name;
+  LinkedHashMap<String, dynamic> name;
   String employeeTypeId;
   String accountId;
   String vendorId;
@@ -22,7 +24,7 @@ class Employee {
   factory Employee.fromJson(String id, Map<String, dynamic> json) => Employee(
         id: id,
         uid: json['uid'] as String,
-        name: json['name'] as Map<String, String>,
+        name: json['name'] as LinkedHashMap<String, dynamic>,
         employeeTypeId: json['employeeTypeId'] as String,
         accountId: json['accountId'] as String,
         vendorId: json['vendorId'] as String,
