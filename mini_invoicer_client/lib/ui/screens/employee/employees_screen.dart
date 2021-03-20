@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/employee/employee_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/employee/employee_screen.dart';
 import "package:provider/provider.dart";
 
@@ -14,6 +15,11 @@ class EmployeesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Employees"),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            Navigator.of(context).pushNamed(EmployeeAddScreen.ROUTE),
+        child: Icon(Icons.add),
       ),
       body: StreamBuilder<List<Employee>>(
         initialData: [],
