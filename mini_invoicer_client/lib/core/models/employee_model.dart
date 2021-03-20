@@ -24,7 +24,7 @@ class Employee {
   factory Employee.fromJson(String id, Map<String, dynamic> json) => Employee(
         id: id,
         uid: json['uid'] as String,
-        name: json['name'] as LinkedHashMap<String, dynamic>,
+        name: json['name'],
         employeeTypeId: json['employeeTypeId'] as String,
         accountId: json['accountId'] as String,
         vendorId: json['vendorId'] as String,
