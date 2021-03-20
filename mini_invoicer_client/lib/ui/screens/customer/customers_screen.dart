@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/customer/customer_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/customer/customer_screen.dart';
 import "package:provider/provider.dart";
 
@@ -14,6 +15,11 @@ class CustomersScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Customers"),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            Navigator.of(context).pushNamed(CustomerAddScreen.ROUTE),
+        child: Icon(Icons.add),
       ),
       body: StreamBuilder<List<Customer>>(
         initialData: [],
