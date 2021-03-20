@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
@@ -17,6 +19,13 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   Employee _employee = Employee();
+
+  @override
+  void initState() {
+    super.initState();
+    _employee.name = {"first": "", "last": "", "designation": designations[0]}
+        as LinkedHashMap<String, dynamic>;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +60,7 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                 labelText: "Last Name",
               ),
             ),
-            DropdownButtonFormField(
+            DropdownButtonFormField<String>(
                 value: designations[0],
                 onChanged: (value) => _employee.name["designation"] = value,
                 onSaved: (value) => _employee.name["designation"] = value,
