@@ -19,6 +19,7 @@ class ImagesScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).pushNamed(ImageAddScreen.ROUTE),
+        child: Icon(Icons.add),
       ),
       body: StreamBuilder<List<ImageModel>>(
         initialData: [],
