@@ -10,6 +10,7 @@ import 'package:mini_invoicer_client/ui/screens/customer/customers_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/employee/employee_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/employee/employees_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/home_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/image/image_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/image/images_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product/product_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product/products_screen.dart';
@@ -27,4 +28,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   EmployeesScreen.ROUTE: (context) => EmployeesScreen(),
   EmployeeAddScreen.ROUTE: (context) => EmployeeAddScreen(),
   ImagesScreen.ROUTE: (context) => ImagesScreen(),
+  ImageAddScreen.ROUTE: (context) => ImageAddScreen(),
 };
