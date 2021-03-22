@@ -19,7 +19,7 @@ class ImageModel {
 
   factory ImageModel.fromJson(String id, Map<String, dynamic> json) =>
       ImageModel(
-        id: json['id'] as String,
+        id: id,
         title: json['title'] as String,
         description: json['description'] as String,
         url: json['url'] as String,
