@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/employee/employee_update_screen.dart';
 import 'package:provider/provider.dart';
 
 class EmployeeScreen extends StatelessWidget {
@@ -44,6 +45,16 @@ class EmployeeScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(
                 "${_employee.name['designation']}. ${_employee.name['last']}"),
+            actions: [
+              IconButton(
+                icon: (Icon(Icons.edit)),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => EmployeeUpdateScreen(_id),
+                  ),
+                ),
+              ),
+            ],
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
