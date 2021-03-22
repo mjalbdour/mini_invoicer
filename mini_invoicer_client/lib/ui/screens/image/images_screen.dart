@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/image/image_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/image/image_screen.dart';
 import "package:provider/provider.dart";
 
 class ImagesScreen extends StatelessWidget {
-  static const String ROUTE = "/images";
+  static const String ROUTE = "/imagemodels";
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,9 @@ class ImagesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Images"),
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pushNamed(ImageAddScreen.ROUTE),
       ),
       body: StreamBuilder<List<ImageModel>>(
         initialData: [],
