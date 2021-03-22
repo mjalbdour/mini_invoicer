@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/image/image_update_screen.dart';
 import 'package:provider/provider.dart';
 
 class ImageModelScreen extends StatelessWidget {
@@ -43,6 +44,16 @@ class ImageModelScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text("${_imageModel.title}"),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ImageUpdateScreen(_id),
+                  ),
+                ),
+              ),
+            ],
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
