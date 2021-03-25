@@ -1,33 +1,33 @@
 class Currency {
   String id;
   String name;
-  String shorthand;
-  String sign;
+  String code;
+  String symbol;
 
   Currency({
     this.id,
     this.name,
-    this.shorthand,
-    this.sign,
+    this.code,
+    this.symbol,
   });
 
   factory Currency.fromJson(String id, Map<String, dynamic> json) => Currency(
         id: id,
         name: json['name'] as String,
-        shorthand: json['shorthand'] as String,
-        sign: json['sign'] as String,
+        code: json['code'] as String,
+        symbol: json['symbol'] as String,
       );
 
   Map<String, dynamic> toJson() => {
         'name': this.name,
-        'shorthand': this.shorthand,
-        'sign': this.sign,
+        'code': this.code,
+        'symbol': this.symbol,
       };
 
   Map<String, dynamic> toJsonWithId() => {
         'id': this.id,
         'name': this.name,
-        'shorthand': this.shorthand,
-        'sign': this.sign,
+        'code': this.code,
+        'symbol': this.symbol,
       };
 }
