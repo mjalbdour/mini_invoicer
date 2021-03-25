@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mini_invoicer_client/core/models/account_model.dart';
 import 'package:mini_invoicer_client/core/models/address_model.dart';
 import 'package:mini_invoicer_client/core/models/brand_model.dart';
-import 'package:mini_invoicer_client/core/models/currency_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
@@ -489,28 +488,6 @@ class FirebaseCloudFirestoreService {
   // DELETE
   Future<DocumentReference> deleteTransactionModel(String id) =>
       delete<TransactionModel>("/transactionmodels", id);
-
-  // Currency QUERY
-  // SINGLE
-  Stream<Currency> streamCurrency(String id) => _streamSingle<Currency>(
-      id, "/currencies", (id, json) => Currency.fromJson(id, json));
-
-  // MULTIPLE
-  Stream<List<Currency>> streamCurrencies() => _streamMultiple<Currency>(
-      "/currencies", (id, json) => Currency.fromJson(id, json));
-
-  // Currency COMMAND
-  // CREATE
-  Future<DocumentReference> addCurrency(Currency currency) =>
-      add<Currency>("/currencies", () => currency.toJson());
-
-  // UPDATE
-  Future<DocumentReference> updateCurrency(Currency currency) =>
-      update<Currency>("/currencies", currency.id, () => currency.toJson());
-
-  // DELETE
-  Future<DocumentReference> deleteCurrency(String id) =>
-      delete<Currency>("/currencies", id);
 
   // Address QUERY
   // SINGLE
