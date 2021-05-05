@@ -39,15 +39,4 @@ class Address {
         'postalCode': this.postalCode,
         'ownerId': this.ownerId,
       };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'street': this.street,
-        'building': this.building,
-        'area': this.area,
-        'city': this.city,
-        'country': this.country,
-        'postalCode': this.postalCode,
-        'ownerId': this.ownerId,
-      };
 }
