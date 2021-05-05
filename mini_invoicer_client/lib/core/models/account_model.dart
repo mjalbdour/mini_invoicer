@@ -23,11 +23,4 @@ class Account {
         'lastUpdated': this.lastUpdated,
         'ownerId': this.ownerId,
       };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'balance': this.balance,
-        'lastUpdated': this.lastUpdated,
-        'ownerId': this.ownerId,
-      };
 }
