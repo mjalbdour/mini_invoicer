@@ -36,14 +36,4 @@ class ImageModel {
         'timestamp': this.timestamp,
         'ownerId': this.ownerId,
       };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'title': this.title,
-        'description': this.description,
-        'url': this.url,
-        'sensitive': this.sensitive,
-        'timestamp': this.timestamp,
-        'ownerId': this.ownerId,
-      };
 }
