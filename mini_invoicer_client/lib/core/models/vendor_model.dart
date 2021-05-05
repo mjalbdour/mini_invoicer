@@ -31,13 +31,4 @@ class Vendor {
         'addressId': this.addressId,
         'accountId': this.accountId,
       };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
-        'taxNumber': this.taxNumber,
-        'addressId': this.addressId,
-        'accountId': this.accountId,
-      };
 }
