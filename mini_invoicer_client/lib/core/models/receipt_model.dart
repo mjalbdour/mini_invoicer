@@ -2,7 +2,9 @@ class Receipt {
   String id;
   double value;
   DateTime timestamp;
-  Map<String, dynamic> serialNumber;
+  String serialNumber;
+  bool aborted;
+  int printQuantity;
   String invoiceId;
   String currencyId;
   String paymentTypeId;
@@ -12,6 +14,8 @@ class Receipt {
     this.value,
     this.timestamp,
     this.serialNumber,
+    this.aborted,
+    this.printQuantity,
     this.invoiceId,
     this.currencyId,
     this.paymentTypeId,
@@ -21,7 +25,9 @@ class Receipt {
         id: id,
         value: json['value'] as double,
         timestamp: json['timestamp'].toDate() as DateTime,
-        serialNumber: json['serialNumber'] as Map<String, dynamic>,
+        serialNumber: json['serialNumber'] as String,
+        aborted: json['aborted'] as bool,
+        printQuantity: json['printQuantity'] as int,
         invoiceId: json['invoiceId'] as String,
         currencyId: json['currencyId'] as String,
         paymentTypeId: json['paymentTypeId'] as String,
@@ -31,16 +37,8 @@ class Receipt {
         'value': this.value,
         'timestamp': this.timestamp,
         'serialNumber': this.serialNumber,
-        'invoiceId': this.invoiceId,
-        'currencyId': this.currencyId,
-        'paymentTypeId': this.paymentTypeId,
-      };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'value': this.value,
-        'timestamp': this.timestamp,
-        'serialNumber': this.serialNumber,
+        'aborted': this.aborted,
+        'printQuantity': this.printQuantity,
         'invoiceId': this.invoiceId,
         'currencyId': this.currencyId,
         'paymentTypeId': this.paymentTypeId,
