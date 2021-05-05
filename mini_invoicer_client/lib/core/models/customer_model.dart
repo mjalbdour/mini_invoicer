@@ -35,14 +35,4 @@ class Customer {
         'inventoryId': this.inventoryId,
         'pricingTypeId': this.pricingTypeId,
       };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
-        'addressId': this.addressId,
-        'accountId': this.accountId,
-        'inventoryId': this.inventoryId,
-        'pricingTypeId': this.pricingTypeId,
-      };
 }
