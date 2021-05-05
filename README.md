@@ -4,10 +4,8 @@ A modern solution for a real-world collection of problems for small businesses t
 ## Ideal *use case*
 You want to generate invoices or receipts to your customers where payments are not online but tracked anyway using the app (cash, cheques) and monitor your inventory.
 
-## Rough Sketch - Data Models
-* https://drive.google.com/file/d/1QFft3HzL2Jleizu2Xy1ONcVks4vP17Fj/view?usp=sharing
-
-### Documentation & any related docs coming soon
+## ERD
+* https://lucid.app/publicSegments/view/f66c2109-ebb0-441a-9ead-d508f7c9b677
 
 ## Tech Stack
 * Flutter - Dart
