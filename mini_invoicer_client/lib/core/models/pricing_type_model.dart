@@ -1,28 +1,23 @@
 class PricingType {
   String id;
-  String name;
+  String title;
   String description;
 
   PricingType({
     this.id,
-    this.name,
+    this.title,
     this.description,
   });
 
   factory PricingType.fromJson(String id, Map<String, dynamic> json) =>
       PricingType(
-          id: id,
-          name: json['name'] as String,
-          description: json['description'] as String);
+        id: id,
+        title: json['title'] as String,
+        description: json['description'] as String,
+      );
 
   Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'description': this.description,
-      };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
+        'title': this.title,
         'description': this.description,
       };
 }
