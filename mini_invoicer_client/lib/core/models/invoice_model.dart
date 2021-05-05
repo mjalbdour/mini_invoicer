@@ -1,9 +1,9 @@
 class Invoice {
   String id;
   double value;
-  Map<String, dynamic> serialNumber;
+  String serialNumber;
   bool aborted;
-  int timesPrinted;
+  int printQuantity;
   DateTime timestamp;
   String vendorId;
   String employeeId;
@@ -17,7 +17,7 @@ class Invoice {
     this.value,
     this.serialNumber,
     this.aborted,
-    this.timesPrinted,
+    this.printQuantity,
     this.timestamp,
     this.vendorId,
     this.employeeId,
@@ -30,9 +30,8 @@ class Invoice {
   factory Invoice.fromJson(String id, Map<String, dynamic> json) => Invoice(
         id: id,
         value: json['value'] as double,
-        serialNumber: json['serialNumber'] as Map<String, dynamic>,
         aborted: json['aborted'] as bool,
-        timesPrinted: json['timesPrinted'] as int,
+        printQuantity: json['printQuantity'] as int,
         timestamp: json['timestamp'].toDate() as DateTime,
         vendorId: json['vendorId'] as String,
         employeeId: json['employeeId'] as String,
@@ -45,21 +44,7 @@ class Invoice {
         'value': this.value,
         'serialNumber': this.serialNumber,
         'aborted': this.aborted,
-        'timesPrinted': this.timesPrinted,
-        'timestamp': this.timestamp,
-        'vendorId': this.vendorId,
-        'employeeId': this.employeeId,
-        'currencyId': this.currencyId,
-        'paymentTypeId': this.paymentTypeId,
-        'successorInvoiceId': this.successorInvoiceId,
-      };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'value': this.value,
-        'serialNumber': this.serialNumber,
-        'aborted': this.aborted,
-        'timesPrinted': this.timesPrinted,
+        'printQuantity': this.printQuantity,
         'timestamp': this.timestamp,
         'vendorId': this.vendorId,
         'employeeId': this.employeeId,
