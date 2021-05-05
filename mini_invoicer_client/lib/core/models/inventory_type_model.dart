@@ -1,12 +1,12 @@
 class InventoryType {
   String id;
-  String name;
+  String title;
   String description;
   bool refrigerated;
 
   InventoryType({
     this.id,
-    this.name,
+    this.title,
     this.description,
     this.refrigerated,
   });
@@ -14,20 +14,13 @@ class InventoryType {
   factory InventoryType.fromJson(String id, Map<String, dynamic> json) =>
       InventoryType(
         id: id,
-        name: json['name'] as String,
+        title: json['title'] as String,
         description: json['description'] as String,
         refrigerated: json['refrigerated'] as bool,
       );
 
   Map<String, dynamic> toJson() => {
-        'name': this.name,
-        'description': this.description,
-        'refrigerated': this.refrigerated,
-      };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
+        'title': this.title,
         'description': this.description,
         'refrigerated': this.refrigerated,
       };
