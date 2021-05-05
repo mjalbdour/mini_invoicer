@@ -2,16 +2,18 @@ class TransactionModel {
   String id;
   double value;
   DateTime timestamp;
-  String senderAccountId;
-  String receiverAccountId;
+  String serialNumber;
+  String fromAccountId;
+  String toAccountId;
   String currencyId;
 
   TransactionModel({
     this.id,
     this.value,
     this.timestamp,
-    this.senderAccountId,
-    this.receiverAccountId,
+    this.serialNumber,
+    this.fromAccountId,
+    this.toAccountId,
     this.currencyId,
   });
 
@@ -20,25 +22,18 @@ class TransactionModel {
         id: id,
         value: json['value'] as double,
         timestamp: json['timestamp'].toDate() as DateTime,
-        senderAccountId: json['senderAccountId'] as String,
-        receiverAccountId: json['receiverAccountId'] as String,
+        serialNumber: json['serialNumber'] as String,
+        fromAccountId: json['fromAccountId'] as String,
+        toAccountId: json['toAccountId'] as String,
         currencyId: json['currencyId'] as String,
       );
 
   Map<String, dynamic> toJson() => {
         'value': this.value,
         'timestamp': this.timestamp,
-        'senderAccountId': this.senderAccountId,
-        'receiverAccountId': this.receiverAccountId,
-        'currencyId': this.currencyId,
-      };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'value': this.value,
-        'timestamp': this.timestamp,
-        'senderAccountId': this.senderAccountId,
-        'receiverAccountId': this.receiverAccountId,
+        'serialNumber': this.serialNumber,
+        'fromAccountId': this.fromAccountId,
+        'toAccountId': this.toAccountId,
         'currencyId': this.currencyId,
       };
 }
