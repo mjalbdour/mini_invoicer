@@ -3,7 +3,7 @@ class Product {
   String name;
   String description;
   int weight;
-  bool requiresRefrigeration;
+  bool refrigerated;
   String brandId;
   String vendorId;
 
@@ -12,7 +12,7 @@ class Product {
     this.name,
     this.description,
     this.weight,
-    this.requiresRefrigeration,
+    this.refrigerated,
     this.brandId,
     this.vendorId,
   });
@@ -23,7 +23,7 @@ class Product {
       name: json['name'] as String,
       description: json['description'] as String,
       weight: json['weight'] as int,
-      requiresRefrigeration: json['requiresRefrigeration'] as bool,
+      refrigerated: json['refrigerated'] as bool,
       brandId: json['brandId'] as String,
       vendorId: json['vendorId'] as String,
     );
@@ -33,17 +33,7 @@ class Product {
         'name': this.name,
         'description': this.description,
         'weight': this.weight,
-        'requiresRefrigeration': this.requiresRefrigeration,
-        'brandId': this.brandId,
-        'vendorId': this.vendorId,
-      };
-
-  Map<String, dynamic> toJsonWithId() => {
-        'id': this.id,
-        'name': this.name,
-        'description': this.description,
-        'weight': this.weight,
-        'requiresRefrigeration': this.requiresRefrigeration,
+        'refrigerated': this.refrigerated,
         'brandId': this.brandId,
         'vendorId': this.vendorId,
       };
