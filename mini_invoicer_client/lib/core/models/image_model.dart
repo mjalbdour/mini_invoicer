@@ -5,7 +5,7 @@ class ImageModel {
   String url;
   bool sensitive;
   DateTime timestamp;
-  String ownerId;
+  List<String> tags;
 
   ImageModel({
     this.id,
@@ -14,7 +14,7 @@ class ImageModel {
     this.url,
     this.sensitive,
     this.timestamp,
-    this.ownerId,
+    this.tags,
   });
 
   factory ImageModel.fromJson(String id, Map<String, dynamic> json) =>
@@ -25,7 +25,7 @@ class ImageModel {
         url: json['url'] as String,
         sensitive: json['sensitive'] as bool,
         timestamp: json['timestamp']?.toDate() as DateTime,
-        ownerId: json['ownerId'] as String,
+        tags: json['tags'] as List<String>,
       );
 
   Map<String, dynamic> toJson() => {
@@ -34,6 +34,6 @@ class ImageModel {
         'url': this.url,
         'sensitive': this.sensitive,
         'timestamp': this.timestamp,
-        'ownerId': this.ownerId,
+        'tags': this.tags,
       };
 }
