@@ -461,7 +461,7 @@ class FirebaseCloudFirestoreService {
   Future<DocumentReference> deleteAccount(String id) =>
       delete<Account>("/accounts", id);
 
-  // Transaction QUERY
+  // TransactionModel QUERY
   // SINGLE
   Stream<TransactionModel> streamTransactionModel(String id) =>
       _streamSingle<TransactionModel>(id, "/transactionmodels",
