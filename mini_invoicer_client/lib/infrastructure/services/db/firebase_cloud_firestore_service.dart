@@ -184,27 +184,29 @@ class FirebaseCloudFirestoreService {
   // SINGLE
   Stream<ProductQuantity> streamProductQuantity(String id) =>
       _streamSingle<ProductQuantity>(id, "/productquantities",
-              (id, json) => ProductQuantity.fromJson(id, json));
+          (id, json) => ProductQuantity.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ProductQuantity>> streamProductQuantities() =>
-      _streamMultiple<ProductQuantity>(
-          "/productquantities", (id, json) => ProductQuantity.fromJson(id, json));
+      _streamMultiple<ProductQuantity>("/productquantities",
+          (id, json) => ProductQuantity.fromJson(id, json));
 
   // ProductQuantity COMMAND
   // CREATE
-  Future<DocumentReference> addProductQuantity(ProductQuantity productQuantity) =>
-      add<ProductQuantity>("/productquantities", () => productQuantity.toJson());
+  Future<DocumentReference> addProductQuantity(
+          ProductQuantity productQuantity) =>
+      add<ProductQuantity>(
+          "/productquantities", () => productQuantity.toJson());
 
   // UPDATE
-  Future<DocumentReference> updateProductQuantity(ProductQuantity productQuantity) =>
-      update<ProductQuantity>(
-          "/productquantities", productQuantity.id, () => productQuantity.toJson());
+  Future<DocumentReference> updateProductQuantity(
+          ProductQuantity productQuantity) =>
+      update<ProductQuantity>("/productquantities", productQuantity.id,
+          () => productQuantity.toJson());
 
   // DELETE
   Future<DocumentReference> deleteProductQuantity(String id) =>
       delete<ProductQuantity>("/productquantities", id);
-
 
   // Vendor QUERY
   // SINGLE
@@ -212,17 +214,9 @@ class FirebaseCloudFirestoreService {
       id, "/vendors", (id, json) => Vendor.fromJson(id, json));
 
   // Vendor COMMAND
-  // CREATE
-  Future<DocumentReference> addVendor(Vendor vendor) =>
-      add<Vendor>("/vendors", () => vendor.toJson());
-
   // UPDATE
   Future<DocumentReference> updateVendor(Vendor vendor) =>
       update<Vendor>("/vendors", vendor.id, () => vendor.toJson());
-
-  // DELETE
-  Future<DocumentReference> deleteVendor(String id) =>
-      delete<Vendor>("/vendors", id);
 
   // Employee QUERY
   // SINGLE
@@ -538,30 +532,26 @@ class FirebaseCloudFirestoreService {
   // SINGLE
   Stream<DocumentModel> streamDocumentModel(String id) =>
       _streamSingle<DocumentModel>(id, "/documentmodels",
-              (id, json) => DocumentModel.fromJson(id, json));
+          (id, json) => DocumentModel.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<DocumentModel>> streamDocumentModels() =>
-      _streamMultiple<DocumentModel>("/documentmodels",
-              (id, json) => DocumentModel.fromJson(id, json));
+      _streamMultiple<DocumentModel>(
+          "/documentmodels", (id, json) => DocumentModel.fromJson(id, json));
 
   // DocumentModel COMMAND
   // CREATE
-  Future<DocumentReference> addDocumentModel(
-      DocumentModel documentModel) =>
-      add<DocumentModel>(
-          "/documentmodels", () => documentModel.toJson());
+  Future<DocumentReference> addDocumentModel(DocumentModel documentModel) =>
+      add<DocumentModel>("/documentmodels", () => documentModel.toJson());
 
   // UPDATE
-  Future<DocumentReference> updateDocumentModel(
-      DocumentModel documentModel) =>
-      update<DocumentModel>("/documentmodels", documentModel.id,
-              () => documentModel.toJson());
+  Future<DocumentReference> updateDocumentModel(DocumentModel documentModel) =>
+      update<DocumentModel>(
+          "/documentmodels", documentModel.id, () => documentModel.toJson());
 
   // DELETE
   Future<DocumentReference> deleteDocumentModel(String id) =>
       delete<DocumentModel>("/documentmodels", id);
-
 
   // Address QUERY
   // SINGLE
@@ -585,5 +575,5 @@ class FirebaseCloudFirestoreService {
   Future<DocumentReference> deleteAddress(String id) =>
       delete<Address>("/addresses", id);
 
-  // DOPE
+// DOPE
 }
