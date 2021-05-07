@@ -542,7 +542,7 @@ class FirebaseCloudFirestoreService {
       id, "/addresses", (id, json) => Address.fromJson(id, json));
 
   // MULTIPLE
-  Stream<List<Address>> streamAddresss() => _streamMultiple<Address>(
+  Stream<List<Address>> streamAddresses() => _streamMultiple<Address>(
       "/addresses", (id, json) => Address.fromJson(id, json));
 
   // Address COMMAND
