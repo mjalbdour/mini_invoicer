@@ -13,6 +13,24 @@ import 'package:mini_invoicer_client/core/models/invoice_model.dart';
 import 'package:mini_invoicer_client/core/models/pricing_type_model.dart';
 import 'package:mini_invoicer_client/core/models/product_model.dart';
 import 'package:mini_invoicer_client/core/models/product_pricing_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
+import 'package:mini_invoicer_client/core/models/product_quantity_model.dart';
 import 'package:mini_invoicer_client/core/models/product_transfer_model.dart';
 import 'package:mini_invoicer_client/core/models/product_transfer_type_model.dart';
 import 'package:mini_invoicer_client/core/models/receipt_model.dart';
@@ -161,6 +179,32 @@ class FirebaseCloudFirestoreService {
   // DELETE
   Future<DocumentReference> deleteProductPricing(String id) =>
       delete<ProductPricing>("/productpricings", id);
+
+  // ProductQuantity QUERY
+  // SINGLE
+  Stream<ProductQuantity> streamProductQuantity(String id) =>
+      _streamSingle<ProductQuantity>(id, "/productquantities",
+              (id, json) => ProductQuantity.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<ProductQuantity>> streamProductQuantities() =>
+      _streamMultiple<ProductQuantity>(
+          "/productquantities", (id, json) => ProductQuantity.fromJson(id, json));
+
+  // ProductQuantity COMMAND
+  // CREATE
+  Future<DocumentReference> addProductQuantity(ProductQuantity productQuantity) =>
+      add<ProductQuantity>("/productquantities", () => productQuantity.toJson());
+
+  // UPDATE
+  Future<DocumentReference> updateProductQuantity(ProductQuantity productQuantity) =>
+      update<ProductQuantity>(
+          "/productquantities", productQuantity.id, () => productQuantity.toJson());
+
+  // DELETE
+  Future<DocumentReference> deleteProductQuantity(String id) =>
+      delete<ProductQuantity>("/productquantities", id);
+
 
   // Vendor QUERY
   // SINGLE
