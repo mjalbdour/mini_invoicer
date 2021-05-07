@@ -3,6 +3,7 @@ import 'package:mini_invoicer_client/core/models/account_model.dart';
 import 'package:mini_invoicer_client/core/models/address_model.dart';
 import 'package:mini_invoicer_client/core/models/brand_model.dart';
 import 'package:mini_invoicer_client/core/models/customer_model.dart';
+import 'package:mini_invoicer_client/core/models/document_model.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/core/models/image_model.dart';
 import 'package:mini_invoicer_client/core/models/inventory_model.dart';
@@ -488,6 +489,35 @@ class FirebaseCloudFirestoreService {
   // DELETE
   Future<DocumentReference> deleteTransactionModel(String id) =>
       delete<TransactionModel>("/transactionmodels", id);
+
+  // DocumentModel QUERY
+  // SINGLE
+  Stream<DocumentModel> streamDocumentModel(String id) =>
+      _streamSingle<DocumentModel>(id, "/documentmodels",
+              (id, json) => DocumentModel.fromJson(id, json));
+
+  // MULTIPLE
+  Stream<List<DocumentModel>> streamDocumentModels() =>
+      _streamMultiple<DocumentModel>("/documentmodels",
+              (id, json) => DocumentModel.fromJson(id, json));
+
+  // DocumentModel COMMAND
+  // CREATE
+  Future<DocumentReference> addDocumentModel(
+      DocumentModel documentModel) =>
+      add<DocumentModel>(
+          "/documentmodels", () => documentModel.toJson());
+
+  // UPDATE
+  Future<DocumentReference> updateDocumentModel(
+      DocumentModel documentModel) =>
+      update<DocumentModel>("/documentmodels", documentModel.id,
+              () => documentModel.toJson());
+
+  // DELETE
+  Future<DocumentReference> deleteDocumentModel(String id) =>
+      delete<DocumentModel>("/documentmodels", id);
+
 
   // Address QUERY
   // SINGLE
