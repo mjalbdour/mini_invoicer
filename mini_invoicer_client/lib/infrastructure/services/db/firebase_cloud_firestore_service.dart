@@ -140,13 +140,13 @@ class FirebaseCloudFirestoreService {
   // ProductPricing QUERY
   // SINGLE
   Stream<ProductPricing> streamProductPricing(String id) =>
-      _streamSingle<ProductPricing>(id, "productpricings",
+      _streamSingle<ProductPricing>(id, "/productpricings",
           (id, json) => ProductPricing.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<ProductPricing>> streamProductPricings() =>
       _streamMultiple<ProductPricing>(
-          "productpricings", (id, json) => ProductPricing.fromJson(id, json));
+          "/productpricings", (id, json) => ProductPricing.fromJson(id, json));
 
   // ProductPricing COMMAND
   // CREATE
