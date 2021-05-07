@@ -464,12 +464,12 @@ class FirebaseCloudFirestoreService {
   // Transaction QUERY
   // SINGLE
   Stream<TransactionModel> streamTransactionModel(String id) =>
-      _streamSingle<TransactionModel>(id, "/transactionsmodels",
+      _streamSingle<TransactionModel>(id, "/transactionmodels",
           (id, json) => TransactionModel.fromJson(id, json));
 
   // MULTIPLE
   Stream<List<TransactionModel>> streamTransactionModels() =>
-      _streamMultiple<TransactionModel>("/transactionsmodels",
+      _streamMultiple<TransactionModel>("/transactionmodels",
           (id, json) => TransactionModel.fromJson(id, json));
 
   // TransactionModel COMMAND
