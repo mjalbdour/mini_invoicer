@@ -70,10 +70,10 @@ class ImagesScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "${_images[index].ownerId}",
-                              style: TextStyle(color: Colors.white),
-                            ),
+                            // Text(
+                            //   "${_images[index].ownerId}",
+                            //   style: TextStyle(color: Colors.white),
+                            // ),
                           ],
                         ),
                       ),
