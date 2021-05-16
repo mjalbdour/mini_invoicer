@@ -42,7 +42,7 @@ class PricingTypeScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("${_pricingType.name}"),
+            title: Text("${_pricingType.title}"),
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
