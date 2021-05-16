@@ -66,7 +66,7 @@ class ProductTransfersScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "${_productTransfers[index].value}",
+                                "${_productTransfers[index].quantity}",
                                 style: TextStyle(color: Colors.white),
                               ),
                             ],

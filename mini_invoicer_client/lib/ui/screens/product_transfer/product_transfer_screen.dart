@@ -43,7 +43,7 @@ class ProductTransferScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("${_productTransfer.value}"),
+            title: Text("${_productTransfer.quantity}"),
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
