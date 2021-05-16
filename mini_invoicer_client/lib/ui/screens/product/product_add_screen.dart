@@ -160,11 +160,3 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
     );
   }
 }
-
-/*
-  String name;
-  String description;
-  int weight;
-  bool refrigerated;
-  String brandId;
-*/
