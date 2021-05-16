@@ -109,8 +109,8 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
               },
             ),
             DropdownButtonFormField<bool>(
-                value: _product.requiresRefrigeration,
-                onChanged: (value) => _product.requiresRefrigeration = value,
+                value: _product.refrigerated,
+                onChanged: (value) => _product.refrigerated = value,
                 decoration:
                     InputDecoration(labelText: "Requires Refrigeration?"),
                 items: [
@@ -138,7 +138,7 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                     print(_product.description);
                     print(_product.weight);
                     print(_product.brandId);
-                    print(_product.requiresRefrigeration);
+                    print(_product.refrigerated);
 
                     DocumentReference docRef = await context
                         .read<FirebaseCloudFirestoreService>()
@@ -165,6 +165,6 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
   String name;
   String description;
   int weight;
-  bool requiresRefrigeration;
+  bool refrigerated;
   String brandId;
 */
