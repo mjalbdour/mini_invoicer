@@ -50,8 +50,8 @@ class TransactionScreen extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             shrinkWrap: true,
             children: [
-              Text("${_transaction.senderAccountId}"),
-              Text("${_transaction.receiverAccountId}"),
+              Text("${_transaction.fromAccountId}"),
+              Text("${_transaction.toAccountId}"),
               Text("${_transaction.value}"),
             ],
           ),
