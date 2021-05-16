@@ -244,11 +244,9 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                   },
                 ),
                 DropdownButtonFormField<bool>(
-                    value: _oldProduct.requiresRefrigeration ?? false,
-                    onChanged: (value) =>
-                        _newProduct.requiresRefrigeration = value,
+                    value: _oldProduct.refrigerated ?? false,
                     onSaved: (value) =>
-                        _newProduct.requiresRefrigeration = value,
+                        _newProduct.refrigerated = value,
                     decoration:
                         InputDecoration(labelText: "Requires Refrigeration?"),
                     items: [
