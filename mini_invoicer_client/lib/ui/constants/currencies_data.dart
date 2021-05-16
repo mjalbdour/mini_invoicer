@@ -2,17 +2,17 @@ import 'package:mini_invoicer_client/core/models/currency_model.dart';
 
 List<Currency> currencies = [
   Currency(
-    name: "US Dollar",
+    title: "US Dollar",
     code: "USD",
     symbol: "\$",
   ),
   Currency(
-    name: "Euro",
+    title: "Euro",
     code: "EUR",
     symbol: "€",
   ),
   Currency(
-    name: "Jordanian Dinar",
+    title: "Jordanian Dinar",
     code: "JOD",
     symbol: "JD",
   ),
