@@ -66,7 +66,7 @@ class ProductsScreen extends StatelessWidget {
                       ),
                       Text("${_products[index].name}"),
                       Container(
-                        color: _products[index].requiresRefrigeration
+                        color: _products[index].refrigerated
                             ? Colors.lightBlue
                             : Colors.black,
                         padding: EdgeInsets.all(2.0),
@@ -77,7 +77,7 @@ class ProductsScreen extends StatelessWidget {
                               "${_products[index].weight}g",
                               style: TextStyle(color: Colors.white),
                             ),
-                            _products[index].requiresRefrigeration
+                            _products[index].refrigerated
                                 ? Icon(
                                     Icons.ac_unit_outlined,
                                     color: Colors.white,
