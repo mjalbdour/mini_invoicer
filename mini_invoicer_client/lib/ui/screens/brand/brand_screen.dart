@@ -43,7 +43,7 @@ class BrandScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("${_brand.name}"),
+            title: Text("${_brand.title}"),
             actions: [
               IconButton(
                 icon: Icon(Icons.edit),

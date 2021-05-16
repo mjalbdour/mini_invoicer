@@ -69,7 +69,7 @@ class _BrandAddScreenState extends State<BrandAddScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    _brand.name = _nameController.text.trim();
+                    _brand.title = _nameController.text.trim();
                     _brand.description = _descriptionController.text.trim();
                     DocumentReference docRef = await context
                         .read<FirebaseCloudFirestoreService>()

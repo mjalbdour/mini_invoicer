@@ -62,7 +62,7 @@ class BrandsScreen extends StatelessWidget {
                         height: 0,
                         width: 0,
                       ),
-                      Text("${_brands[index].name}"),
+                      Text("${_brands[index].title}"),
                       Container(
                         color: Colors.black,
                         padding: EdgeInsets.all(2.0),

@@ -236,7 +236,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                       decoration: InputDecoration(labelText: "Brand"),
                       items: snapshot.data
                           .map((brand) => DropdownMenuItem(
-                                child: Text("${brand.name}"),
+                                child: Text("${brand.title}"),
                                 value: brand.id,
                               ))
                           .toList(),

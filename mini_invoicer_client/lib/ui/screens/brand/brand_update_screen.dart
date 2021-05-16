@@ -70,12 +70,12 @@ class _BrandUpdateScreenState extends State<BrandUpdateScreen> {
         }
 
         _oldBrand = snapshot.data;
-        _nameController.text = _oldBrand.name;
+        _nameController.text = _oldBrand.title;
         _descriptionController.text = _oldBrand.description;
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("Update ${_oldBrand.name}"),
+            title: Text("Update ${_oldBrand.title}"),
             actions: [
               IconButton(
                   icon: Icon(Icons.delete_forever),
@@ -120,7 +120,7 @@ class _BrandUpdateScreenState extends State<BrandUpdateScreen> {
               padding: EdgeInsets.all(16.0),
               children: [
                 TextFormField(
-                  onSaved: (value) => _newBrand.name = value.trim(),
+                  onSaved: (value) => _newBrand.title = value.trim(),
                   controller: _nameController,
                   validator: (value) {
                     if (value.isEmpty) {
