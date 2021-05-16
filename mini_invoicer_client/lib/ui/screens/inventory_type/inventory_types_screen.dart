@@ -59,7 +59,7 @@ class InventoriesScreen extends StatelessWidget {
                         height: 0,
                         width: 0,
                       ),
-                      Text("${_inventories[index].name}"),
+                      Text("${_inventories[index].title}"),
                       Container(
                         color: Colors.black,
                         padding: EdgeInsets.all(2.0),
