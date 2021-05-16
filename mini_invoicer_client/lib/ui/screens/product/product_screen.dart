@@ -58,7 +58,7 @@ class ProductScreen extends StatelessWidget {
             children: [
               Text("${_product.weight}g"),
               Text("${_product.description}"),
-              Text(_product.requiresRefrigeration
+              Text(_product.refrigerated
                   ? "Requires refrigeration"
                   : "Reserved in ambient temperature"),
             ],
