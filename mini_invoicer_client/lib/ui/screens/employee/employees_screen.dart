@@ -65,7 +65,7 @@ class EmployeesScreen extends StatelessWidget {
                           width: 0,
                         ),
                         Text(
-                            "${_employees[index].name['designation']}. ${_employees[index].name['last']}"),
+                            "${_employees[index].name}"),
                         Container(
                           color: Colors.black,
                           padding: EdgeInsets.all(2.0),
