@@ -42,7 +42,7 @@ class InventoryTypeScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("${_inventoryType.name}"),
+            title: Text("${_inventoryType.title}"),
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
