@@ -58,7 +58,7 @@ class PricingTypesScreen extends StatelessWidget {
                           height: 0,
                           width: 0,
                         ),
-                        Text("${_pricingTypes[index].name}"),
+                        Text("${_pricingTypes[index].title}"),
                         Container(
                           color: Colors.black,
                           padding: EdgeInsets.all(2.0),
