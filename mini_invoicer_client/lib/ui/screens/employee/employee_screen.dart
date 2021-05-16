@@ -44,7 +44,7 @@ class EmployeeScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-                "${_employee.name['designation']}. ${_employee.name['last']}"),
+                "${_employee.name}"),
             actions: [
               IconButton(
                 icon: (Icon(Icons.edit)),
@@ -61,7 +61,7 @@ class EmployeeScreen extends StatelessWidget {
             shrinkWrap: true,
             children: [
               Text(
-                  "${_employee.name['designation']}. ${_employee.name['first']} ${_employee.name['last']}"),
+                  "${_employee.name}"),
               Text("Temp// ${_employee.accountId}"),
             ],
           ),
