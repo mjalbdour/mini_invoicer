@@ -47,10 +47,10 @@ app.*.map.json
 /android/app/release
 
 # I untracked those
-/android
-/ios
-/linux
-/web
+**/android
+**/ios
+**/linux
+**/web
 
 # I don't know how to make tests yet
 /test 
