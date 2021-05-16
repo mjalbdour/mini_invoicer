@@ -1,10 +1,8 @@
-import 'dart:collection';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-import 'package:mini_invoicer_client/ui/constants/designations_data.dart';
+// import 'package:mini_invoicer_client/ui/constants/designations_data.dart';
 import "package:provider/provider.dart";
 
 class EmployeeAddScreen extends StatefulWidget {
@@ -16,16 +14,8 @@ class EmployeeAddScreen extends StatefulWidget {
 
 class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
   var _formKey = GlobalKey<FormState>();
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
+  final _nameController = TextEditingController();
   Employee _employee = Employee();
-
-  @override
-  void initState() {
-    super.initState();
-    _employee.name = {"first": "", "last": "", "designation": designations[0]}
-        as LinkedHashMap<String, dynamic>;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,33 +35,22 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
               onFieldSubmitted: (value) {
                 value = value.trim();
               },
-              controller: _firstNameController,
+              controller: _nameController,
               decoration: InputDecoration(
-                labelText: "First Name",
+                labelText: "Full Name",
               ),
             ),
-            TextFormField(
-              autofocus: true,
-              onFieldSubmitted: (value) {
-                value = value.trim();
-              },
-              controller: _lastNameController,
-              decoration: InputDecoration(
-                labelText: "Last Name",
-              ),
-            ),
-            DropdownButtonFormField<String>(
-                value: designations[0],
-                onChanged: (value) => _employee.name["designation"] = value,
-                onSaved: (value) => _employee.name["designation"] = value,
-                items: designations
-                    .map(
-                      (designation) => DropdownMenuItem(
-                        child: Text("$designation"),
-                        value: designation,
-                      ),
-                    )
-                    .toList()),
+            // DropdownButtonFormField<String>(
+            //     value: designations[0],
+            //     onSaved: (value) => _employee.employeeTypeId = value,
+            //     items: designations
+            //         .map(
+            //           (designation) => DropdownMenuItem(
+            //             child: Text("$designation"),
+            //             value: designation,
+            //           ),
+            //         )
+            //         .toList()),
             ButtonBar(
               children: [
                 TextButton(
@@ -80,8 +59,7 @@ class _EmployeeAddScreenState extends State<EmployeeAddScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    _employee.name["first"] = _firstNameController.text.trim();
-                    _employee.name["last"] = _lastNameController.text.trim();
+                    _employee.name = _nameController.text.trim();
                     DocumentReference docRef = await context
                         .read<FirebaseCloudFirestoreService>()
                         .addEmployee(_employee);
