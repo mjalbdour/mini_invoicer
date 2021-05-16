@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-import 'package:mini_invoicer_client/ui/constants/designations_data.dart';
+// import 'package:mini_invoicer_client/ui/constants/designations_data.dart';
 import 'package:mini_invoicer_client/ui/screens/employee/employees_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -16,8 +16,7 @@ class EmployeeUpdateScreen extends StatefulWidget {
 
 class _EmployeeUpdateScreenState extends State<EmployeeUpdateScreen> {
   var _formKey = GlobalKey<FormState>();
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
+  final _nameController = TextEditingController();
   Employee _oldEmployee = Employee();
   Employee _newEmployee = Employee();
 
@@ -72,13 +71,13 @@ class _EmployeeUpdateScreenState extends State<EmployeeUpdateScreen> {
 
         _oldEmployee = snapshot.data;
         _newEmployee.id = _oldEmployee.id;
-        _firstNameController.text = _oldEmployee.name["first"];
-        _lastNameController.text = _oldEmployee.name["last"];
+        _nameController.text = _oldEmployee.name;
+
         _newEmployee.name = _oldEmployee.name;
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("Update ${_oldEmployee.name["last"]}"),
+            title: Text("Update ${_oldEmployee.name}"),
             actions: [
               IconButton(
                   icon: Icon(Icons.delete_forever),
@@ -127,43 +126,30 @@ class _EmployeeUpdateScreenState extends State<EmployeeUpdateScreen> {
                 TextFormField(
                   autofocus: true,
                   onSaved: (value) {
-                    _newEmployee.name["first"] = value.trim();
+                    _newEmployee.name = value.trim();
                   },
                   onFieldSubmitted: (value) {
                     value = value.trim();
                   },
-                  controller: _firstNameController,
+                  controller: _nameController,
                   decoration: InputDecoration(
                     labelText: "First Name",
                   ),
                 ),
-                TextFormField(
-                  autofocus: true,
-                  onSaved: (value) {
-                    _newEmployee.name["last"] = value.trim();
-                  },
-                  onFieldSubmitted: (value) {
-                    value = value.trim();
-                  },
-                  controller: _lastNameController,
-                  decoration: InputDecoration(
-                    labelText: "Last Name",
-                  ),
-                ),
-                DropdownButtonFormField<String>(
-                    value: _oldEmployee.name["designation"],
-                    onChanged: (value) =>
-                        _newEmployee.name["designation"] = value,
-                    onSaved: (value) =>
-                        _newEmployee.name["designation"] = value,
-                    items: designations
-                        .map(
-                          (designation) => DropdownMenuItem(
-                            child: Text("$designation"),
-                            value: designation,
-                          ),
-                        )
-                        .toList()),
+                // DropdownButtonFormField<String>(
+                //     value: _oldEmployee.name["designation"],
+                //     onChanged: (value) =>
+                //         _newEmployee.name["designation"] = value,
+                //     onSaved: (value) =>
+                //         _newEmployee.name["designation"] = value,
+                //     items: designations
+                //         .map(
+                //           (designation) => DropdownMenuItem(
+                //             child: Text("$designation"),
+                //             value: designation,
+                //           ),
+                //         )
+                //         .toList()),
                 ButtonBar(
                   children: [
                     ElevatedButton(
