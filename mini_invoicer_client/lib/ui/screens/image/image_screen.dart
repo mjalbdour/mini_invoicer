@@ -60,7 +60,7 @@ class ImageModelScreen extends StatelessWidget {
             shrinkWrap: true,
             children: [
               Text("${_imageModel.description}"),
-              Text("${_imageModel.ownerId}"),
+              // Text("${_imageModel.ownerId}"), Add tags list instead
             ],
           ),
         );
