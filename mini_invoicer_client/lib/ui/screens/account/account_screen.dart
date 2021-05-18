@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class AccountScreen extends StatelessWidget {
   final String _id;
+
   AccountScreen(this._id);
 
   @override
@@ -48,8 +49,9 @@ class AccountScreen extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             shrinkWrap: true,
             children: [
+              Text("Title: ${_account.title}"),
               Text("Balance: ${_account.balance}"),
-              Text("Last Upated: ${_account.lastUpdated}"),
+              Text("Last Updated: ${_account.lastUpdated}"),
               Text("Temp// Owner Id: ${_account.ownerId}"),
             ],
           ),
