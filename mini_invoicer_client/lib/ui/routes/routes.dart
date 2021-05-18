@@ -14,6 +14,7 @@ import 'package:mini_invoicer_client/ui/screens/image/image_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/image/images_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product/product_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product/products_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/account/accounts_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   AuthWrapper.ROUTE: (context) => AuthWrapper(),
@@ -29,4 +30,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   EmployeeAddScreen.ROUTE: (context) => EmployeeAddScreen(),
   ImagesScreen.ROUTE: (context) => ImagesScreen(),
   ImageAddScreen.ROUTE: (context) => ImageAddScreen(),
+  AccountsScreen.ROUTE: (context) => AccountsScreen(),
 };
