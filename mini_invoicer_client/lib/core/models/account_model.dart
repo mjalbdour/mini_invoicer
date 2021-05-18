@@ -1,11 +1,13 @@
 class Account {
   String id;
+  String title;
   double balance;
   DateTime lastUpdated;
   String ownerId;
 
   Account({
     this.id,
+    this.title,
     this.balance,
     this.lastUpdated,
     this.ownerId,
@@ -13,12 +15,14 @@ class Account {
 
   factory Account.fromJson(String id, Map<String, dynamic> json) => Account(
         id: id,
+        title: json['title'] as String,
         balance: json['balance'] as double,
         lastUpdated: json['lastUpdated'].toDate() as DateTime,
         ownerId: json['ownerId'] as String,
       );
 
   Map<String, dynamic> toJson() => {
+        'title': this.title,
         'balance': this.balance,
         'lastUpdated': this.lastUpdated,
         'ownerId': this.ownerId,
