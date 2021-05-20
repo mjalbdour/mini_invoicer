@@ -7,6 +7,7 @@ import "package:provider/provider.dart";
 
 class BrandsScreen extends StatelessWidget {
   static const String ROUTE = "/brands";
+
   @override
   Widget build(BuildContext context) {
     final _brandsStream =
@@ -15,10 +16,13 @@ class BrandsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Brands"),
         centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed(BrandAddScreen.ROUTE),
-        child: Icon(Icons.add),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () =>
+                Navigator.of(context).pushNamed(BrandAddScreen.ROUTE),
+          )
+        ],
       ),
       body: StreamBuilder<List<Brand>>(
         initialData: [],
@@ -43,45 +47,16 @@ class BrandsScreen extends StatelessWidget {
             );
           }
 
-          return GridView.builder(
-            padding: EdgeInsets.all(16.0),
-            itemCount: _brands.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => BrandScreen(_brands[index].id))),
-                child: Container(
-                  height: 100.0,
-                  child: Card(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 0,
-                        width: 0,
-                      ),
-                      Text("${_brands[index].title}"),
-                      Container(
-                        color: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "${_brands[index].country}",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-                ),
-              );
-            },
-          );
+          return ListView.builder(
+              itemCount: _brands.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => BrandScreen(_brands[index].id))),
+                  title: Text("${_brands[index].title}"),
+                  subtitle: Text("${_brands[index].country}"),
+                );
+              });
         },
       ),
     );

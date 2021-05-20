@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/inventory_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/inventory/inventory_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/inventory/inventory_screen.dart';
 import "package:provider/provider.dart";
 
@@ -15,12 +16,19 @@ class InventoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Inventories"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(InventoryAddScreen.ROUTE))
+        ],
       ),
       body: StreamBuilder<List<Inventory>>(
         initialData: [],
         stream: _inventoriesStream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
+            print(snapshot.error);
             return Center(
               child: Text("Oops! Something went wrong"),
             );
@@ -39,46 +47,14 @@ class InventoriesScreen extends StatelessWidget {
             );
           }
 
-          return GridView.builder(
-            padding: EdgeInsets.all(16.0),
-            itemCount: _inventories.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        InventoryScreen(_inventories[index].id))),
-                child: Container(
-                  height: 100.0,
-                  child: Card(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 0,
-                        width: 0,
-                      ),
-                      Text("${_inventories[index].title}"),
-                      Container(
-                        color: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "${_inventories[index].inventoryTypeId}",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-                ),
-              );
-            },
-          );
+          return ListView.builder(
+              itemCount: _inventories.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text("${_inventories[index].title}"),
+                  subtitle: Text("Last Updated: ${_inventories[index].lastUpdated}"),
+                );
+              });
         },
       ),
     );

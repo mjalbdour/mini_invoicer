@@ -1,28 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-import 'package:mini_invoicer_client/ui/constants/countries_data.dart';
 import "package:provider/provider.dart";
 
-class BrandAddScreen extends StatefulWidget {
-  static const String ROUTE = "/brands/add";
+class InventoryTypeAddScreen extends StatefulWidget {
+  static const String ROUTE = "/inventorytypes/add";
 
   @override
-  _BrandAddScreenState createState() => _BrandAddScreenState();
+  _InventoryTypeAddScreenState createState() => _InventoryTypeAddScreenState();
 }
 
-class _BrandAddScreenState extends State<BrandAddScreen> {
+class _InventoryTypeAddScreenState extends State<InventoryTypeAddScreen> {
   var _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
-  Brand _brand = Brand();
+
+  InventoryType _inventoryType = InventoryType();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Brand"),
+        title: Text("Add InventoryType"),
         centerTitle: true,
       ),
       body: Form(
@@ -38,28 +38,28 @@ class _BrandAddScreenState extends State<BrandAddScreen> {
               },
               controller: _titleController,
               decoration: InputDecoration(
-                labelText: "Brand Name",
+                labelText: "Inventory Type Title",
               ),
             ),
             TextFormField(
+              autofocus: true,
+              onFieldSubmitted: (value) {
+                value = value.trim();
+              },
               controller: _descriptionController,
               decoration: InputDecoration(
                 labelText: "Description",
               ),
-              onFieldSubmitted: (value) {
-                value = value.trim();
-              },
             ),
-            DropdownButtonFormField<String>(
-              value: countries[111],
-              onChanged: (value) => _brand.country = value,
-              decoration: InputDecoration(labelText: "Brand"),
-              items: countries
-                  .map((country) => DropdownMenuItem(
-                        child: Text("$country"),
-                        value: country,
-                      ))
-                  .toList(),
+            DropdownButtonFormField<bool>(
+              value: false,
+              onChanged: (value) => _inventoryType.refrigerated = value,
+              onSaved: (value) => _inventoryType.refrigerated = value,
+              decoration: InputDecoration(labelText: "Refrigerated?"),
+              items: <DropdownMenuItem<bool>>[
+                DropdownMenuItem(value: false, child: Text("No")),
+                DropdownMenuItem(value: true, child: Text("Yes")),
+              ],
             ),
             ButtonBar(
               children: [
@@ -69,14 +69,16 @@ class _BrandAddScreenState extends State<BrandAddScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    _brand.title = _titleController.text.trim();
-                    _brand.description = _descriptionController.text.trim();
+                    _inventoryType.title = _titleController.text.trim();
+                    _inventoryType.description =
+                        _descriptionController.text.trim();
+                    _formKey.currentState.save();
                     DocumentReference docRef = await context
                         .read<FirebaseCloudFirestoreService>()
-                        .addBrand(_brand);
+                        .addInventoryType(_inventoryType);
 
                     if (docRef == null) {
-                      print("Error adding brand");
+                      print("Error adding inventory type");
                     } else {
                       Navigator.of(context).pop();
                     }

@@ -2,19 +2,17 @@ class ProductPricing {
   String id;
   double price;
   int salesTax;
-  String description;
   String productId;
   String pricingTypeId;
-  String currencyId;
+  String currency;
 
   ProductPricing({
     this.id,
     this.price,
     this.salesTax,
-    this.description,
     this.productId,
     this.pricingTypeId,
-    this.currencyId,
+    this.currency,
   });
 
   factory ProductPricing.fromJson(String id, Map<String, dynamic> json) =>
@@ -22,18 +20,16 @@ class ProductPricing {
         id: id,
         price: json['price'] as double,
         salesTax: json['salesTax'] as int,
-        description: json['description'] as String,
         productId: json['productId'] as String,
         pricingTypeId: json['pricingTypeId'] as String,
-        currencyId: json['currencyId'] as String,
+        currency: json['currencyId'] as String,
       );
 
   Map<String, dynamic> toJson() => {
         'price': this.price,
         'salesTax': this.salesTax,
-        'description': this.description,
         'productId': this.productId,
         'pricingTypeId': this.pricingTypeId,
-        'currencyId': this.currencyId,
+        'currencyId': this.currency,
       };
 }

@@ -16,11 +16,12 @@ class ProductsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Products"),
         centerTitle: true,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.of(context).pushNamed(ProductAddScreen.ROUTE),
-        child: Icon(Icons.add),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(ProductAddScreen.ROUTE))
+        ],
       ),
       body: StreamBuilder<List<Product>>(
         initialData: [],
@@ -64,7 +65,7 @@ class ProductsScreen extends StatelessWidget {
                         height: 0,
                         width: 0,
                       ),
-                      Text("${_products[index].name}"),
+                      Text("${_products[index].title}"),
                       Container(
                         color: _products[index].refrigerated
                             ? Colors.lightBlue

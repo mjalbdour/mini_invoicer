@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/inventory_type_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-import 'package:mini_invoicer_client/ui/screens/inventory/inventory_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/inventory_type/inventory_type_add_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/inventory_type/inventory_type_screen.dart';
 import "package:provider/provider.dart";
 
 class InventoryTypesScreen extends StatelessWidget {
@@ -15,6 +16,13 @@ class InventoryTypesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Inventory Types"),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () =>
+                Navigator.of(context).pushNamed(InventoryTypeAddScreen.ROUTE),
+          ),
+        ],
       ),
       body: StreamBuilder<List<InventoryType>>(
         initialData: [],
@@ -32,53 +40,27 @@ class InventoryTypesScreen extends StatelessWidget {
             );
           }
 
-          var _inventories = snapshot.data;
-          if (_inventories.isEmpty) {
+          var _inventoryTypes = snapshot.data;
+          if (_inventoryTypes.isEmpty) {
             return Center(
               child: Text("No inventory types found"),
             );
           }
 
-          return GridView.builder(
-            padding: EdgeInsets.all(16.0),
-            itemCount: _inventories.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        InventoryScreen(_inventories[index].id))),
-                child: Container(
-                  height: 100.0,
-                  child: Card(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 0,
-                        width: 0,
-                      ),
-                      Text("${_inventories[index].title}"),
-                      Container(
-                        color: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Icon(
-                              Icons.ac_unit_outlined,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-                ),
-              );
-            },
-          );
+          return ListView.builder(
+              itemCount: _inventoryTypes.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          InventoryTypeScreen(_inventoryTypes[index].id))),
+                  title: Text("${_inventoryTypes[index].title}"),
+                  subtitle: Text("${_inventoryTypes[index].description}"),
+                  trailing: _inventoryTypes[index].refrigerated
+                      ? Icon(Icons.ac_unit)
+                      : Icon(Icons.thermostat_rounded),
+                );
+              });
         },
       ),
     );

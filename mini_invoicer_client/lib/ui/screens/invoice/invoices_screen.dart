@@ -13,7 +13,7 @@ class InvoicesScreen extends StatelessWidget {
         context.watch<FirebaseCloudFirestoreService>().streamInvoices();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Invoice s"),
+        title: Text("Invoices"),
         centerTitle: true,
       ),
       body: StreamBuilder<List<Invoice>>(

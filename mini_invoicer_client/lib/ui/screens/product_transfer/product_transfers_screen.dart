@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/product_transfer_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/screens/product_transfer/product_transfer_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product_transfer/product_transfer_screen.dart';
 import "package:provider/provider.dart";
 
 class ProductTransfersScreen extends StatelessWidget {
   static const String ROUTE = "/producttransfers";
+
   @override
   Widget build(BuildContext context) {
     final _pricingTypesStream =
@@ -14,6 +16,12 @@ class ProductTransfersScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Product Transfers"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => Navigator.of(context)
+                  .pushNamed(ProductTransferAddScreen.ROUTE))
+        ],
       ),
       body: StreamBuilder<List<ProductTransfer>>(
         initialData: [],
@@ -38,44 +46,17 @@ class ProductTransfersScreen extends StatelessWidget {
             );
           }
 
-          return GridView.builder(
-            padding: EdgeInsets.all(16.0),
+          return ListView.builder(
             itemCount: _productTransfers.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (context, index) {
-              return GestureDetector(
+              return ListTile(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
                         ProductTransferScreen(_productTransfers[index].id))),
-                child: Container(
-                  height: 100.0,
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 0,
-                          width: 0,
-                        ),
-                        Text("${_productTransfers[index].id}"),
-                        Container(
-                          color: Colors.black,
-                          padding: EdgeInsets.all(2.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${_productTransfers[index].quantity}",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                trailing: Text("${_productTransfers[index].productId}"),
+                title: Text("${_productTransfers[index].quantity}"),
+                subtitle: Text(
+                    "${_productTransfers[index].fromInventoryId} to ${_productTransfers[index].toInventoryId}"),
               );
             },
           );

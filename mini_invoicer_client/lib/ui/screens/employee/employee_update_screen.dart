@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/employee_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-// import 'package:mini_invoicer_client/ui/constants/designations_data.dart';
 import 'package:mini_invoicer_client/ui/screens/employee/employees_screen.dart';
 import 'package:provider/provider.dart';
 

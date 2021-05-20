@@ -17,7 +17,7 @@ class ProductUpdateScreen extends StatefulWidget {
 
 class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
   var _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
+  final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
   final _weightController = TextEditingController();
   Product _oldProduct = Product();
@@ -75,13 +75,13 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
         }
 
         _oldProduct = snapshot.data;
-        _nameController.text = _oldProduct.name;
+        _titleController.text = _oldProduct.title;
         _descriptionController.text = _oldProduct.description;
         _weightController.text = _oldProduct.weight.toString();
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("Update ${_oldProduct.name}"),
+            title: Text("Update ${_oldProduct.title}"),
             actions: [
               IconButton(
                   icon: Icon(Icons.delete_forever),
@@ -128,11 +128,11 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
               padding: EdgeInsets.all(16.0),
               children: [
                 TextFormField(
-                  onSaved: (value) => _newProduct.name = value.trim(),
-                  controller: _nameController,
+                  onSaved: (value) => _newProduct.title = value.trim(),
+                  controller: _titleController,
                   validator: (value) {
                     if (value.isEmpty) {
-                      return "Please enter a valid product name";
+                      return "Please enter a valid product title";
                     }
                     return null;
                   },

@@ -6,7 +6,7 @@ class Address {
   String city;
   String country;
   String postalCode;
-  List<String> tags;
+  // List<String> tags;
 
   Address({
     this.id,
@@ -16,7 +16,7 @@ class Address {
     this.city,
     this.country,
     this.postalCode,
-    this.tags,
+    // this.tags,
   });
 
   factory Address.fromJson(String id, Map<String, dynamic> json) => Address(
@@ -27,7 +27,7 @@ class Address {
         city: json['city'] as String,
         country: json['country'] as String,
         postalCode: json['postalCode'] as String,
-        tags: json['tags'] as List<String>,
+        // tags: json['tags'] as List<String>,
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +37,6 @@ class Address {
         'city': this.city,
         'country': this.country,
         'postalCode': this.postalCode,
-        'tags': this.tags,
+        // 'tags': this.tags,
       };
 }

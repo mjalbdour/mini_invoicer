@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class InventoryTypeScreen extends StatelessWidget {
   final String _id;
+
   InventoryTypeScreen(this._id);
 
   @override
@@ -48,7 +49,16 @@ class InventoryTypeScreen extends StatelessWidget {
             padding: EdgeInsets.all(16.0),
             shrinkWrap: true,
             children: [
+              Text("${_inventoryType.title}"),
               Text("${_inventoryType.description}"),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Center(
+                  child: _inventoryType.refrigerated
+                      ? Icon(Icons.ac_unit)
+                      : Icon(Icons.thermostat_rounded),
+                ),
+              ),
             ],
           ),
         );

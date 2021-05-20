@@ -1,28 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mini_invoicer_client/core/models/brand_model.dart';
+import 'package:mini_invoicer_client/core/models/pricing_type_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
-import 'package:mini_invoicer_client/ui/constants/countries_data.dart';
 import "package:provider/provider.dart";
 
-class BrandAddScreen extends StatefulWidget {
-  static const String ROUTE = "/brands/add";
+class PricingTypeAddScreen extends StatefulWidget {
+  static const String ROUTE = "/pricingtypes/add";
 
   @override
-  _BrandAddScreenState createState() => _BrandAddScreenState();
+  _PricingTypeAddScreenState createState() => _PricingTypeAddScreenState();
 }
 
-class _BrandAddScreenState extends State<BrandAddScreen> {
+class _PricingTypeAddScreenState extends State<PricingTypeAddScreen> {
   var _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
-  Brand _brand = Brand();
+  PricingType _pricingType = PricingType();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Brand"),
+        title: Text("Add Pricing Type"),
         centerTitle: true,
       ),
       body: Form(
@@ -38,7 +37,7 @@ class _BrandAddScreenState extends State<BrandAddScreen> {
               },
               controller: _titleController,
               decoration: InputDecoration(
-                labelText: "Brand Name",
+                labelText: "Pricing Type Title",
               ),
             ),
             TextFormField(
@@ -50,17 +49,6 @@ class _BrandAddScreenState extends State<BrandAddScreen> {
                 value = value.trim();
               },
             ),
-            DropdownButtonFormField<String>(
-              value: countries[111],
-              onChanged: (value) => _brand.country = value,
-              decoration: InputDecoration(labelText: "Brand"),
-              items: countries
-                  .map((country) => DropdownMenuItem(
-                        child: Text("$country"),
-                        value: country,
-                      ))
-                  .toList(),
-            ),
             ButtonBar(
               children: [
                 TextButton(
@@ -69,14 +57,13 @@ class _BrandAddScreenState extends State<BrandAddScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    _brand.title = _titleController.text.trim();
-                    _brand.description = _descriptionController.text.trim();
+                    _pricingType.title = _titleController.text.trim();
+                    _pricingType.description = _descriptionController.text.trim();
                     DocumentReference docRef = await context
                         .read<FirebaseCloudFirestoreService>()
-                        .addBrand(_brand);
-
+                        .addPricingType(_pricingType);
                     if (docRef == null) {
-                      print("Error adding brand");
+                      print("Error adding pricing type");
                     } else {
                       Navigator.of(context).pop();
                     }

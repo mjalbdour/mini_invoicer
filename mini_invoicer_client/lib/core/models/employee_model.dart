@@ -2,7 +2,7 @@ class Employee {
   String id;
   String uid;
   String name;
-  String employeeTypeId;
+  String employeeType;
   String accountId;
   String vendorId;
   String inventoryId;
@@ -12,7 +12,7 @@ class Employee {
     this.id,
     this.uid,
     this.name,
-    this.employeeTypeId,
+    this.employeeType,
     this.accountId,
     this.vendorId,
     this.inventoryId,
@@ -23,7 +23,7 @@ class Employee {
         id: id,
         uid: json['uid'] as String,
         name: json['name'] as String,
-        employeeTypeId: json['employeeTypeId'] as String,
+        employeeType: json['employeeType'] as String,
         accountId: json['accountId'] as String,
         vendorId: json['vendorId'] as String,
         inventoryId: json['inventoryId'] as String,
@@ -33,7 +33,7 @@ class Employee {
   Map<String, dynamic> toJson() => {
         'uid': this.uid,
         'name': this.name,
-        'employeeTypeId': this.employeeTypeId,
+        'employeeType': this.employeeType,
         'accountId': this.accountId,
         'vendorId': this.vendorId,
         'inventoryId': this.inventoryId,
