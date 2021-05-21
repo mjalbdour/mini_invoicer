@@ -20,7 +20,7 @@ class Address {
   });
 
   factory Address.fromJson(String id, Map<String, dynamic> json) => Address(
-        id: json['id'] as String,
+        id: id,
         street: json['street'] as String,
         building: json['building'] as String,
         area: json['area'] as String,

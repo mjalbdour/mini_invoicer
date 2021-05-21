@@ -1,18 +1,18 @@
 class Currency {
-  String id;
+  // String id;
   String title;
   String code;
   String symbol;
 
   Currency({
-    this.id,
+    // this.id,
     this.title,
     this.code,
     this.symbol,
   });
 
   factory Currency.fromJson(String id, Map<String, dynamic> json) => Currency(
-        id: id,
+        // id: id,
         title: json['title'] as String,
         code: json['code'] as String,
         symbol: json['symbol'] as String,

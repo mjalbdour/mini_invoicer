@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mini_invoicer_client/core/models/transaction_model.dart';
 import 'package:mini_invoicer_client/infrastructure/services/db/firebase_cloud_firestore_service.dart';
+import 'package:mini_invoicer_client/ui/constants/currencies_data.dart';
+import 'package:mini_invoicer_client/ui/screens/transaction/transaction_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/transaction/transaction_screen.dart';
 import "package:provider/provider.dart";
 
@@ -14,8 +16,14 @@ class TransactionsScreen extends StatelessWidget {
         .streamTransactionModels();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Transaction s"),
+        title: Text("Transactions"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(TransactionAddScreen.ROUTE))
+        ],
       ),
       body: StreamBuilder<List<TransactionModel>>(
         initialData: [],
@@ -41,37 +49,18 @@ class TransactionsScreen extends StatelessWidget {
           }
 
           return ListView.builder(
-            padding: EdgeInsets.all(16.0),
             itemCount: _transactions.length,
             itemBuilder: (context, index) {
-              return GestureDetector(
+              return ListTile(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
                         TransactionScreen(_transactions[index].id))),
-                child: Container(
-                  height: 100.0,
-                  child: Card(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 0,
-                        width: 0,
-                      ),
-                      Text("${_transactions[index].id}"),
-                      Container(
-                        color: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("${_transactions[index].value}"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-                ),
+                title:
+                    Text("${_transactions[index].value} ${currencies[2].code}"),
+                subtitle: Text(
+                    "${_transactions[index].fromAccountId} to ${_transactions[index].toAccountId}"),
+                trailing: Text("${_transactions[index].timestamp}"),
+                leading: Text("SN: ${_transactions[index].id}"),
               );
             },
           );

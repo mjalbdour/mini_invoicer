@@ -44,15 +44,15 @@ class TransactionScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text("${_transaction.id}"),
+            title: Text("Transaction Details"),
           ),
           body: ListView(
             padding: EdgeInsets.all(16.0),
-            shrinkWrap: true,
             children: [
-              Text("${_transaction.fromAccountId}"),
-              Text("${_transaction.toAccountId}"),
-              Text("${_transaction.value}"),
+              Text("Value: ${_transaction.value}"),
+              Text("From: ${_transaction.fromAccountId}"),
+              Text("To: ${_transaction.toAccountId}"),
+              Text("On: ${_transaction.timestamp}"),
             ],
           ),
         );

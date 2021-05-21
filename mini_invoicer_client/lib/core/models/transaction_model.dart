@@ -5,7 +5,8 @@ class TransactionModel {
   String serialNumber;
   String fromAccountId;
   String toAccountId;
-  String currencyId;
+
+  // String currencyId;
 
   TransactionModel({
     this.id,
@@ -14,7 +15,7 @@ class TransactionModel {
     this.serialNumber,
     this.fromAccountId,
     this.toAccountId,
-    this.currencyId,
+    // this.currencyId,
   });
 
   factory TransactionModel.fromJson(String id, Map<String, dynamic> json) =>
@@ -25,7 +26,7 @@ class TransactionModel {
         serialNumber: json['serialNumber'] as String,
         fromAccountId: json['fromAccountId'] as String,
         toAccountId: json['toAccountId'] as String,
-        currencyId: json['currencyId'] as String,
+        // currencyId: json['currencyId'] as String,
       );
 
   Map<String, dynamic> toJson() => {
@@ -34,6 +35,6 @@ class TransactionModel {
         'serialNumber': this.serialNumber,
         'fromAccountId': this.fromAccountId,
         'toAccountId': this.toAccountId,
-        'currencyId': this.currencyId,
+        // 'currencyId': this.currencyId,
       };
 }

@@ -21,6 +21,7 @@ class AccountsScreen extends StatelessWidget {
         stream: _accountsStream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
+            print(snapshot.error);
             return Center(
               child: Text("Oops! Something went wrong"),
             );
@@ -39,7 +40,7 @@ class AccountsScreen extends StatelessWidget {
             );
           }
 
-          return ListView.builder(itemBuilder: (context, index) {
+          return ListView.builder(itemCount: _accounts.length,itemBuilder: (context, index) {
             return ListTile(
               onTap: () => {
                 /*Navigate to account screen based on id*/

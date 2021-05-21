@@ -28,6 +28,8 @@ import 'package:mini_invoicer_client/ui/screens/product_transfer/product_transfe
 import 'package:mini_invoicer_client/ui/screens/product_transfer/product_transfers_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product_transfer_type/product_transfer_type_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/product_transfer_type/product_transfer_types_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/transaction/transaction_add_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/transaction/transactions_screen.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {
   AuthWrapper.ROUTE: (context) => AuthWrapper(),
@@ -56,5 +58,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   ProductTransfersScreen.ROUTE: (_) => ProductTransfersScreen(),
   ProductTransferAddScreen.ROUTE: (_) => ProductTransferAddScreen(),
   ProductTransferTypesScreen.ROUTE: (_) => ProductTransferTypesScreen(),
-  ProductTransferTypeAddScreen.ROUTE: (_) => ProductTransferTypeAddScreen()
+  ProductTransferTypeAddScreen.ROUTE: (_) => ProductTransferTypeAddScreen(),
+  TransactionsScreen.ROUTE: (_) => TransactionsScreen(),
+  TransactionAddScreen.ROUTE: (_) => TransactionAddScreen(),
 };
