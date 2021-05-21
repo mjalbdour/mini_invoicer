@@ -16,6 +16,7 @@ import 'package:mini_invoicer_client/ui/screens/inventory/inventories_screen.dar
 import 'package:mini_invoicer_client/ui/screens/inventory/inventory_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/inventory_type/inventory_type_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/inventory_type/inventory_types_screen.dart';
+import 'package:mini_invoicer_client/ui/screens/invoice/invoice_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/invoice/invoices_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/pricing_type/pricing_type_add_screen.dart';
 import 'package:mini_invoicer_client/ui/screens/pricing_type/pricing_types_screen.dart';
@@ -52,7 +53,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   InventoryAddScreen.ROUTE: (_) => InventoryAddScreen(),
   InventoryTypesScreen.ROUTE: (_) => InventoryTypesScreen(),
   InventoryTypeAddScreen.ROUTE: (_) => InventoryTypeAddScreen(),
-  InvoicesScreen.ROUTE: (_) => InvoicesScreen(),
   ProductQuantitiesScreen.ROUTE: (_) => ProductQuantitiesScreen(),
   ProductQuantityAddScreen.ROUTE: (_) => ProductQuantityAddScreen(),
   ProductTransfersScreen.ROUTE: (_) => ProductTransfersScreen(),
@@ -61,4 +61,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   ProductTransferTypeAddScreen.ROUTE: (_) => ProductTransferTypeAddScreen(),
   TransactionsScreen.ROUTE: (_) => TransactionsScreen(),
   TransactionAddScreen.ROUTE: (_) => TransactionAddScreen(),
+  InvoicesScreen.ROUTE: (_) => InvoicesScreen(),
+  InvoiceAddScreen.ROUTE: (_) => InvoiceAddScreen(),
 };

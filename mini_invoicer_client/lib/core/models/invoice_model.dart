@@ -9,7 +9,7 @@ class Invoice {
   String employeeId;
   String customerId;
   String currencyId;
-  String paymentTypeId;
+  String paymentType;
   String successorInvoiceId;
 
   Invoice({
@@ -23,7 +23,7 @@ class Invoice {
     this.employeeId,
     this.customerId,
     this.currencyId,
-    this.paymentTypeId,
+    this.paymentType,
     this.successorInvoiceId,
   });
 
@@ -36,7 +36,7 @@ class Invoice {
         vendorId: json['vendorId'] as String,
         employeeId: json['employeeId'] as String,
         currencyId: json['currencyId'] as String,
-        paymentTypeId: json['paymentTypeId'] as String,
+        paymentType: json['paymentType'] as String,
         successorInvoiceId: json['successorInvoiceId'] as String,
       );
 
@@ -49,7 +49,7 @@ class Invoice {
         'vendorId': this.vendorId,
         'employeeId': this.employeeId,
         'currencyId': this.currencyId,
-        'paymentTypeId': this.paymentTypeId,
+        'paymentType': this.paymentType,
         'successorInvoiceId': this.successorInvoiceId,
       };
 }
